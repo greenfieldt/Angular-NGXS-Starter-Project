@@ -4,6 +4,8 @@ import { tap, take } from 'rxjs/operators';
 import { Store, Select } from '@ngxs/store';
 import { Language } from './shared/state/settings.state';
 import { ChangeLanguage } from './shared/state/setting.actions';
+import { Navigate } from '@ngxs/router-plugin';
+
 
 @Component({
     selector: 'app-root',
@@ -30,6 +32,8 @@ export class AppComponent {
             }),
             take(1)
         ).subscribe();
+
+        this.store.dispatch(new Navigate(['/home']))
     }
 
 

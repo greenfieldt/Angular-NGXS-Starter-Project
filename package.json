@@ -30,6 +30,7 @@
     "@ngx-translate/http-loader": "^4.0.0",
     "@ngxs/devtools-plugin": "^3.4.3",
     "@ngxs/logger-plugin": "^3.4.3",
+    "@ngxs/router-plugin": "^3.4.3",
     "@ngxs/storage-plugin": "^3.4.3",
     "@ngxs/store": "^3.4.3",
     "core-js": "^2.5.4",
