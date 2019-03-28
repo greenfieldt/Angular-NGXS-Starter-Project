@@ -1,8 +1,9 @@
-import { State, Action, Selector, StateContext, Store } from '@ngxs/store';
+import { State, Action, StateContext } from '@ngxs/store';
 import { tap, map, scan, first, mergeMap, distinctUntilChanged } from 'rxjs/operators';
 import { pipe, Observable, of, Subscription } from 'rxjs';
-import { ChangeLanguage } from './setting.actions';
+import { ChangeLanguage, ChangePageAnimationsDisabled } from './setting.actions';
 import { TranslateService } from '@ngx-translate/core';
+import { produce } from 'immer';
 
 
 
@@ -48,4 +49,10 @@ export class SettingState {
         this.translate.setDefaultLang('en');
         this.translate.use(action.payload);
     }
+
+    @Action(ChangePageAnimationsDisabled)
+    changePageAnimationss(ctx: StateContext<SettingsStateModel>, action: ChangePageAnimationsDisabled) {
+        ctx.patchState({ pageAnimationsDisabled: action.payload });
+    }
+
 }

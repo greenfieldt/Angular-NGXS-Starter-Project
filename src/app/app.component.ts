@@ -1,9 +1,13 @@
+import browser from 'browser-detect';
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap, take } from 'rxjs/operators';
 import { Store, Select } from '@ngxs/store';
 import { Language } from './shared/state/settings.state';
-import { ChangeLanguage } from './shared/state/setting.actions';
+import {
+    ChangeLanguage,
+    ChangePageAnimationsDisabled
+} from './shared/state/setting.actions';
 import { Navigate } from '@ngxs/router-plugin';
 
 
@@ -33,7 +37,16 @@ export class AppComponent {
             take(1)
         ).subscribe();
 
+
+        //disable the page animation on some browsers
+        this.store.dispatch(
+            new ChangePageAnimationsDisabled(AppComponent.isIEorEdgeOrSafari()));
+
         this.store.dispatch(new Navigate(['/home']))
+    }
+
+    private static isIEorEdgeOrSafari() {
+        return ['ie', 'edge', 'safari'].includes(browser().name);
     }
 
 
