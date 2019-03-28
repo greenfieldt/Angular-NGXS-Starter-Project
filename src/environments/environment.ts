@@ -4,7 +4,7 @@
 
 export const environment = {
     production: false,
-    i18nPrefix: '',
+    i18nPrefix: '.',
 
 };
 

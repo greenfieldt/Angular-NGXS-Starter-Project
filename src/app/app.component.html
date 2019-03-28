@@ -1,10 +1,27 @@
-<div [class]="'theme-wrapper ' + (theme$ | async)">
+      <div class="branding">
+	<img [src]=logo />
+	<span data-testid="title">
+	  {{ 'increate.title.short' | translate}}
+	</span>
+      </div>
+
+<div [class]="'theme-wrapper ' + (theme$ | async )">
 
   <mat-sidenav-container>
 
     <mat-sidenav #sidenav mode="push">
+      <div class="branding">
+	<img [src]=logo />
+	<span data-testid="title">
+	  {{ 'increate.title.short' | translate}}
+	</span>
+      </div>
 
-          <mat-nav-list>
+      <mat-nav-list>
+	<a mat-list-item href="https://github.com/tomastrajan/angular-ngrx-material-starter" target="_blank">
+          Github
+        </a>
+
 	  </mat-nav-list>
     </mat-sidenav>
 

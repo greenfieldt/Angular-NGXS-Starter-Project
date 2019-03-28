@@ -11,20 +11,8 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { environment } from '../../environments/environment';
+import { SettingState } from './state/settings.state';
 
-/*
-import { httpInterceptorProviders } from './http-interceptors';
-import { LocalStorageService } from './local-storage/local-storage.service';
-import { AuthEffects } from './auth/auth.effects';
-import { AuthGuardService } from './auth/auth-guard.service';
-import { AnimationsService } from './animations/animations.service';
-import { TitleService } from './title/title.service';
-import { reducers, metaReducers } from './core.state';
-import { AppErrorHandler } from './error-handler/app-error-handler.service';
-import { CustomSerializer } from './router/custom-serializer';
-import { NotificationService } from './notifications/notification.service';
-import { GoogleAnalyticsEffects } from './google-analytics/google-analytics.effects';
-*/
 
 @NgModule({
     imports: [
@@ -33,7 +21,7 @@ import { GoogleAnalyticsEffects } from './google-analytics/google-analytics.effe
         HttpClientModule,
 
         // ngxs
-        NgxsModule.forRoot([], { developmentMode: !environment.production }),
+        NgxsModule.forRoot([SettingState], { developmentMode: !environment.production }),
         environment.production
             ? []
             : [NgxsReduxDevtoolsPluginModule.forRoot(),
@@ -49,14 +37,6 @@ import { GoogleAnalyticsEffects } from './google-analytics/google-analytics.effe
     ],
     declarations: [],
     providers: [
-        /*
-            NotificationService,
-            LocalStorageService,
-            AuthGuardService,
-            AnimationsService,
-            httpInterceptorProviders,
-            TitleService,
-        */
         //     { provide: ErrorHandler, useClass: AppErrorHandler },
         //     { provide: RouterStateSerializer, useClass: CustomSerializer }
     ],
@@ -74,6 +54,11 @@ export class CoreModule {
     }
 }
 
+
+export function HttpLoaderFactory(http: HttpClient) {
+    return new TranslateHttpLoader(http);
+}
+/*
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(
         http,
@@ -81,3 +66,4 @@ export function HttpLoaderFactory(http: HttpClient) {
         '.json'
     );
 }
+*/
