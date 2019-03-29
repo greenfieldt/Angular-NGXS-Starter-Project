@@ -8,7 +8,8 @@ import { Store, Select } from '@ngxs/store';
 import { Language, languages } from './shared/state/settings.state';
 import {
     ChangeLanguage,
-    ChangePageAnimationsDisabled
+    ChangePageAnimationsDisabled,
+    ChangeTheme
 } from './shared/state/setting.actions';
 
 import { Navigate } from '@ngxs/router-plugin';
@@ -47,6 +48,8 @@ export class AppComponent {
         //disable the page animation on some browsers
         this.store.dispatch(
             new ChangePageAnimationsDisabled(AppComponent.isIEorEdgeOrSafari()));
+
+        this.store.dispatch(new ChangeTheme("defaultt"));
 
         this.store.dispatch(new Navigate(['/home']))
     }

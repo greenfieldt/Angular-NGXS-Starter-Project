@@ -11,3 +11,7 @@ export class ChangePageAnimationsDisabled {
     constructor(public payload: boolean) { }
 }
 
+export class ChangeTheme {
+    static readonly type = '[Settings] Change the Theme';
+    constructor(public payload: string) { }
+}

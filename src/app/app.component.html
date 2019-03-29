@@ -26,6 +26,8 @@
             <fa-icon icon="bars"></fa-icon>
           </button>
 
+
+	  
 	  <span routerLink="" class="branding spacer center d-inline d-sm-none">
             <img [src]="logo" />
 	  </span>
@@ -42,6 +44,9 @@
 	    {{ 'increate.title.long' | translate}}
 	  </span>
 
+
+
+	  
 	  <button mat-button mat-stroked-button color="accent"
 		  *ngIf="!(isAuthenticated$ | async)"
 		  (click)="onLoginClick()">
@@ -53,7 +58,6 @@
                   [matMenuTriggerFor]="toolbarUserMenu">
             <fa-icon icon="user-circle"></fa-icon>
           </button>
-
           <mat-menu #toolbarUserMenu="matMenu">
             <button mat-menu-item (click)="onLogoutClick()">
               <mat-icon><fa-icon icon="power-off"></fa-icon></mat-icon>
@@ -61,6 +65,8 @@
             </button>
           </mat-menu>
 
+
+	  
           <button mat-icon-button routerLink="settings" class="d-none d-sm-inline">
             <fa-icon icon="cog"></fa-icon>
           </button>
@@ -85,11 +91,13 @@
 	</mat-toolbar>
       </div>
 
-      
-      <div class="content" [@routeAnimations]="o.isActivated && o.activatedRoute.routeConfig.path"> --
-        <router-outlet #o="outlet"></router-outlet> --
-      </div> --
+    
+      <div class="content" >
+        <router-outlet></router-outlet>
+      </div>
 
+ 
+     
       <div class="footer">
         <div class="row">
           <div class="col-sm-12 links">

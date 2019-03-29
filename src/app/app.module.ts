@@ -8,19 +8,20 @@ import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './shared/core.module';
 
 import { AppComponent } from './app.component';
+import { StaticModule } from './static';
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
     ],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
 
-        //material design and things like that
         SharedModule,
-        //
         CoreModule,
+
+        StaticModule,
 
         AppRoutingModule
     ],
