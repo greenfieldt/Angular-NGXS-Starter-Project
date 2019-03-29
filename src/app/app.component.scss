@@ -152,7 +152,7 @@ mat-sidenav-container {
 
   @media (max-width: $toolbar-breakpoint) {
     .content {
-      margin-top: 56px !important;
+	margin-top: 56px !important;
     }
   }
 }
@@ -163,7 +163,7 @@ mat-sidenav {
   .branding {
     height: 64px;
     padding: 8px 10px;
-    font-size: 20px;
+    font-size: 14px;
     font-weight: 500;
 
     img {

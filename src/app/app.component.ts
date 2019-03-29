@@ -13,6 +13,8 @@ import {
     ChangeStickyHeader
 } from './shared/state/setting.actions';
 
+import { Login, Logout } from './shared/state/auth.actions';
+
 import { Navigate } from '@ngxs/router-plugin';
 import { MatSelectChange } from '@angular/material';
 
@@ -29,7 +31,7 @@ export class AppComponent {
 
     constructor(private store: Store) {
     }
-    //@Select(state => state.auth.isAugthenticated) isAuthenticated$: Observable<boolean>;
+    @Select(state => state.auth.isAuthenticated) isAuthenticated$: Observable<boolean>;
     @Select(state => state.settings.stickyHeader) stickyHeader$: Observable<boolean>;
     @Select(state => state.settings.language) language$: Observable<string>;
     @Select(state => state.settings.theme) theme$: Observable<string>;
@@ -50,11 +52,13 @@ export class AppComponent {
         this.store.dispatch(
             new ChangePageAnimationsDisabled(AppComponent.isIEorEdgeOrSafari()));
 
-        this.store.dispatch(new ChangeTheme(""));
+        this.store.dispatch(new ChangeTheme("dark-theme"));
 
         this.store.dispatch(new ChangeStickyHeader(false));
 
         this.store.dispatch(new Navigate(['/home']))
+
+
     }
 
     private static isIEorEdgeOrSafari() {
@@ -66,4 +70,14 @@ export class AppComponent {
         this.store.dispatch(new ChangeLanguage($event.value));
 
     }
+
+    onLoginClick($event) {
+        this.store.dispatch(new Login({ username: 'greenfit', password: 'password' }));
+    }
+
+    onLogoutClick() {
+        this.store.dispatch(new Logout());
+
+    }
+
 }

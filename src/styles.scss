@@ -11,6 +11,8 @@
 @include mat-core();
 
 @import 'themes/default-theme.scss';
+@import 'themes/dark-theme.scss';
+
 @import 'styles-reset.scss-theme';
 @import 'app/app.component.scss-theme';
 @import 'app/static/home/home.component.scss-theme';
@@ -27,4 +29,9 @@
 .default-theme {
   @include angular-material-theme($increate-theme);
   @include custom-components-theme($increate-theme);
+}
+
+.dark-theme {
+  @include angular-material-theme($increate-dark-theme);
+  @include custom-components-theme($increate-dark-theme);
 }

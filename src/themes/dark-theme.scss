@@ -1,0 +1,9 @@
+$increate-dark-primary: mat-palette($mat-grey, 700, 300, 900);
+$increate-dark-accent: mat-palette($mat-blue-grey, 400);
+$increate-dark-warn: mat-palette($mat-red, 500);
+
+$increate-dark-theme: mat-dark-theme(
+  $increate-dark-primary,
+  $increate-dark-accent,
+  $increate-dark-warn
+);

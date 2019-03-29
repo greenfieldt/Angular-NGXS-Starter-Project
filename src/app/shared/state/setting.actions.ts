@@ -1,4 +1,5 @@
-import { Language } from './settings.state'
+import { Language, Theme } from './settings.state'
+
 
 
 export class ChangeLanguage {
@@ -13,7 +14,7 @@ export class ChangePageAnimationsDisabled {
 
 export class ChangeTheme {
     static readonly type = '[Settings] Change the Theme';
-    constructor(public payload: string) { }
+    constructor(public payload: Theme) { }
 }
 export class ChangeStickyHeader {
     static readonly type = '[Settings] Change the StickyHeader Boolean';

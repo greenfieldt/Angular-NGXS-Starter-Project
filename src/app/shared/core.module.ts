@@ -13,6 +13,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { environment } from '../../environments/environment';
 import { SettingState } from './state/settings.state';
+import { AuthState } from './state/auth.state';
 
 
 @NgModule({
@@ -22,7 +23,7 @@ import { SettingState } from './state/settings.state';
         HttpClientModule,
 
         // ngxs
-        NgxsModule.forRoot([SettingState], { developmentMode: !environment.production }),
+        NgxsModule.forRoot([SettingState, AuthState], { developmentMode: !environment.production }),
         environment.production
             ? []
             : [NgxsReduxDevtoolsPluginModule.forRoot(),

@@ -1,6 +1,4 @@
 import { State, Action, StateContext } from '@ngxs/store';
-import { tap, map, scan, first, mergeMap, distinctUntilChanged } from 'rxjs/operators';
-import { pipe, Observable, of, Subscription } from 'rxjs';
 import {
     ChangeLanguage,
     ChangePageAnimationsDisabled,
@@ -8,13 +6,16 @@ import {
     ChangeStickyHeader
 } from './setting.actions';
 import { TranslateService } from '@ngx-translate/core';
-import { produce } from 'immer';
 import { OverlayContainer } from '@angular/cdk/overlay';
 
 
 
-export const NIGHT_MODE_THEME = 'BLACK-THEME';
-export const DAY_MODE_THEME = 'default-theme';
+export const NIGHT_MODE_THEME = 'dark-theme';
+export const DEFAULT_THEME = 'default-theme';
+
+export type Theme = 'default-theme' | 'dark-theme';
+export const themes: Theme[] = ['default-theme', 'dark-theme'];
+
 
 export type Language = 'en' | 'es';
 export const languages: Language[] = ['en', 'es'];
@@ -36,7 +37,7 @@ export interface SettingsStateModel {
     name: 'settings',
     defaults: {
         language: 'en',
-        theme: DAY_MODE_THEME,
+        theme: DEFAULT_THEME,
         autoNightMode: false,
         nightTheme: NIGHT_MODE_THEME,
         stickyHeader: true,
@@ -58,12 +59,15 @@ export class SettingState {
     }
 
     @Action(ChangePageAnimationsDisabled)
-    changePageAnimationss(ctx: StateContext<SettingsStateModel>, action: ChangePageAnimationsDisabled) {
+    changePageAnimationsDisabled(ctx: StateContext<SettingsStateModel>, action: ChangePageAnimationsDisabled) {
         ctx.patchState({ pageAnimationsDisabled: action.payload });
     }
 
     @Action(ChangeTheme)
     changeTheme(ctx: StateContext<SettingsStateModel>, action: ChangeTheme) {
+
+        ctx.patchState({ theme: action.payload });
+
         const classList = this.overlayContainer.getContainerElement().classList;
         const toRemove = Array.from(classList)
             .filter((item: string) => item.includes('-theme'));
