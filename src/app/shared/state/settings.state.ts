@@ -4,7 +4,8 @@ import { pipe, Observable, of, Subscription } from 'rxjs';
 import {
     ChangeLanguage,
     ChangePageAnimationsDisabled,
-    ChangeTheme
+    ChangeTheme,
+    ChangeStickyHeader
 } from './setting.actions';
 import { TranslateService } from '@ngx-translate/core';
 import { produce } from 'immer';
@@ -72,5 +73,9 @@ export class SettingState {
         }
 
         classList.add(ctx.getState().theme);
+    }
+    @Action(ChangeStickyHeader)
+    changeStickyHeader(ctx: StateContext<SettingsStateModel>, action: ChangeStickyHeader) {
+        ctx.patchState({ stickyHeader: action.payload });
     }
 }

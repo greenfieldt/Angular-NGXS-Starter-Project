@@ -9,7 +9,8 @@ import { Language, languages } from './shared/state/settings.state';
 import {
     ChangeLanguage,
     ChangePageAnimationsDisabled,
-    ChangeTheme
+    ChangeTheme,
+    ChangeStickyHeader
 } from './shared/state/setting.actions';
 
 import { Navigate } from '@ngxs/router-plugin';
@@ -17,7 +18,7 @@ import { MatSelectChange } from '@angular/material';
 
 
 @Component({
-    selector: 'app-root',
+    selector: 'increate-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss']
 })
@@ -49,7 +50,9 @@ export class AppComponent {
         this.store.dispatch(
             new ChangePageAnimationsDisabled(AppComponent.isIEorEdgeOrSafari()));
 
-        this.store.dispatch(new ChangeTheme("defaultt"));
+        this.store.dispatch(new ChangeTheme(""));
+
+        this.store.dispatch(new ChangeStickyHeader(false));
 
         this.store.dispatch(new Navigate(['/home']))
     }
