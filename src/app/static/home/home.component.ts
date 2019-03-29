@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Store, Select } from '@ngxs/store';
+import { themes } from '../../shared/state/settings.state'
+import { Observable } from 'rxjs';
+import { ChangeTheme } from 'src/app/shared/state/setting.actions';
 
 @Component({
     selector: 'increate-home',
@@ -7,9 +11,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-    constructor() { }
+    themes = themes;
+
+    @Select(state => state.settings.theme) theme$: Observable<string>;
+
+    constructor(private store: Store) { }
 
     ngOnInit() {
+    }
+
+    onThemeSelect($event) {
+        this.store.dispatch(new ChangeTheme($event.value));
+
     }
 
 }

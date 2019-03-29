@@ -5,5 +5,12 @@
 	home works!
       </p>
     </h1>
+    <span *ngIf="theme$ | async as theme">
+      <mat-select [ngModel]="theme" (selectionChange)="onThemeSelect($event)">
+	<mat-option *ngFor="let t of themes" [value]="t">
+          {{ t.toUpperCase() }}
+	</mat-option>
+      </mat-select>
+    </span>
   </div>
 </div>
