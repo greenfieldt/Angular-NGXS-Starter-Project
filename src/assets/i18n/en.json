@@ -1,3 +1,7 @@
 {
-    "increate.title.short": "Increate"
+    "increate.title.short": "Increate short (english)",
+    "increate.title.long": "Increate long (english)",
+    "increate.menu.login": "Login (english)",
+    "imcreate.menu.logout": "Logout (english)",
+    "increate.header.github": "Github (english)"
 }

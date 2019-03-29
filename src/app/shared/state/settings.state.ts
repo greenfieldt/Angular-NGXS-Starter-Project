@@ -11,6 +11,7 @@ export const NIGHT_MODE_THEME = 'BLACK-THEME';
 export const DAY_MODE_THEME = 'NORMAL-THEME';
 
 export type Language = 'en' | 'es';
+export const languages: Language[] = ['en', 'es'];
 
 export interface SettingsStateModel {
     language: Language;

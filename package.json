@@ -33,6 +33,7 @@
     "@ngxs/router-plugin": "^3.4.3",
     "@ngxs/storage-plugin": "^3.4.3",
     "@ngxs/store": "^3.4.3",
+    "bootstrap": "^4.3.1",
     "browser-detect": "^0.2.28",
     "core-js": "^2.5.4",
     "fontawesome": "^5.6.3",

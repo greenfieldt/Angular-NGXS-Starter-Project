@@ -1,14 +1,18 @@
+//I think this will mess up SSR so I'll have to rethink it
+//at a later point
 import browser from 'browser-detect';
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap, take } from 'rxjs/operators';
 import { Store, Select } from '@ngxs/store';
-import { Language } from './shared/state/settings.state';
+import { Language, languages } from './shared/state/settings.state';
 import {
     ChangeLanguage,
     ChangePageAnimationsDisabled
 } from './shared/state/setting.actions';
+
 import { Navigate } from '@ngxs/router-plugin';
+import { MatSelectChange } from '@angular/material';
 
 
 @Component({
@@ -18,6 +22,8 @@ import { Navigate } from '@ngxs/router-plugin';
 })
 export class AppComponent {
     logo = '../assets/logo.png';
+    //creating a member var for settings.state.languages const 
+    languages = languages;
 
     constructor(private store: Store) {
     }
@@ -50,4 +56,8 @@ export class AppComponent {
     }
 
 
+    onLanguageSelect($event: MatSelectChange) {
+        this.store.dispatch(new ChangeLanguage($event.value));
+
+    }
 }
