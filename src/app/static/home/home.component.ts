@@ -3,6 +3,7 @@ import { Store, Select } from '@ngxs/store';
 import { themes } from '../../shared/state/settings.state'
 import { Observable } from 'rxjs';
 import { ChangeTheme } from 'src/app/shared/state/setting.actions';
+import { NotificationService } from 'src/app/shared/notifications/notification.service';
 
 @Component({
     selector: 'increate-home',
@@ -15,14 +16,14 @@ export class HomeComponent implements OnInit {
 
     @Select(state => state.settings.theme) theme$: Observable<string>;
 
-    constructor(private store: Store) { }
+    constructor(private store: Store, private notification: NotificationService) { }
 
     ngOnInit() {
     }
 
     onThemeSelect($event) {
         this.store.dispatch(new ChangeTheme($event.value));
-
+        this.notification.info("Theme Changed");
     }
 
 }

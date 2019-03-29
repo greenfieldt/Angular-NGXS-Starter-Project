@@ -2,8 +2,8 @@
 //at a later point
 import browser from 'browser-detect';
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
-import { tap, take } from 'rxjs/operators';
+import { Observable, Subscription } from 'rxjs';
+import { tap, take, filter } from 'rxjs/operators';
 import { Store, Select } from '@ngxs/store';
 import { Language, languages } from './shared/state/settings.state';
 import {
@@ -17,7 +17,7 @@ import { Login, Logout } from './shared/state/auth.actions';
 
 import { Navigate } from '@ngxs/router-plugin';
 import { MatSelectChange } from '@angular/material';
-
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
     selector: 'increate-root',
@@ -29,12 +29,28 @@ export class AppComponent {
     //creating a member var for settings.state.languages const 
     languages = languages;
 
-    constructor(private store: Store) {
+    googleAnalyticsSub: Subscription;
+
+    constructor(private router: Router, private store: Store) {
+
+        this.googleAnalyticsSub = this.router.events.pipe(
+            filter(event => event instanceof NavigationEnd),
+            tap((event: NavigationEnd) => {
+                (<any>window).ga('set', 'page', event.urlAfterRedirects);
+                (<any>window).ga('send', 'pageview');
+            })
+        ).subscribe();
+
     }
     @Select(state => state.auth.isAuthenticated) isAuthenticated$: Observable<boolean>;
     @Select(state => state.settings.stickyHeader) stickyHeader$: Observable<boolean>;
     @Select(state => state.settings.language) language$: Observable<string>;
     @Select(state => state.settings.theme) theme$: Observable<string>;
+
+
+    ngOnDestroy() {
+        this.googleAnalyticsSub.unsubscribe();
+    }
 
     ngOnInit() {
 
@@ -52,10 +68,11 @@ export class AppComponent {
         this.store.dispatch(
             new ChangePageAnimationsDisabled(AppComponent.isIEorEdgeOrSafari()));
 
-        this.store.dispatch(new ChangeTheme("dark-theme"));
+        this.store.dispatch(new ChangeTheme('dark-theme'));
 
         this.store.dispatch(new ChangeStickyHeader(false));
 
+        this.store.dispatch(new Navigate(['/home']))
         this.store.dispatch(new Navigate(['/home']))
 
 

@@ -14,6 +14,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { environment } from '../../environments/environment';
 import { SettingState } from './state/settings.state';
 import { AuthState } from './state/auth.state';
+import { NotificationService } from './notifications/notification.service';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { AuthState } from './state/auth.state';
     ],
     declarations: [],
     providers: [
+        NotificationService
         //     { provide: ErrorHandler, useClass: AppErrorHandler },
         //     { provide: RouterStateSerializer, useClass: CustomSerializer }
     ],
