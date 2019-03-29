@@ -32,15 +32,18 @@ export class AppComponent {
     googleAnalyticsSub: Subscription;
 
     constructor(private router: Router, private store: Store) {
-
-        this.googleAnalyticsSub = this.router.events.pipe(
-            filter(event => event instanceof NavigationEnd),
-            tap((event: NavigationEnd) => {
-                (<any>window).ga('set', 'page', event.urlAfterRedirects);
-                (<any>window).ga('send', 'pageview');
-            })
-        ).subscribe();
-
+        /*
+	  I have GA turned off in Index.html -- If you want to use it
+	  you have to get an appid and uncomment the code there 
+	  before you uncomment this code
+                this.googleAnalyticsSub = this.router.events.pipe(
+                    filter(event => event instanceof NavigationEnd),
+                    tap((event: NavigationEnd) => {
+                        (<any>window).ga('set', 'page', event.urlAfterRedirects);
+                        (<any>window).ga('send', 'pageview');
+                    })
+                ).subscribe();
+        */
     }
     @Select(state => state.auth.isAuthenticated) isAuthenticated$: Observable<boolean>;
     @Select(state => state.settings.stickyHeader) stickyHeader$: Observable<boolean>;

@@ -15,6 +15,8 @@ import { environment } from '../../environments/environment';
 import { SettingState } from './state/settings.state';
 import { AuthState } from './state/auth.state';
 import { NotificationService } from './notifications/notification.service';
+import { HttpErrorInterceptor } from './http-interceptors/http-error-interceptor.service';
+import { AppErrorHandler } from './error-handler/app-error-handler.service';
 
 
 @NgModule({
@@ -41,9 +43,9 @@ import { NotificationService } from './notifications/notification.service';
     ],
     declarations: [],
     providers: [
-        NotificationService
-        //     { provide: ErrorHandler, useClass: AppErrorHandler },
-        //     { provide: RouterStateSerializer, useClass: CustomSerializer }
+        NotificationService,
+        HttpErrorInterceptor,
+        { provide: ErrorHandler, useClass: AppErrorHandler },
     ],
     exports: [TranslateModule]
 })
@@ -59,11 +61,6 @@ export class CoreModule {
     }
 }
 
-
-export function HttpLoaderFactory(http: HttpClient) {
-    return new TranslateHttpLoader(http);
-}
-/*
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(
         http,
@@ -71,4 +68,4 @@ export function HttpLoaderFactory(http: HttpClient) {
         '.json'
     );
 }
-*/
+
