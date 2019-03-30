@@ -18,11 +18,13 @@ import { Login, Logout } from './shared/state/auth.actions';
 import { Navigate } from '@ngxs/router-plugin';
 import { MatSelectChange } from '@angular/material';
 import { Router, NavigationEnd } from '@angular/router';
+import { routeAnimations } from './shared/animations/route.animations';
 
 @Component({
     selector: 'increate-root',
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss']
+    styleUrls: ['./app.component.scss'],
+    animations: [routeAnimations]
 })
 export class AppComponent {
     logo = '../assets/logo.png';

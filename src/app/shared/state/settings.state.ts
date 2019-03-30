@@ -3,7 +3,9 @@ import {
     ChangeLanguage,
     ChangePageAnimationsDisabled,
     ChangeTheme,
-    ChangeStickyHeader
+    ChangeStickyHeader,
+    ChangePageAnimations,
+    ChangeElementAnimations
 } from './setting.actions';
 import { TranslateService } from '@ngx-translate/core';
 import { OverlayContainer } from '@angular/cdk/overlay';
@@ -42,7 +44,7 @@ export interface SettingsStateModel {
         nightTheme: NIGHT_MODE_THEME,
         stickyHeader: true,
         pageAnimations: true,
-        pageAnimationsDisabled: true,
+        pageAnimationsDisabled: false,
         elementsAnimations: true,
         hour: 1,
     }
@@ -78,8 +80,21 @@ export class SettingState {
 
         classList.add(ctx.getState().theme);
     }
+
     @Action(ChangeStickyHeader)
     changeStickyHeader(ctx: StateContext<SettingsStateModel>, action: ChangeStickyHeader) {
         ctx.patchState({ stickyHeader: action.payload });
     }
+
+    @Action(ChangePageAnimations)
+    changePageAnimations(ctx: StateContext<SettingsStateModel>, action: ChangePageAnimations) {
+        ctx.patchState({ pageAnimations: action.payload });
+    }
+
+
+    @Action(ChangeElementAnimations)
+    changeElementAnimations(ctx: StateContext<SettingsStateModel>, action: ChangeElementAnimations) {
+        ctx.patchState({ elementsAnimations: action.payload });
+    }
+
 }

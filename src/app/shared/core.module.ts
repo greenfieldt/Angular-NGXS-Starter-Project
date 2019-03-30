@@ -17,6 +17,7 @@ import { AuthState } from './state/auth.state';
 import { NotificationService } from './notifications/notification.service';
 import { HttpErrorInterceptor } from './http-interceptors/http-error-interceptor.service';
 import { AppErrorHandler } from './error-handler/app-error-handler.service';
+import { AnimationService } from './animations/animation.service';
 
 
 @NgModule({
@@ -45,6 +46,7 @@ import { AppErrorHandler } from './error-handler/app-error-handler.service';
     providers: [
         NotificationService,
         HttpErrorInterceptor,
+        AnimationService,
         { provide: ErrorHandler, useClass: AppErrorHandler },
     ],
     exports: [TranslateModule]
