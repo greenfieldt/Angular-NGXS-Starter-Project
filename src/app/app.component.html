@@ -11,6 +11,12 @@
       </div>
 
       <mat-nav-list>
+	
+        <a mat-list-item *ngFor="let item of navigationSideMenu" (click)="sidenav.close()" [routerLink]="[item.link]"
+          routerLinkActive="active">
+          {{item.label | translate}}
+        </a>
+
 	<a mat-list-item href="https://github.com/tomastrajan/angular-ngrx-material-starter" target="_blank">
           Github
         </a>
@@ -44,6 +50,12 @@
 	    {{ 'increate.title.long' | translate}}
 	  </span>
 
+          <span class="d-none d-md-inline">
+            <button mat-button class="nav-button" *ngFor="let item of navigation" [routerLink]="[item.link]"
+              routerLinkActive="active">
+              {{item.label | translate}}
+            </button>
+          </span>
 
 
 	  

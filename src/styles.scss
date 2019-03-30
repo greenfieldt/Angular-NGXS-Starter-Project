@@ -16,12 +16,14 @@
 @import 'styles-reset.scss-theme';
 @import 'app/app.component.scss-theme';
 @import 'app/static/home/home.component.scss-theme';
+@import 'app/static/about/about.component.scss-theme';
 
 
 @mixin custom-components-theme($theme) {
   @include increate-styles-reset-theme($theme);
   @include increate-app-component-theme($theme);
   @include increate-home-component-theme($theme);
+  @include increate-about-component-theme($theme);
 
 }
 
@@ -29,6 +31,7 @@
 .default-theme {
   @include angular-material-theme($increate-theme);
   @include custom-components-theme($increate-theme);
+
 }
 
 .dark-theme {

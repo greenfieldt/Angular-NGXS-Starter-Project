@@ -33,6 +33,16 @@ export class AppComponent {
 
     googleAnalyticsSub: Subscription;
 
+    navigation = [
+        { link: 'about', label: 'increate.menu.about' },
+        { link: 'home', label: 'increate.menu.home' }
+    ];
+
+    navigationSideMenu = [
+        ...this.navigation,
+    ];
+
+
     constructor(private router: Router, private store: Store) {
         /*
 	  I have GA turned off in Index.html -- If you want to use it
