@@ -4,6 +4,7 @@ import { themes } from '../../shared/state/settings.state'
 import { Observable } from 'rxjs';
 import { ChangeTheme } from 'src/app/shared/state/setting.actions';
 import { NotificationService } from 'src/app/shared/notifications/notification.service';
+import { ROUTE_ANIMATIONS_ELEMENTS } from '../../shared/animations/route.animations'
 
 @Component({
     selector: 'increate-home',
@@ -11,6 +12,8 @@ import { NotificationService } from 'src/app/shared/notifications/notification.s
     styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+    routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
+
 
     themes = themes;
 

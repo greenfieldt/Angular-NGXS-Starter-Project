@@ -9,6 +9,7 @@ import {
 } from './setting.actions';
 import { TranslateService } from '@ngx-translate/core';
 import { OverlayContainer } from '@angular/cdk/overlay';
+import { AnimationService } from '../animations/animation.service';
 
 
 
@@ -50,7 +51,7 @@ export interface SettingsStateModel {
     }
 })
 export class SettingState {
-    constructor(private translate: TranslateService, private overlayContainer: OverlayContainer) {
+    constructor(private translate: TranslateService, private overlayContainer: OverlayContainer, private animationService: AnimationService) {
         console.log("SettingState starting");
     }
 
@@ -89,12 +90,20 @@ export class SettingState {
     @Action(ChangePageAnimations)
     changePageAnimations(ctx: StateContext<SettingsStateModel>, action: ChangePageAnimations) {
         ctx.patchState({ pageAnimations: action.payload });
+        this.animationService.updateRouteAnimationType(
+            ctx.getState().pageAnimations,
+            ctx.getState().elementsAnimations);
+
     }
 
 
     @Action(ChangeElementAnimations)
     changeElementAnimations(ctx: StateContext<SettingsStateModel>, action: ChangeElementAnimations) {
         ctx.patchState({ elementsAnimations: action.payload });
+        this.animationService.updateRouteAnimationType(
+            ctx.getState().pageAnimations,
+            ctx.getState().elementsAnimations);
+
     }
 
 }

@@ -12,10 +12,8 @@ export class AnimationService {
         return AnimationService.routeAnimationType === type;
     }
 
-    updateRouteAnimationType(
-        pageAnimations: boolean,
-        elementsAnimations: boolean
-    ) {
+    updateRouteAnimationType(pageAnimations: boolean,
+        elementsAnimations: boolean) {
         AnimationService.routeAnimationType =
             pageAnimations && elementsAnimations
                 ? 'ALL'

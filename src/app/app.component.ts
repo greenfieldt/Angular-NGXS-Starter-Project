@@ -10,7 +10,9 @@ import {
     ChangeLanguage,
     ChangePageAnimationsDisabled,
     ChangeTheme,
-    ChangeStickyHeader
+    ChangeStickyHeader,
+    ChangeElementAnimations,
+    ChangePageAnimations
 } from './shared/state/setting.actions';
 
 import { Login, Logout } from './shared/state/auth.actions';
@@ -83,11 +85,14 @@ export class AppComponent {
         this.store.dispatch(
             new ChangePageAnimationsDisabled(AppComponent.isIEorEdgeOrSafari()));
 
-        this.store.dispatch(new ChangeTheme('dark-theme'));
+        this.store.dispatch(new ChangeTheme('default-theme'));
 
         this.store.dispatch(new ChangeStickyHeader(false));
 
-        this.store.dispatch(new Navigate(['/home']))
+        this.store.dispatch(new ChangeElementAnimations(true));
+
+        this.store.dispatch(new ChangePageAnimations(true));
+
         this.store.dispatch(new Navigate(['/home']))
 
 
