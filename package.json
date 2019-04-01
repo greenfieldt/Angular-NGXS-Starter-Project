@@ -1,6 +1,6 @@
 {
   "name": "increate",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -9,12 +9,11 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "watch": "ng test --configuration=test --browsers ChromeHeadless --watch",
-    "build:prod": "node GetVersion.js && ng build --prod --vendor-chunk",
+    "build:prod": "node version.js && ng build --prod --vendor-chunk --build-optimizer --aot",
     "clean": "rimraf ./dist/",
     "server": "node ./server.js",
-      "prod": "npm run clean && npm run build:prod  && npm run server",
-      "ci": "npm run clean &&  npm run build:prod -- --deploy-url /Increate/ --base-href /Increate"
-
+    "prod": "npm run clean && npm run build:prod  && npm run server",
+      "gcloud": "npm run build:prod;gcloud app deploy"  
   },
   "private": true,
   "dependencies": {

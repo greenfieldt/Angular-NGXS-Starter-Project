@@ -1,7 +1,7 @@
 //I think this will mess up SSR so I'll have to rethink it
 //at a later point
 import browser from 'browser-detect';
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { tap, take } from 'rxjs/operators';
 import { Store, Select } from '@ngxs/store';
@@ -24,12 +24,12 @@ import { routeAnimations } from './shared/animations/route.animations';
 import { environment as env } from '../environments/environment'
 
 
-
 @Component({
     selector: 'increate-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
-    animations: [routeAnimations]
+    animations: [routeAnimations],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
     logo = '../assets/logo.png';
@@ -94,7 +94,7 @@ export class AppComponent {
 
         this.store.dispatch(new ChangeTheme('default-theme'));
 
-        this.store.dispatch(new ChangeStickyHeader(false));
+        this.store.dispatch(new ChangeStickyHeader(true));
 
         this.store.dispatch(new ChangeElementAnimations(true));
 

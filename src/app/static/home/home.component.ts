@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Store, Select } from '@ngxs/store';
 import { themes } from '../../shared/state/settings.state'
 import { Observable } from 'rxjs';
@@ -6,10 +6,13 @@ import { ChangeTheme } from 'src/app/shared/state/setting.actions';
 import { NotificationService } from 'src/app/shared/notifications/notification.service';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '../../shared/animations/route.animations'
 
+
 @Component({
     selector: 'increate-home',
     templateUrl: './home.component.html',
-    styleUrls: ['./home.component.scss']
+    styleUrls: ['./home.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
+
 })
 export class HomeComponent implements OnInit {
     routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
