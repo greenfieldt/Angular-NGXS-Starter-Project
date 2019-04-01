@@ -3,7 +3,7 @@
 import browser from 'browser-detect';
 import { Component } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
-import { tap, take, filter } from 'rxjs/operators';
+import { tap, take } from 'rxjs/operators';
 import { Store, Select } from '@ngxs/store';
 import { Language, languages } from './shared/state/settings.state';
 import {
@@ -19,8 +19,11 @@ import { Login, Logout } from './shared/state/auth.actions';
 
 import { Navigate } from '@ngxs/router-plugin';
 import { MatSelectChange } from '@angular/material';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router } from '@angular/router';
 import { routeAnimations } from './shared/animations/route.animations';
+import { environment as env } from '../environments/environment'
+
+
 
 @Component({
     selector: 'increate-root',
@@ -32,6 +35,10 @@ export class AppComponent {
     logo = '../assets/logo.png';
     //creating a member var for settings.state.languages const 
     languages = languages;
+    version = env.versions.app;
+    year = new Date().getFullYear();
+    isProd = env.production;
+    envName = env.envName;
 
     googleAnalyticsSub: Subscription;
 
