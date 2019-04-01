@@ -15,7 +15,7 @@ import { StaticModule } from './static';
         AppComponent,
     ],
     imports: [
-        BrowserModule,
+        BrowserModule.withServerTransition({ appId: 'serverApp' }),
         BrowserAnimationsModule,
 
         SharedModule,

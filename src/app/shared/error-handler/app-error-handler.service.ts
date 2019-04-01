@@ -17,6 +17,8 @@ export class AppErrorHandler extends ErrorHandler {
 
         if (!environment.production) {
             displayMessage += ' See console for details.';
+        } else {
+            displayMessage += error.message;
         }
 
         this.notificationsService.error(displayMessage);

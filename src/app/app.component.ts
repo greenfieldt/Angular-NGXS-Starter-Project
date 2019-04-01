@@ -1,5 +1,3 @@
-//I think this will mess up SSR so I'll have to rethink it
-//at a later point
 import browser from 'browser-detect';
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
@@ -73,7 +71,8 @@ export class AppComponent {
 
 
     ngOnDestroy() {
-        this.googleAnalyticsSub.unsubscribe();
+        if (this.googleAnalyticsSub)
+            this.googleAnalyticsSub.unsubscribe();
     }
 
     ngOnInit() {

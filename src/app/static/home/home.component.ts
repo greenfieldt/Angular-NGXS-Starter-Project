@@ -2,8 +2,8 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Store, Select } from '@ngxs/store';
 import { themes } from '../../shared/state/settings.state'
 import { Observable } from 'rxjs';
-import { ChangeTheme } from 'src/app/shared/state/setting.actions';
-import { NotificationService } from 'src/app/shared/notifications/notification.service';
+import { ChangeTheme } from '../../shared/state/setting.actions';
+import { NotificationService } from '../../shared/notifications/notification.service';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '../../shared/animations/route.animations'
 
 

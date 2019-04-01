@@ -6,5 +6,7 @@
     "increate.header.github": "Github (spanish)",
     "increate.menu.home": "Home (spanish)",
     "increate.menu.about": "About (spanish)",
-    "increate.menu.logout": "Logout (spanish)"
+    "increate.menu.logout": "Logout (spanish)",
+    "increate.footer.changelog": "ChangeLog (spanish)"
+
 }
