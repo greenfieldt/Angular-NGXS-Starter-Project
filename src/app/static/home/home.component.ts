@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit {
     constructor(private store: Store, private notification: NotificationService) { }
 
     ngOnInit() {
+        //        console.log("Home ngOnInit");
     }
 
     onThemeSelect($event) {

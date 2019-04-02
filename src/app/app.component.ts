@@ -89,18 +89,15 @@ export class AppComponent {
 
         //disable the page animation on some browsers
         this.store.dispatch(
-            new ChangePageAnimationsDisabled(AppComponent.isIEorEdgeOrSafari()));
+            new ChangePageAnimationsDisabled(false))//AppComponent.isIEorEdgeOrSafari()));
 
         this.store.dispatch(new ChangeTheme('default-theme'));
 
         this.store.dispatch(new ChangeStickyHeader(true));
 
-        this.store.dispatch(new ChangeElementAnimations(true));
+        this.store.dispatch(new ChangeElementAnimations(false));
 
-        this.store.dispatch(new ChangePageAnimations(true));
-
-        this.store.dispatch(new Navigate(['/home']))
-
+        this.store.dispatch(new ChangePageAnimations(false));
 
     }
 

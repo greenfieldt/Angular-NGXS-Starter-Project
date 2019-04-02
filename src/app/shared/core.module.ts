@@ -8,7 +8,7 @@ import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { environment } from '../../environments/environment';
@@ -64,6 +64,13 @@ export class CoreModule {
 }
 
 export function HttpLoaderFactory(http: HttpClient) {
+
+    //TODO you can't use HTTPLoader with SSR
+    //I need to do TranslateCompiler to compile
+    //the default language into the project
+    //or delay the translations until we get to client
+    //side rendering
+    return new TranslateFakeLoader();
     return new TranslateHttpLoader(
         http,
         `${environment.i18nPrefix}/assets/i18n/`,
