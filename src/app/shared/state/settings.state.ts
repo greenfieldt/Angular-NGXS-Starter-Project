@@ -65,17 +65,11 @@ export class SettingState {
     changeLanguage(ctx: StateContext<SettingsStateModel>, action: ChangeLanguage) {
         this.translate.setDefaultLang('en');
         this.translate.use(action.payload);
+        this.title.setTitle(
+            this.router.routerState.snapshot.root,
+            this.translate
+        );
 
-        this.router.events.pipe(
-            filter(event => event instanceof ActivationEnd),
-            tap(() => {
-                this.title.setTitle(
-                    this.router.routerState.snapshot.root,
-                    this.translate
-                );
-            }),
-            take(1)
-        ).subscribe();
 
     }
 

@@ -1,6 +1,6 @@
 import { NgModule, Optional, SkipSelf, ErrorHandler } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { NgxsModule } from '@ngxs/store';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
@@ -21,6 +21,7 @@ import { AnimationService } from './animations/animation.service';
 import { AuthGuardService } from './auth-guard/auth-guard.service';
 import { TitleService } from './title/title.service';
 import { SEOService } from './seo/seo.service';
+import { UniversalInterceptor } from './http-interceptors/universal-interceptor.service';
 
 
 @NgModule({
@@ -48,7 +49,16 @@ import { SEOService } from './seo/seo.service';
     declarations: [],
     providers: [
         NotificationService,
-        HttpErrorInterceptor,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: UniversalInterceptor,
+            multi: true
+        },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: HttpErrorInterceptor,
+            multi: true
+        },
         AnimationService,
         AuthGuardService,
         TitleService,

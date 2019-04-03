@@ -46,7 +46,15 @@ app.get('*.*', express.static(join(DIST_FOLDER, 'Increate/assets'), {
 
 // All regular routes use the Universal engine
 app.get('*', (req, res) => {
-    res.render('index', { req });
+    res.render('index', {
+        req, res,
+        providers: [{
+            //providing an http interceptor to allow server side use
+            //of httpclient
+            provide: 'serverUrl',
+            useValue: `${req.protocol}://${req.get('host')}`
+        }]
+    });
 });
 
 // Start up the Node server

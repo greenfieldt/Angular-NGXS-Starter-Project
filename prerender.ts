@@ -37,6 +37,14 @@ ROUTES.forEach(route => {
         document: index,
         url: route,
         extraProviders: [
+            {
+                //providing an http interceptor to allow server side use
+                //of httpclient but this is a semi-solution because
+                //in order for this to work you have to have
+                //npm run express running so http can serve these files up
+                provide: 'serverUrl',
+                useValue: 'http://localhost:4000/Increate',
+            },
             provideModuleMap(LAZY_MODULE_MAP)
         ]
     })).then(html => writeFileSync(join(fullPath, 'index.html'), html));
