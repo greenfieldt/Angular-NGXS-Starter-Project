@@ -56,6 +56,7 @@ import { AppShellRenderDirective } from './ssr/app-shell-render';
             useClass: UniversalInterceptor,
             multi: true
         },
+
         {
             provide: HTTP_INTERCEPTORS,
             useClass: HttpErrorInterceptor,
@@ -83,12 +84,9 @@ export class CoreModule {
 
 export function HttpLoaderFactory(http: HttpClient) {
 
-    //TODO you can't use HTTPLoader with SSR
-    //I need to do TranslateCompiler to compile
-    //the default language into the project
-    //or delay the translations until we get to client
-    //side rendering
-    //    return new TranslateFakeLoader();
+    //see the Universalinterceptor to understand how
+    //urls are being updated during prerender
+    //and ssr to continue working
     return new TranslateHttpLoader(
         http,
         `${environment.i18nPrefix}/assets/i18n/`,

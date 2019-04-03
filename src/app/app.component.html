@@ -4,7 +4,7 @@
 
     <mat-sidenav #sidenav mode="push">
       <div class="branding">
-	<img [src]=logo />
+	<img alt="logo" [src]=logo />
 	<span data-testid="title">
 	  {{ 'increate.title.short' | translate}}
 	</span>
@@ -17,7 +17,8 @@
           {{item.label | translate}}
         </a>
 
-	<a mat-list-item href="https://github.com/" target="_blank" rel="noopener">
+	<a mat-list-item href="https://github.com/"
+          aria-label="GitHub" target="_blank" rel="noopener">
           Github
         </a>
 
@@ -28,31 +29,34 @@
 
       <div class="toolbar" [style.position]="(stickyHeader$ | async) ? 'fixed' : 'inherit'" [class.mat-elevation-z4]="(stickyHeader$ | async)">
         <mat-toolbar color="primary">
-          <button mat-icon-button class="d-md-none" (click)="sidenav.open()">
+          <button mat-icon-button class="d-md-none"  aria-label="Open SideNav" (click)="sidenav.open()">
             <fa-icon icon="bars"></fa-icon>
           </button>
 
 
 	  
 	  <span routerLink="" class="branding spacer center d-inline d-sm-none">
-            <img [src]="logo" />
+            <img alt="logo" [src]="logo" />
 	  </span>
 
 	  <span routerLink="" class="branding spacer center d-none
 				     d-sm-inline d-md-none">
-	    <img [src]="logo" />
+	    <img alt="logo" [src]="logo" />
 	    {{'increate.title.short' | translate }}
 	  </span>
 
 	  <span routerLink="" class="branding spacer d-none
 				     d-md-inline">
-	    <img [src]="logo" />
+	    <img alt="logo" [src]="logo" />
 	    {{ 'increate.title.long' | translate}}
 	  </span>
 
           <span class="d-none d-md-inline">
-            <button mat-button class="nav-button" *ngFor="let item of navigation" [routerLink]="[item.link]"
-              routerLinkActive="active">
+            <button mat-button class="nav-button"
+		    *ngFor="let item of navigation"
+		    [routerLink]="[item.link]"
+		    routerLinkActive="active"
+		    [attr.aria-label]="item.label | translate">
               {{item.label | translate}}
             </button>
           </span>
@@ -61,20 +65,23 @@
 	  
 	  <button mat-button mat-stroked-button color="accent"
 		  *ngIf="!(isAuthenticated$ | async)"
-		  (click)="onLoginClick()">
+		  (click)="onLoginClick()"
+		  aria-label="Login">
             {{ 'increate.menu.login' | translate }}
           </button>
 
           <button *ngIf="(isAuthenticated$ | async)"
                   mat-icon-button
-                  [matMenuTriggerFor]="toolbarUserMenu">
+                  [matMenuTriggerFor]="toolbarUserMenu"
+		  aria-label="Show Logout">
             <fa-icon icon="user-circle"></fa-icon>
           </button>
 
 
 	  
           <mat-menu #toolbarUserMenu="matMenu">
-            <button mat-menu-item (click)="onLogoutClick()">
+            <button mat-menu-item (click)="onLogoutClick()"
+		    [attr.aria-label]="'increate.menu.logout' | translate">
               <mat-icon><fa-icon icon="power-off"></fa-icon></mat-icon>
               <span>{{ 'increate.menu.logout' | translate }}</span>
             </button>
@@ -82,7 +89,7 @@
 
 
 	  
-          <button mat-icon-button routerLink="settings" class="d-none d-sm-inline">
+          <button mat-icon-button aria-label="Settings" routerLink="settings" class="d-none d-sm-inline">
             <fa-icon icon="cog"></fa-icon>
           </button>
 
@@ -91,6 +98,7 @@
              mat-icon-button
              class="link d-none d-sm-inline"
              href="https://github.com/"
+	     aria-label="GitHub"
              target="_blank" rel="noopener">
             <fa-icon [icon]="['fab','github']"></fa-icon>
           </a>
@@ -115,28 +123,29 @@
       <div class="footer">
         <div class="row">
           <div class="col-sm-12 links">
-            <a href="https://www.github.com/" target="_blank" rel="noopener">
+            <a href="https://www.github.com/" aria-label="GitHub" target="_blank" rel="noopener">
               <fa-icon [icon]="['fab','github']"></fa-icon>
               <span>Github</span>
             </a>
-            <a href="https://www.medium.com/" target="_blank" rel="noopener">
+            <a href="https://www.medium.com/" aria-label="Mediu," target="_blank" rel="noopener">
               <fa-icon [icon]="['fab','medium-m']"></fa-icon>
               <span>Medium</span>
             </a>
-            <a href="https://www.twitter.com/" target="_blank" rel="noopener">
+            <a href="https://www.twitter.com/" aria-label="Twitter" target="_blank" rel="noopener">
               <fa-icon [icon]="['fab','twitter']"></fa-icon>
               <span>Twitter</span>
             </a>
             <a href="https://www.youtube.com/"
-               target="_blank" rel="noopener">
+               target="_blank" rel="noopener" aria-label="YouTube">
               <fa-icon [icon]="['fab','youtube']"></fa-icon>
               <span>Youtube</span>
             </a>
-            <a href="https://www.instagram.com/" target="_blank" rel="noopener">
+            <a href="https://www.instagram.com/" target="_blank"
+	       aira-label="Instagram" rel="noopener">
               <fa-icon [icon]="['fab','instagram']"></fa-icon>
               <span>Instagram</span>
             </a>
-            <a href="https://www.slides.com/" target="_blank" rel="noopener">
+            <a href="https://www.slides.com/" aria-label="Slides" target="_blank" rel="noopener">
               <fa-icon icon="play-circle"></fa-icon>
               <span>Slides</span>
             </a>
@@ -150,7 +159,7 @@
             <a [matTooltip]="'increate.footer.changelog' | translate"
                matTooltipPosition="before"
                href="https://github.com/your project
-               here/blob/master/CHANGELOG.md" target="_blank" rel="noopener">
+               here/blob/master/CHANGELOG.md" aria-label="Change Log" target="_blank" rel="noopener">
               <fa-icon icon="rocket"></fa-icon>
               {{version}} <span *ngIf="!isProd">[{{envName}}]</span>
             </a>

@@ -6,14 +6,9 @@ skip_files:
 - ^(?!dist)  # Skip any files not in the dist folder
 
 handlers:
-- url: /(.*\.(gif|png|jpeg|jpg|css|js|ico|json|txt))$
+- url: /(.*\.(gif|png|jpeg|jpg|css|js|ico|json|txt|webmanifest))$
   static_files: dist/Increate/\1
   upload: dist/Increate/(.*)
-
-- url: /robots.txt
-  static_files: dist/Increate/assets/robots.txt
-  upload: dist/Increate/(.*)
-
 
 - url: /(.*)
   static_files: dist/Increate/index.html
