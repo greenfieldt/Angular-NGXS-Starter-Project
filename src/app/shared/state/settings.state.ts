@@ -10,7 +10,9 @@ import {
 import { TranslateService } from '@ngx-translate/core';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { AnimationService } from '../animations/animation.service';
-
+import { Router, ActivationEnd } from '@angular/router';
+import { tap, filter, take } from 'rxjs/operators'
+import { TitleService } from '../title/title.service';
 
 
 export const NIGHT_MODE_THEME = 'dark-theme';
@@ -51,7 +53,11 @@ export interface SettingsStateModel {
     }
 })
 export class SettingState {
-    constructor(private translate: TranslateService, private overlayContainer: OverlayContainer, private animationService: AnimationService) {
+    constructor(private translate: TranslateService,
+        private title: TitleService,
+        private overlayContainer: OverlayContainer,
+        private animationService: AnimationService,
+        private router: Router) {
         console.log("SettingState starting");
     }
 
@@ -59,6 +65,18 @@ export class SettingState {
     changeLanguage(ctx: StateContext<SettingsStateModel>, action: ChangeLanguage) {
         this.translate.setDefaultLang('en');
         this.translate.use(action.payload);
+
+        this.router.events.pipe(
+            filter(event => event instanceof ActivationEnd),
+            tap(() => {
+                this.title.setTitle(
+                    this.router.routerState.snapshot.root,
+                    this.translate
+                );
+            }),
+            take(1)
+        ).subscribe();
+
     }
 
     @Action(ChangePageAnimationsDisabled)

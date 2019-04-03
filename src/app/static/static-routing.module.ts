@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
+import { AuthGuardService } from '../shared/auth-guard/auth-guard.service';
 
 const routes: Routes = [
     {
@@ -12,7 +13,8 @@ const routes: Routes = [
     {
         path: 'about',
         component: AboutComponent,
-        data: { title: 'increate.menu.about' }
+        data: { title: 'increate.menu.about' },
+        canActivate: [AuthGuardService]
     }
 
 ];

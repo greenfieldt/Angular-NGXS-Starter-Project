@@ -9,6 +9,7 @@ export const environment = {
     i18nPrefix: '',
     test: false,
     envName: 'DEV',
+    appName: "Increate",
     versions: {
         app: VERSION.version,
     }

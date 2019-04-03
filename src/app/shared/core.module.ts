@@ -18,6 +18,9 @@ import { NotificationService } from './notifications/notification.service';
 import { HttpErrorInterceptor } from './http-interceptors/http-error-interceptor.service';
 import { AppErrorHandler } from './error-handler/app-error-handler.service';
 import { AnimationService } from './animations/animation.service';
+import { AuthGuardService } from './auth-guard/auth-guard.service';
+import { TitleService } from './title/title.service';
+import { SEOService } from './seo/seo.service';
 
 
 @NgModule({
@@ -47,6 +50,9 @@ import { AnimationService } from './animations/animation.service';
         NotificationService,
         HttpErrorInterceptor,
         AnimationService,
+        AuthGuardService,
+        TitleService,
+        SEOService,
         { provide: ErrorHandler, useClass: AppErrorHandler },
     ],
     exports: [TranslateModule]
@@ -70,7 +76,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     //the default language into the project
     //or delay the translations until we get to client
     //side rendering
-    return new TranslateFakeLoader();
+    //    return new TranslateFakeLoader();
     return new TranslateHttpLoader(
         http,
         `${environment.i18nPrefix}/assets/i18n/`,

@@ -1,7 +1,7 @@
-import browser from 'browser-detect';
+import * as checkBrowser from 'check-browser';
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
-import { tap, take } from 'rxjs/operators';
+import { tap, take, filter } from 'rxjs/operators';
 import { Store, Select } from '@ngxs/store';
 import { Language, languages } from './shared/state/settings.state';
 import {
@@ -17,9 +17,11 @@ import { Login, Logout } from './shared/state/auth.actions';
 
 import { Navigate } from '@ngxs/router-plugin';
 import { MatSelectChange } from '@angular/material';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { routeAnimations } from './shared/animations/route.animations';
 import { environment as env } from '../environments/environment'
+import { SEOService } from './shared/seo/seo.service';
+import { TitleService } from './shared/title/title.service';
 
 
 @Component({
@@ -50,7 +52,10 @@ export class AppComponent {
     ];
 
 
-    constructor(private router: Router, private store: Store) {
+    constructor(private router: Router,
+        private seo: SEOService,
+        private title: TitleService,
+        private store: Store) {
         /*
 	  I have GA turned off in Index.html -- If you want to use it
 	  you have to get an appid and uncomment the code there 
@@ -63,6 +68,19 @@ export class AppComponent {
                     })
                 ).subscribe();
         */
+        this.router.events.pipe(
+            filter(event => event instanceof NavigationEnd),
+            tap((event: NavigationEnd) => {
+                let description = "Angular SSR Description " + Date.now();
+                this.seo.generateTags({ description: description })
+
+                this.title.setTitle(
+                    this.router.routerState.snapshot.root
+                );
+
+            })
+        ).subscribe();
+
     }
     @Select(state => state.auth.isAuthenticated) isAuthenticated$: Observable<boolean>;
     @Select(state => state.settings.stickyHeader) stickyHeader$: Observable<boolean>;
@@ -99,10 +117,17 @@ export class AppComponent {
 
         this.store.dispatch(new ChangePageAnimations(false));
 
+        // this.store.dispatch(new Navigate(['/home']))
+
+
     }
 
     private static isIEorEdgeOrSafari() {
-        return ['ie', 'edge', 'safari'].includes(browser().name);
+        return checkBrowser({
+            msie: 1,
+            edge: 1,
+            safari: 1
+        });
     }
 
 
