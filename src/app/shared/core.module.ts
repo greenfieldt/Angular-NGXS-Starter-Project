@@ -22,6 +22,8 @@ import { AuthGuardService } from './auth-guard/auth-guard.service';
 import { TitleService } from './title/title.service';
 import { SEOService } from './seo/seo.service';
 import { UniversalInterceptor } from './http-interceptors/universal-interceptor.service';
+import { AppShellNoRenderDirective } from './ssr/app-shell-no-render';
+import { AppShellRenderDirective } from './ssr/app-shell-render';
 
 
 @NgModule({
@@ -46,7 +48,7 @@ import { UniversalInterceptor } from './http-interceptors/universal-interceptor.
             }
         })
     ],
-    declarations: [],
+    declarations: [AppShellNoRenderDirective, AppShellRenderDirective],
     providers: [
         NotificationService,
         {
