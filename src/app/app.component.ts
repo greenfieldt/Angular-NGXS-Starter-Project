@@ -1,8 +1,8 @@
-import * as checkBrowser from 'check-browser';
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Inject, PLATFORM_ID } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { tap, take, filter } from 'rxjs/operators';
 import { Store, Select } from '@ngxs/store';
+import * as checkBrowser from 'check-browser';
 import { Language, languages } from './shared/state/settings.state';
 import {
     ChangeLanguage,
@@ -15,13 +15,13 @@ import {
 
 import { Login, Logout } from './shared/state/auth.actions';
 
-import { Navigate } from '@ngxs/router-plugin';
 import { MatSelectChange } from '@angular/material';
 import { Router, NavigationEnd } from '@angular/router';
 import { routeAnimations } from './shared/animations/route.animations';
 import { environment as env } from '../environments/environment'
 import { SEOService } from './shared/seo/seo.service';
 import { TitleService } from './shared/title/title.service';
+import { isPlatformBrowser } from '@angular/common';
 
 
 @Component({
@@ -40,7 +40,7 @@ export class AppComponent {
     isProd = env.production;
     envName = env.envName;
 
-    googleAnalyticsSub: Subscription;
+    sub: Subscription = new Subscription();
 
     navigation = [
         { link: 'about', label: 'increate.menu.about' },
@@ -55,20 +55,21 @@ export class AppComponent {
     constructor(private router: Router,
         private seo: SEOService,
         private title: TitleService,
-        private store: Store) {
+        private store: Store,
+        @Inject(PLATFORM_ID) private platformId) {
         /*
 	  I have GA turned off in Index.html -- If you want to use it
 	  you have to get an appid and uncomment the code there 
 	  before you uncomment this code
-                this.googleAnalyticsSub = this.router.events.pipe(
+                this.sub.add( = this.router.events.pipe(
                     filter(event => event instanceof NavigationEnd),
                     tap((event: NavigationEnd) => {
                         (<any>window).ga('set', 'page', event.urlAfterRedirects);
                         (<any>window).ga('send', 'pageview');
                     })
-                ).subscribe();
+                ).subscribe());
         */
-        this.router.events.pipe(
+        this.sub.add(this.router.events.pipe(
             filter(event => event instanceof NavigationEnd),
             tap((event: NavigationEnd) => {
                 let description = "Angular SSR Description " + Date.now();
@@ -79,7 +80,7 @@ export class AppComponent {
                 );
 
             })
-        ).subscribe();
+        ).subscribe());
 
     }
     @Select(state => state.auth.isAuthenticated) isAuthenticated$: Observable<boolean>;
@@ -89,8 +90,8 @@ export class AppComponent {
 
 
     ngOnDestroy() {
-        if (this.googleAnalyticsSub)
-            this.googleAnalyticsSub.unsubscribe();
+        if (this.sub)
+            this.sub.unsubscribe();
     }
 
     ngOnInit() {
@@ -104,21 +105,24 @@ export class AppComponent {
             take(1)
         ).subscribe();
 
-
-        //disable the page animation on some browsers
-        this.store.dispatch(
-            new ChangePageAnimationsDisabled(false))//AppComponent.isIEorEdgeOrSafari()));
-
         this.store.dispatch(new ChangeTheme('default-theme'));
 
         this.store.dispatch(new ChangeStickyHeader(true));
 
-        this.store.dispatch(new ChangeElementAnimations(false));
-
-        this.store.dispatch(new ChangePageAnimations(false));
-
-        // this.store.dispatch(new Navigate(['/home']))
-
+        if (isPlatformBrowser(this.platformId)) {
+            //disable the page animation on some browsers
+            this.store.dispatch(
+                new ChangePageAnimationsDisabled(AppComponent.isIEorEdgeOrSafari()));
+            this.store.dispatch(new ChangeElementAnimations(true));
+            this.store.dispatch(new ChangePageAnimations(true));
+        }
+        else {
+            //disable the page animation on some browsers
+            this.store.dispatch(
+                new ChangePageAnimationsDisabled(true));
+            this.store.dispatch(new ChangeElementAnimations(false));
+            this.store.dispatch(new ChangePageAnimations(false));
+        }
 
     }
 

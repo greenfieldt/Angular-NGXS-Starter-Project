@@ -13,39 +13,63 @@ import { provideModuleMap } from '@nguniversal/module-map-ngfactory-loader';
 import { renderModuleFactory } from '@angular/platform-server';
 import { ROUTES } from './static.paths';
 
-// * NOTE :: leave this as require() since this file is built Dynamically from webpack
-const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require('./Increate-server/main');
+// we need to start an express server to serve any local content that
+// HTTPClient is ecpecting (like i18n files)
 
-const BROWSER_FOLDER = join(process.cwd(), 'Increate');
+const express = require('express');
+const compression = require('compression');
 
-// Load the index.html file containing referances to your application bundle.
-const index = readFileSync(join('Increate', 'index.html'), 'utf8');
+const CONTEXT = `/${process.env.CONTEXT || 'Increate'}`;
+const PORT = 7722;
 
-let previousRender = Promise.resolve();
+const app = express();
 
-// Iterate each route path
-ROUTES.forEach(route => {
-    const fullPath = join(BROWSER_FOLDER, route);
+//we expect to be in the dist directory 
+app.use(compression());
+app.use(CONTEXT, express.static(__dirname + '/Increate'));
+app.use('/', express.static(__dirname + '/Increate'));
+app.use('*', express.static(__dirname + '/Increate'));
 
-    // Make sure the directory structure is there
-    if (!existsSync(fullPath)) {
-        mkdirSync(fullPath);
-    }
+let httpServer = app.listen(PORT, () => {
 
-    // Writes rendered HTML to index.html, replacing the file if it already exists.
-    previousRender = previousRender.then(_ => renderModuleFactory(AppServerModuleNgFactory, {
-        document: index,
-        url: route,
-        extraProviders: [
-            {
-                //providing an http interceptor to allow server side use
-                //of httpclient but this is a semi-solution because
-                //in order for this to work you have to have
-                //npm run express running so http can serve these files up
-                provide: 'serverUrl',
-                useValue: 'http://localhost:4000/Increate',
-            },
-            provideModuleMap(LAZY_MODULE_MAP)
-        ]
-    })).then(html => writeFileSync(join(fullPath, 'index.html'), html));
-});
+
+
+
+    // * NOTE :: leave this as require() since this file is built Dynamically from webpack
+    const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require('./Increate-server/main');
+
+    const BROWSER_FOLDER = join(process.cwd(), 'Increate');
+
+    // Load the index.html file containing referances to your application bundle.
+    const index = readFileSync(join('Increate', 'index.html'), 'utf8');
+
+    let previousRender = Promise.resolve();
+
+    // Iterate each route path
+    ROUTES.forEach(route => {
+        const fullPath = join(BROWSER_FOLDER, route);
+
+        // Make sure the directory structure is there
+        if (!existsSync(fullPath)) {
+            mkdirSync(fullPath);
+        }
+
+        // Writes rendered HTML to index.html, replacing the file if it already exists.
+        previousRender = previousRender.then(_ => renderModuleFactory(AppServerModuleNgFactory, {
+            document: index,
+            url: route,
+            extraProviders: [
+                {
+                    //providing an http interceptor to allow server side use
+                    //of httpclient 
+                    provide: 'serverUrl',
+                    useValue: `http://localhost:${PORT}/Increate`,
+                },
+                provideModuleMap(LAZY_MODULE_MAP)
+            ]
+        })).then(html => {
+            writeFileSync(join(fullPath, 'index.html'), html);
+            httpServer.close();
+        });
+    });
+})

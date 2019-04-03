@@ -35,5 +35,8 @@ export class SEOService {
         this.meta.updateTag({ property: 'og:description', content: tags.description });
         this.meta.updateTag({ property: 'og:image', content: tags.image });
         this.meta.updateTag({ property: 'og:url', content: `https://instafire-app.firebaseapp.com/${tags.slug}` });
+
+        this.meta.updateTag({ name: 'description', content: tags.description });
+
     }
 }

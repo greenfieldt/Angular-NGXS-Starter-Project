@@ -17,7 +17,7 @@
           {{item.label | translate}}
         </a>
 
-	<a mat-list-item href="https://github.com/tomastrajan/angular-ngrx-material-starter" target="_blank">
+	<a mat-list-item href="https://github.com/" target="_blank" rel="noopener">
           Github
         </a>
 
@@ -90,8 +90,8 @@
              matTooltipPosition="before"
              mat-icon-button
              class="link d-none d-sm-inline"
-             href="https://github.com/tomastrajan/angular-ngrx-material-starter"
-             target="_blank">
+             href="https://github.com/"
+             target="_blank" rel="noopener">
             <fa-icon [icon]="['fab','github']"></fa-icon>
           </a>
 
@@ -115,28 +115,28 @@
       <div class="footer">
         <div class="row">
           <div class="col-sm-12 links">
-            <a href="https://www.github.com/" target="_blank">
+            <a href="https://www.github.com/" target="_blank" rel="noopener">
               <fa-icon [icon]="['fab','github']"></fa-icon>
               <span>Github</span>
             </a>
-            <a href="https://www.medium.com/" target="_blank">
+            <a href="https://www.medium.com/" target="_blank" rel="noopener">
               <fa-icon [icon]="['fab','medium-m']"></fa-icon>
               <span>Medium</span>
             </a>
-            <a href="https://www.twitter.com/" target="_blank">
+            <a href="https://www.twitter.com/" target="_blank" rel="noopener">
               <fa-icon [icon]="['fab','twitter']"></fa-icon>
               <span>Twitter</span>
             </a>
             <a href="https://www.youtube.com/"
-               target="_blank">
+               target="_blank" rel="noopener">
               <fa-icon [icon]="['fab','youtube']"></fa-icon>
               <span>Youtube</span>
             </a>
-            <a href="https://www.instagram.com/" target="_blank">
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener">
               <fa-icon [icon]="['fab','instagram']"></fa-icon>
               <span>Instagram</span>
             </a>
-            <a href="https://www.slides.com/" target="_blank">
+            <a href="https://www.slides.com/" target="_blank" rel="noopener">
               <fa-icon icon="play-circle"></fa-icon>
               <span>Slides</span>
             </a>
@@ -149,7 +149,8 @@
             <br class="d-block d-sm-none">
             <a [matTooltip]="'increate.footer.changelog' | translate"
                matTooltipPosition="before"
-               href="https://github.com/your project here/blob/master/CHANGELOG.md">
+               href="https://github.com/your project
+               here/blob/master/CHANGELOG.md" target="_blank" rel="noopener">
               <fa-icon icon="rocket"></fa-icon>
               {{version}} <span *ngIf="!isProd">[{{envName}}]</span>
             </a>

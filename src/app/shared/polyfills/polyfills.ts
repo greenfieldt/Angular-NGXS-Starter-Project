@@ -13,5 +13,6 @@ import './polyfills.basic';
 
 /** Import optional polyfills to target browsers */
 if (!evergreenBrowser) {
-    System.import('./polyfills.target');
+    console.log("Loading Polyfill -> Target");
+    import('./polyfills.target');
 }
