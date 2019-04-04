@@ -96,15 +96,6 @@ export class AppComponent {
 
     ngOnInit() {
 
-        //init the internationalization
-        //you can find the app strings in assets/i18n/en.json
-        this.language$.pipe(
-            tap((x: Language) => {
-                this.store.dispatch(new ChangeLanguage(x));
-            }),
-            take(1)
-        ).subscribe();
-
         this.store.dispatch(new ChangeTheme('default-theme'));
 
         this.store.dispatch(new ChangeStickyHeader(true));

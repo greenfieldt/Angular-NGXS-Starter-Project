@@ -11,7 +11,6 @@ export class UniversalInterceptor implements HttpInterceptor {
             url: `${this.serverUrl}${req.url}`
         });
 
-        console.log(`UI: ${this.serverUrl}${req.url}`);
         return next.handle(serverReq);
 
     }

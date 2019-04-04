@@ -59,11 +59,12 @@ export class SettingState {
         private animationService: AnimationService,
         private router: Router) {
         console.log("SettingState starting");
+        this.translate.setDefaultLang('en');
+
     }
 
     @Action(ChangeLanguage)
     changeLanguage(ctx: StateContext<SettingsStateModel>, action: ChangeLanguage) {
-        this.translate.setDefaultLang('en');
         this.translate.use(action.payload);
         this.title.setTitle(
             this.router.routerState.snapshot.root,

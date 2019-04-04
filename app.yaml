@@ -2,6 +2,9 @@ runtime: python27
 threadsafe: true
 api_version: 1
 
+
+default_expiration: "10m"
+
 skip_files:
 - ^(?!dist)  # Skip any files not in the dist folder
 
@@ -13,3 +16,4 @@ handlers:
 - url: /(.*)
   static_files: dist/Increate/index.html
   upload: dist/Increate/index.html
+  expiration: "1m"
