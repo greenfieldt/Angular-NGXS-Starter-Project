@@ -17,7 +17,7 @@ export class AboutComponent implements OnInit {
         let body = <HTMLDivElement>document.body;
         let script = document.createElement('script');
         script.innerHTML = '';
-        script.src = 'assets/news-app-c40932526e7097affb83.js';
+        script.src = 'assets/news-app-dcfdf98018818e301e7c.js';
         script.async = true;
         script.defer = true;
         body.appendChild(script);
