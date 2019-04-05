@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { StaticRoutingModule } from './static-routing.module';
@@ -8,9 +8,10 @@ import { AboutComponent } from './about/about.component';
 
 @NgModule({
     declarations: [HomeComponent, AboutComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
     imports: [
-        SharedModule,
-        StaticRoutingModule
-    ]
+            SharedModule,
+            StaticRoutingModule
+        ]
 })
 export class StaticModule { }

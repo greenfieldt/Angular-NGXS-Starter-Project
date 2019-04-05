@@ -5,7 +5,8 @@ import {
     ChangeTheme,
     ChangeStickyHeader,
     ChangePageAnimations,
-    ChangeElementAnimations
+    ChangeElementAnimations,
+    InitializeSettings
 } from './setting.actions';
 import { TranslateService } from '@ngx-translate/core';
 import { OverlayContainer } from '@angular/cdk/overlay';
@@ -15,7 +16,6 @@ import { tap, filter, take } from 'rxjs/operators'
 import { TitleService } from '../title/title.service';
 
 
-export const NIGHT_MODE_THEME = 'dark-theme';
 export const DEFAULT_THEME = 'default-theme';
 
 export type Theme = 'default-theme' | 'dark-theme';
@@ -28,13 +28,10 @@ export const languages: Language[] = ['en', 'es'];
 export interface SettingsStateModel {
     language: Language;
     theme: string;
-    autoNightMode: boolean;
-    nightTheme: string;
     stickyHeader: boolean;
     pageAnimations: boolean;
     pageAnimationsDisabled: boolean;
     elementsAnimations: boolean;
-    hour: number;
 }
 
 
@@ -43,13 +40,10 @@ export interface SettingsStateModel {
     defaults: {
         language: 'en',
         theme: DEFAULT_THEME,
-        autoNightMode: false,
-        nightTheme: NIGHT_MODE_THEME,
         stickyHeader: true,
         pageAnimations: true,
         pageAnimationsDisabled: false,
         elementsAnimations: true,
-        hour: 1,
     }
 })
 export class SettingState {
@@ -58,8 +52,27 @@ export class SettingState {
         private overlayContainer: OverlayContainer,
         private animationService: AnimationService,
         private router: Router) {
+
+
         console.log("SettingState starting");
+
+    }
+
+    @Action(InitializeSettings)
+    initializeSettings(ctx: StateContext<SettingsStateModel>) {
         this.translate.setDefaultLang('en');
+        this.translate.use(ctx.getState().language);
+
+        //Set the default theme during the initial page load
+        const classList = this.overlayContainer.getContainerElement().classList;
+        const toRemove = Array.from(classList)
+            .filter((item: string) => item.includes('-theme'));
+
+        if (toRemove.length) {
+            classList.remove(...toRemove);
+        }
+        classList.add(ctx.getState().theme);
+
 
     }
 
@@ -70,8 +83,7 @@ export class SettingState {
             this.router.routerState.snapshot.root,
             this.translate
         );
-
-
+        ctx.patchState({ language: action.payload });
     }
 
     @Action(ChangePageAnimationsDisabled)

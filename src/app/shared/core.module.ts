@@ -1,5 +1,5 @@
-import { NgModule, Optional, SkipSelf, ErrorHandler } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Inject, NgModule, Optional, SkipSelf, ErrorHandler, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformServer } from '@angular/common';
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { NgxsModule } from '@ngxs/store';
@@ -25,6 +25,7 @@ import { UniversalInterceptor } from './http-interceptors/universal-interceptor.
 import { AppShellNoRenderDirective } from './ssr/app-shell-no-render';
 import { AppShellRenderDirective } from './ssr/app-shell-render';
 
+export function isSSR(): boolean { return typeof window === "undefined"; }
 
 @NgModule({
     imports: [
@@ -38,6 +39,7 @@ import { AppShellRenderDirective } from './ssr/app-shell-render';
             ? []
             : [NgxsReduxDevtoolsPluginModule.forRoot(),
             NgxsLoggerPluginModule.forRoot()],
+        NgxsStoragePluginModule.forRoot({ key: 'settings' }),
         NgxsRouterPluginModule.forRoot(),
         // 3rd party
         TranslateModule.forRoot({
@@ -68,7 +70,7 @@ import { AppShellRenderDirective } from './ssr/app-shell-render';
         SEOService,
         { provide: ErrorHandler, useClass: AppErrorHandler },
     ],
-    exports: [TranslateModule]
+    exports: [TranslateModule, AppShellNoRenderDirective, AppShellRenderDirective]
 })
 export class CoreModule {
     constructor(

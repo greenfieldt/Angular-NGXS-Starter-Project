@@ -10,7 +10,8 @@ import {
     ChangeTheme,
     ChangeStickyHeader,
     ChangeElementAnimations,
-    ChangePageAnimations
+    ChangePageAnimations,
+    InitializeSettings
 } from './shared/state/setting.actions';
 
 import { Login, Logout } from './shared/state/auth.actions';
@@ -96,9 +97,9 @@ export class AppComponent {
 
     ngOnInit() {
 
-        this.store.dispatch(new ChangeTheme('default-theme'));
-
-        this.store.dispatch(new ChangeStickyHeader(true));
+        //this will initialize the theme and language from the last saved
+        //state
+        this.store.dispatch(new InitializeSettings());
 
         if (isPlatformBrowser(this.platformId)) {
             //disable the page animation on some browsers

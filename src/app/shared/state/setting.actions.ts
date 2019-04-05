@@ -1,6 +1,9 @@
 import { Language, Theme } from './settings.state'
 
-
+export class InitializeSettings {
+    static readonly type = '[Settings] Initialize Settings';
+    constructor() { }
+}
 
 export class ChangeLanguage {
     static readonly type = '[Settings] Change the Language';
