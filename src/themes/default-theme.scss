@@ -1,5 +1,145 @@
-$increate-primary: mat-palette($mat-indigo, 800, 300, 900);
-$increate-accent: mat-palette($mat-light-blue);
-$increate-warn: mat-palette($mat-pink, 600);
+/* For use in src/lib/core/theming/_palette.scss */
+$md-increate-pallete: (
+    50 : #ecf1f9,
+    100 : #cfdcf0,
+    200 : #b0c5e6,
+    300 : #90aedb,
+    400 : #789cd4,
+    500 : #608bcc,
+    600 : #5883c7,
+    700 : #4e78c0,
+    800 : #446eb9,
+    900 : #335bad,
+    A100 : #f6f8ff,
+    A200 : #c3d5ff,
+    A400 : #90b2ff,
+    A700 : #76a0ff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+/* For use in src/lib/core/theming/_palette.scss */
+$md-increate-pallete-accent1: (
+    50 : #eff5e9,
+    100 : #d7e5c8,
+    200 : #bdd4a4,
+    300 : #a2c27f,
+    400 : #8eb563,
+    500 : #7aa848,
+    600 : #72a041,
+    700 : #679738,
+    800 : #5d8d30,
+    900 : #4a7d21,
+    A100 : #d8ffbb,
+    A200 : #baff88,
+    A400 : #9dff55,
+    A700 : #8eff3b,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+
+/* For use in src/lib/core/theming/_palette.scss */
+$md-increate-pallete-warn1: (
+    50 : #f3eae9,
+    100 : #e2cbc7,
+    200 : #cea9a2,
+    300 : #ba867d,
+    400 : #ac6c61,
+    500 : #9d5245,
+    600 : #954b3e,
+    700 : #8b4136,
+    800 : #81382e,
+    900 : #6f281f,
+    A100 : #ffb6ad,
+    A200 : #ff887a,
+    A400 : #ff5a47,
+    A700 : #ff432e,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #ffffff,
+    )
+);
+
+
+/* For use in src/lib/core/theming/_palette.scss */
+$md-increate-pallete-accent2: (
+    50 : #fef4e5,
+    100 : #fce4bd,
+    200 : #fad391,
+    300 : #f8c165,
+    400 : #f7b344,
+    500 : #f5a623,
+    600 : #f49e1f,
+    700 : #f2951a,
+    800 : #f08b15,
+    900 : #ee7b0c,
+    A100 : #ffffff,
+    A200 : #fff1e5,
+    A400 : #ffd4b2,
+    A700 : #ffc698,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+
+
+$increate-primary: mat-palette($md-increate-pallete, 900, 300, 900);
+$increate-accent: mat-palette($md-increate-pallete-accent2);
+$increate-warn: mat-palette($md-increate-pallete-warn1, 600);
 
 $increate-theme: mat-light-theme($increate-primary, $increate-accent, $increate-warn);

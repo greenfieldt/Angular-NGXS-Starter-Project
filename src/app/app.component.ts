@@ -33,7 +33,7 @@ import { isPlatformBrowser } from '@angular/common';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
-    logo = '../assets/logo.png';
+    logo = '../assets/increate-logo.svg';
     //creating a member var for settings.state.languages const 
     languages = languages;
     version = env.versions.app;

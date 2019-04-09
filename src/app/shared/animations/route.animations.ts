@@ -12,7 +12,7 @@ import { AnimationService } from './animation.service';
 export const ROUTE_ANIMATIONS_ELEMENTS = 'route-animations-elements';
 
 const STEPS_ALL: any[] = [
-    query(':enter > *', style({ opacity: 0, position: 'fixed' }), {
+    query(':enter > *', style({ opacity: 0, position: 'unset' }), {
         optional: true
     }),
     query(':enter .' + ROUTE_ANIMATIONS_ELEMENTS, style({ opacity: 0 }), {
@@ -27,7 +27,7 @@ const STEPS_ALL: any[] = [
                     '0.2s ease-in-out',
                     style({ transform: 'translateY(-3%)', opacity: 0 })
                 ),
-                style({ position: 'fixed' })
+                style({ position: 'unset' })
             ],
             { optional: true }
         ),
