@@ -10,6 +10,58 @@ import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 import { isPlatformBrowser } from '@angular/common';
 
+/*
+window.requestIdleCallback = window.requestIdleCallback || function(handler) {
+    let startTime = Date.now();
+    
+    return setTimeout(function() {
+	handler({
+	    didTimeout: false,
+	    timeRemaining: function() {
+		return Math.max(0, 50.0 - (Date.now() - startTime));
+	    }
+	});
+    }, 1);
+}
+
+window.cancelIdleCallback = window.cancelIdleCallback || function(id) {
+  clearTimeout(id);
+}
+*/
+
+
+function loadScript(deadline, scriptOnload?) {
+    let body = <HTMLDivElement>document.body;
+    //I'm not sure if is totally necessary to use a fragment
+    //here since we are only adding one item?
+    let fragment = document.createDocumentFragment();
+    let script = document.createElement('script');
+    script.innerHTML = '';
+    script.src = 'assets/news-app-696119f1e6af3575acfc.js';
+    script.async = true;
+    script.defer = true;
+
+    script.onload = function () {
+        if (scriptOnload)
+            scriptOnload();
+    };
+    fragment.appendChild(script);
+    body.appendChild(fragment);
+}
+
+
+//we are passing in a callback that allows us to do whatever we need to do
+//when it is time to load the below the fold content 
+function onIntersection(entries, onScriptLoaded) {
+    entries.forEach(entry => {
+        entry.target.classList.toggle('visible', entry.intersectionRatio > 0);
+        if (entry.intersectionRatio > 0) {
+            (window as any).requestIdleCallback((deadline) => loadScript(deadline, onScriptLoaded), { timeout: 1000 });
+            // Stop watching 
+            HomeComponent.observer.unobserve(entry.target);
+        }
+    });
+}
 
 
 @Component({
@@ -21,6 +73,7 @@ import { isPlatformBrowser } from '@angular/common';
 })
 export class HomeComponent implements OnInit {
     @ViewChild('belowTheFold') btf: ElementRef;
+    static observer: IntersectionObserver;
 
 
     routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
@@ -32,32 +85,33 @@ export class HomeComponent implements OnInit {
         private notification: NotificationService,
         @Inject(PLATFORM_ID) private platformId) {
 
-
-
-    }
-
-
-    public loadScript() {
-        if (isPlatformBrowser(this.platformId)) {
-
-            let body = <HTMLDivElement>document.body;
-            let script = document.createElement('script');
-            script.innerHTML = '';
-            script.src = 'assets/news-app-dcfdf98018818e301e7c.js';
-            script.async = true;
-            script.defer = true;
-            body.appendChild(script);
-        }
     }
 
     ngOnInit() {
-        if (isPlatformBrowser(this.platformId)) {
 
-            //this.loadScript();
-            //console.log("btf:", this.btf);
-            //var child = document.createElement('<news-source> </news-source>');
-            //this.btf.nativeElement.append(child);
+    }
+
+    ngAfterViewInit() {
+        if (isPlatformBrowser(this.platformId)) {
+            let intersectionObserverOptions = {
+                root: null,
+                rootMargin: '150px',
+                threshold: 1.0
+            }
+
+            HomeComponent.observer = new IntersectionObserver(
+                (entries) => onIntersection(entries, () => this.attachBTF(this))
+                , intersectionObserverOptions);
+            HomeComponent.observer.observe(this.btf.nativeElement);
+
         }
+    }
+
+
+    public attachBTF(scoped_this) {
+
+        let child = document.createElement('news-source');
+        scoped_this.btf.nativeElement.append(child);
     }
 
 }
