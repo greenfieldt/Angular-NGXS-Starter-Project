@@ -1,27 +1,66 @@
-<div class="background">
-  <div class="container">
-    <h1>
-      <p>
-	home works!
-      </p>
-    </h1>
-    <span *ngIf="theme$ | async as theme">
-      <mat-select [ngModel]="theme" (selectionChange)="onThemeSelect($event)">
-	<mat-option *ngFor="let t of themes" [value]="t">
-          {{ t.toUpperCase() }}
-	</mat-option>
-      </mat-select>
-    </span>
+<div class="background" >
+  <div class="container world-small">
 
-    <div *ngIf="loading$ | async">
-  Loading...
-</div>
-<div *ngIf="errors$ | async">
-  Error :(
-</div>
-<div *ngFor="let rate of rates$ | async">
-  <p>{{rate.currency}}: {{rate.rate}}</p>
-</div>
+
+    <h1> Increate Software LLC </h1>
+
+    <h2>Helping you achieve your global outsourcing goals</h2>
+
+
+    <div>
+      <ul>
+	<li>
+	  <img src="/assets/checkmark.svg" />
+	  <h3>Worried about hidden costs?</h3>
+	  <p>Offshore software development offers many benefits but comes
+	    with it's own significant challenges.  If you are considering
+	    an offshore vendor we can help you avoid common mistakes and
+	    ensure you receive predictable results. </p>
+	</li>
+	
+	<li>
+	  <img src="/assets/checkmark.svg" />
+	  <h3>Not sure about your requirements?</h3>
+	  <p>We can help review your technical solution and make sure
+	    your requirements are detailed enough to get the biggest bang
+	    for your buck.</p>
+	</li>
+	
+	<li>
+	  <img src="/assets/checkmark.svg" />
+	  <h3>Don't have a development process?</h3>
+	  <p>We've helped fortune 100 companies develop software
+	    development processes that foster offshore development with an
+	    eye towards cost effectiveness, conformance to in-house
+	    development policy, and easy integration across organizations. </p>
+	</li>
+	
+	<li>
+	  <img src="/assets/checkmark.svg" />
+	  <h3>Too many days wasted across timezones?</h3>
+	  <p>Let us help you handle the handoff!  The daily handoff is
+	    one of the most important aspects of effective offshore
+	    development.  Without a standardized efficient handoff even
+	    simple tasks can take days to accomplish.</p>
+	</li>
+      </ul>
+    </div>
+    <div class="div-sep">
+      <p>At Increate Software LLC we provide full service
+	engineering management support for you and your team.  We specialize in
+	helping you meeting your cost, schedule, and scope objectives
+	using tried and true software development methods.  Our team
+	has experience working with fortune 100 companies in the
+	aerospace and health care industries as well as assisting some
+	of the top global outsourcing providers.
+      </p>
+      
+      <p>For a free consultation please contact us at 720-230-6306 or
+	email info@increatesoftware.com.</p>
+      
+    </div>
+
+    <div class="div-sep" #belowTheFold> </div>
     
   </div>
 </div>
