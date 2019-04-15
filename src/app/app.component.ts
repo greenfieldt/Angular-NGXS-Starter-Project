@@ -101,6 +101,7 @@ export class AppComponent {
         //state
         this.store.dispatch(new InitializeSettings());
 
+        this.store.dispatch(new ChangeTheme('default-theme'));
         if (isPlatformBrowser(this.platformId)) {
             //disable the page animation on some browsers
             this.store.dispatch(

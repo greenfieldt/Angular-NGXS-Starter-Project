@@ -1,33 +1,15 @@
 import { Inject, Component, OnInit, ChangeDetectionStrategy, ViewChild, ElementRef, PLATFORM_ID } from '@angular/core';
 import { Store, Select } from '@ngxs/store';
 import { themes } from '../../shared/state/settings.state'
-import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators'
 import { ChangeTheme } from '../../shared/state/setting.actions';
 import { NotificationService } from '../../shared/notifications/notification.service';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '../../shared/animations/route.animations'
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 import { isPlatformBrowser } from '@angular/common';
+import { Observable, interval } from 'rxjs';
+import { take } from 'rxjs/operators'
 
-/*
-window.requestIdleCallback = window.requestIdleCallback || function(handler) {
-    let startTime = Date.now();
-    
-    return setTimeout(function() {
-	handler({
-	    didTimeout: false,
-	    timeRemaining: function() {
-		return Math.max(0, 50.0 - (Date.now() - startTime));
-	    }
-	});
-    }, 1);
-}
-
-window.cancelIdleCallback = window.cancelIdleCallback || function(id) {
-  clearTimeout(id);
-}
-*/
 
 
 function loadScript(deadline, scriptOnload?) {
@@ -84,7 +66,25 @@ export class HomeComponent implements OnInit {
         private store: Store,
         private notification: NotificationService,
         @Inject(PLATFORM_ID) private platformId) {
+        if (isPlatformBrowser(this.platformId)) {
 
+            (window as any).requestIdleCallback = (window as any).requestIdleCallback || function (handler) {
+                let startTime = Date.now();
+
+                return setTimeout(function () {
+                    handler({
+                        didTimeout: false,
+                        timeRemaining: function () {
+                            return Math.max(0, 50.0 - (Date.now() - startTime));
+                        }
+                    });
+                }, 1);
+            };
+
+            (window as any).cancelIdleCallback = (window as any).cancelIdleCallback || function (id) {
+                clearTimeout(id);
+            };
+        }
     }
 
     ngOnInit() {
@@ -110,7 +110,7 @@ export class HomeComponent implements OnInit {
 
     public attachBTF(scoped_this) {
 
-        let child = document.createElement('news-source');
+        let child = document.createElement('ce-news-grid');
         scoped_this.btf.nativeElement.append(child);
     }
 
