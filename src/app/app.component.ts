@@ -100,7 +100,7 @@ export class AppComponent {
         //this will initialize the theme and language from the last saved
         //state
         this.store.dispatch(new InitializeSettings());
-
+        this.store.dispatch(new ChangeTheme('default-theme'));
         if (isPlatformBrowser(this.platformId)) {
             //disable the page animation on some browsers
             this.store.dispatch(

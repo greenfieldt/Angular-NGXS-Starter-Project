@@ -1,0 +1,102 @@
+// LIGHT BOX
+$pswp__show-hide-transition-duration: 333ms !default;
+$pswp__controls-transition-duration: 333ms !default;
+$pswp__background-color: #000 !default;
+$pswp__placeholder-color: #222 !default;
+$pswp__box-sizing-border-box: true !default; // disable .pswp * { box-sizing:border-box } (in case you already have it in your site css)
+$pswp__root-z-index: 1500 !default;
+$pswp__assets-path: '' !default; // path to skin assets folder (preloader, PNG and SVG sprite)
+$pswp__error-text-color: #CCC !default; // "Image not loaded" text color
+$pswp__include-minimal-style: true !default;
+
+// Navbars Pro Variables
+
+// SideNav Variables
+$sidenav-breakpoint: 1440px !default;
+$hide-sidenav: "only screen and (max-width : #{$sidenav-breakpoint})" !default;
+
+// Buttons Pro Varoables
+$btn-floating-size: 47px !default;
+$btn-floating-icon-size: 1.25rem !default; 
+$btn-floating-color-raised: $white !default;
+$btn-floating-color: $secondary-color !default;
+
+// Chips
+$chip-height: 32px;
+$chip-font-size: 13px;
+$chip-font-weight: 500;
+$chip-font-color: rgba($black, .6);
+$chip-line-height: 32px;
+$chip-padding-right: 12px;
+$chip-br: 16px;
+$chip-background-color: map-get($blue-grey, "lighten-5");
+$chip-margin-bottom: 1rem;
+$chip-margin-right: 1rem;
+$chip-img-margin-right: 8px;
+$chip-img-margin-left: -12px;
+$chip-img-height: 32px;
+$chip-img-width: 32px;
+$chip-close-font-size: 16px;
+$chip-close-line-height: 32px;
+$chip-close-padding-left: 8px;
+
+$chips-margin-bottom: 30px;
+$chips-min-height: 45px;
+$chips-padding-bottom: 1rem;
+$chips-input-font-color: rgba($black, .6);
+$chips-input-font-size: 13px;
+$chips-input-font-weight: 500;
+$chips-input-height: 32px;
+$chips-input-margin-right: 20px;
+$chips-input-line-height: 32px;
+$chips-input-width: 120px;
+
+// Radio Buttons
+$radio-fill-color: $primary-color !default;
+$radio-empty-color: #5a5a5a !default; 
+
+// Date Picker
+$datepicker-weekday-bg: darken($primary-color, 7%) !default;
+$datepicker-date-bg: $primary-color !default;
+$datepicker-year: rgba(255, 255, 255, .4) !default;
+$datepicker-focus: rgba(0,0,0, .05) !default;
+$datepicker-selected: $primary-color !default;
+$datepicker-selected-outfocus: desaturate(lighten($primary-color, 35%), 15%) !default;
+
+//default time picker
+$timepicker-pickerbox-breakpoint: 40.125em;
+$timepicker-pickerlistitem-breakpoint: 46.75em;
+//default time & date picker
+$pickerframe-wrap-box-breakpoint: 28.875em;
+$pickerframe-mb-breakpoint: 40.125em;
+$pickerframe-pos-breakpoint: 35.875em;
+//default date picker
+$pickerweekday-padb-breakpoint: 33.875em;
+
+
+// Tabs classic
+$classic-tabs-padding-y: 20px;
+$classic-tabs-padding-x: 24px;
+$classic-tabs-font-size: 13px;
+$classic-tabs-color: rgba($white, .7);
+$classic-tabs-margin-left: 56px;
+
+// Gradients Premium
+$gradients-premium: (
+	"purple": (
+		"start": #ff6ec4,
+		"end": #7873f5
+	),
+	"peach": (
+		"start": #FFD86F,
+		"end": #FC6262
+	),
+	"aqua": (
+		"start": #2096ff,
+		"end": #05ffa3
+	),
+	"blue": (
+		"start": #45cafc,
+		"end": #303f9f
+	),
+);

@@ -48,6 +48,7 @@ export class HomeComponent implements OnInit {
 
     ngOnInit() {
         //console.log("Home ngOnInit");
+
         const source$ = this.apollo.query<RatesQueryResponse>({
             query: gql`
         {

@@ -1,0 +1,37 @@
+// Team
+.section {
+    &.team-section {
+        .avatar {
+            margin-bottom: 2rem;
+            @extend .flex-center;
+            height: auto;
+            .rounded-circle {
+                max-width: 170px;
+            }
+            img{
+                max-width: 200px;
+                height: auto;
+            }
+        }
+        .title-color {
+            font-weight: 400;
+            color: rgba($black, .6);
+        }
+        h4,h5 {
+            margin-bottom: 1rem;
+        }
+        .grey-text {
+            color: #6e6e6e !important;
+        }
+    }
+    h4{
+            font-weight: 400;
+        }
+    .card-wrapper{
+        .fa-repeat, .fa-undo {
+            font-size: 15px;
+         }
+    }    
+}
+
+ 

@@ -1,0 +1,7 @@
+// Animations Pro
+.collapsible .active {
+	.rotate-icon {
+		transform: rotate(180deg);
+		transition: all 150ms ease-in 0s;
+	}
+}

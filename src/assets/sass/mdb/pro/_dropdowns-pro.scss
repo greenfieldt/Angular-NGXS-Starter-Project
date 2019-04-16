@@ -1,0 +1,159 @@
+// Dropdown pro
+// Dropdowns menu's colors
+.dropdown {
+    .dropdown-menu {
+        padding: 0.5rem;
+        @each $name, $color in $dropdown-colors {
+            &.dropdown-#{$name} {
+                .dropdown-item {
+                    &:hover,
+                    &:active {
+                        background-color: $color;
+                    }
+                }
+            }
+        }
+        .dropdown-item {
+            padding: 0.5rem;
+            margin-left: 0;
+            font-size:0.9rem;
+            &.disabled {
+                color: #868e96;
+                &:hover,
+                &:active,
+                &:focus {
+                    box-shadow: none;
+                    color: #868e96!important;
+                    background-color: transparent!important;
+                }
+            }
+            &:hover,
+            &:active {
+                border-radius: 2px;
+                transition: all 0.1s linear;
+                @extend .z-depth-1-half;
+                @extend .white-text;
+                background-color: $primary-color;
+            }
+        }
+    }
+}
+
+.dropdown-menu-right {
+    right: 0;
+    left: auto!important;
+}
+
+.dropdown-content {
+    @extend .z-depth-1;
+    background-color: $dropdown-bg-color;
+    margin: 0;
+    display: none;
+    min-width: 100px;
+    max-height: 650px;
+    overflow-y: auto;
+    opacity: 0;
+    position: absolute;
+    z-index: 999;
+    will-change: width, height;
+    li {
+        clear: both;
+        color: #000;//$off-black;
+        cursor: pointer;
+        line-height: 1.3rem;
+        width: 100%;
+        text-align: left;
+        text-transform: none;
+        &:hover,
+        &.active {
+            background-color: $dropdown-hover-bg-color;
+        }
+        & > a,
+        & > span {
+            font-size: 0.9rem;
+            color: $dropdown-color;
+            display: block;
+            padding: 0.5rem;
+        }
+        // Icon alignment override
+        & > a > i {
+            height: inherit;
+            line-height: inherit;
+        }
+    }
+}
+
+// Material select color variations
+.colorful-select {
+    .dropdown-content {
+        padding: 0.5rem;
+        li {
+            &.active span {
+                color: #fff!important;
+                @extend .z-depth-1-half;
+                [type="checkbox"]:checked + label:before {
+                    border-color: transparent white white transparent;
+                }
+            }
+            a:hover, span:hover {
+                color: #fff!important;
+                @extend .z-depth-2;
+                @include transition (all 0.1s linear);
+                @include border-radius (2px);
+
+                [type="checkbox"] + label:before {
+                    border-color: white;
+                }
+                [type="checkbox"]:checked + label:before {
+                    border-color: transparent white white transparent;
+                }
+            }
+            optgroup {
+            }
+            &.disabled,
+            &:disabled,
+            &.optgroup {
+                &.active span {
+                    @extend .z-depth-0;
+                    color: $rgba-black-light !important;
+                    border-bottom-color: $rgba-black-light;
+                    cursor: default;
+                }
+                a:hover, span:hover {
+                    @extend .z-depth-0;
+                    color: $rgba-black-light !important;
+                    border-bottom-color: $rgba-black-light;
+                    cursor: default;
+                    background-color: white !important;
+                }
+                label {
+                    cursor: default;
+                }
+            }
+            
+            
+        }
+    }
+}
+
+@each $type, $color in $dropdown-colors {
+    .dropdown-#{$type} {
+        .dropdown-content li {
+            &.active, a, span:hover {
+                background-color: $color;
+            }
+        }
+        .search-wrap input:focus {
+            border-bottom: 1px solid $color;
+            box-shadow: 0 1px 0 0 $color;
+        }
+    }
+} 
+
+.dropdown-menu.animated {
+    /* Speed up animations */
+    -webkit-animation-duration: 0.55s;
+    animation-duration: 0.55s;
+    -webkit-animation-timing-function: ease;
+    animation-timing-function: ease;
+}

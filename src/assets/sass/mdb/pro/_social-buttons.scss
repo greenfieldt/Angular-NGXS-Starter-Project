@@ -1,0 +1,58 @@
+// Social Buttons
+
+@each $medium, $color in $social-colors {
+	.btn-#{$medium} {
+		background-color: $color;
+		&:hover,
+		&:focus {
+			background-color: lighten($color, 5%);
+		}
+	}
+	.#{$medium}-ic {
+		color: $color!important;
+		&:hover,
+		&:focus {
+			color: $color;
+		}
+	}
+}
+
+.btn-social-all {
+    background-color: #436281;
+    &:hover,
+    &:focus {
+        background-color: #5c7fa3;
+    }
+    i {
+        &.fa {
+            margin-top: 0px;
+        }
+    }
+
+}
+
+.counter {
+    position: absolute;
+    margin-left: -23px;
+    margin-top: -1px;
+    background-color: rgb(254, 18, 18);
+    color: #fff;
+    padding: 1px 7px;
+    font-size: 11px;
+    z-index: 2;
+    border-radius: 10rem;
+    @extend .z-depth-1;
+    
+}
+
+.social-counters {
+    .btn {
+        margin-left: 9px;
+    }
+}
+
+.icons-sm {
+    padding: .5rem;
+    margin: .5rem;
+    font-size: 1.2rem;
+}    

@@ -1,0 +1,173 @@
+
+// Colorful SideNav
+.colorful-side-nav {
+    background-color: $default-color-dark;
+    li {
+        background-color: $default-color-dark;
+        &:hover,
+        &.active {
+            background-color: lighten( $default-color-dark, 5%);
+        }
+    }
+    p {
+        @extend .white-text;
+    }
+    .collapsible a {
+        margin: 0;
+        @extend .white-text;
+        &:active {
+            background-color: lighten( $default-color-dark, 5%);
+        }
+        &.active {
+            background-color: lighten( $default-color-dark, 5%);
+        }
+    }
+    .collapsible {
+        >li {
+            padding: 0;
+        }
+    }
+    .social {
+        border-top: 1px solid #26a69a;
+        border-bottom: 1px solid #26a69a;
+        a {
+            @extend .white-text;
+        }
+    }
+}
+
+// Stylish SideNav
+.stylish-side-nav {
+    background-color: $stylish-color-dark;
+    li {
+        background-color: $stylish-color-dark;
+        &:hover,
+        &.active {
+            background-color: $stylish-color;
+        }
+    }
+    p {
+        @extend .white-text;
+    }
+    .collapsible a {
+        margin: 0;
+        @extend .white-text;
+        &:active {
+            background-color: $stylish-color;
+        }
+        &.active {
+            background-color: $stylish-color;
+        }
+    }
+    .collapsible {
+        >li {
+            padding: 0;
+        }
+    }
+    .social {
+        border-top: 1px solid $stylish-color;
+        border-bottom: 1px solid $stylish-color;
+        a {
+            @extend .white-text;
+        }
+    }
+}
+
+
+// Light Variation
+.light-side-nav {
+    .logo-wrapper {
+        height: 80px;
+        a {
+            height: 80px;
+        }
+        img {
+            padding-left: 50px;
+            padding-right: 50px;
+            padding-top: 7%;
+            padding-bottom: 7%;
+        }
+    }
+    p {
+        color: #1C2331;
+    }
+    .collapsible a {
+        color: #1C2331;
+    }
+    .social {
+        border-top: 1px solid #eeeeee;
+        border-bottom: 1px solid #eeeeee;
+    }
+    .navbar-form {
+        margin: 10px;
+    }
+}
+
+// Dark Variation
+.dark-side-nav {
+    background-color: $elegant-color-dark;
+    li {
+        background-color: $elegant-color-dark;
+        &:hover,
+        &.active {
+            background-color: $elegant-color;
+        }
+    }
+    p {
+        @extend .white-text;
+    }
+    .collapsible a {
+        @extend .white-text;
+        margin: 0;
+       
+        &:active,
+        .active {
+            background-color: $elegant-color;
+        }
+    }
+    .collapsible {
+        >li {
+            padding: 0;
+        }
+    }
+    .social {
+        border-top: 1px solid $stylish-color;
+        border-bottom: 1px solid $stylish-color;
+        a {
+            @extend .white-text;
+        }
+    }
+}
+
+// Social List
+
+.social-list {
+    font-weight: 400;
+    width: auto;
+    @extend .z-depth-1;
+    padding: 1rem;
+    list-style-type:none;
+    li {
+        margin-top: 15px;
+    }
+    .fa {
+        margin-right: 20px;
+        font-size: 20px;
+    }
+    .fa-facebook {
+        margin-right: 26px;
+    }
+    a {
+        font-size: 20px;
+    }
+}
+
+// Flat button
+.btn-flat {
+    position: relative;
+    padding: 8px 30px;
+    border: none;
+    margin: 10px;
+    text-decoration: none;
+    outline: 0!important;
+}

@@ -1,0 +1,98 @@
+// Buttons Pro
+.btn {
+    &.btn-flat {
+        color:inherit !important;
+        background-color: transparent;
+        box-shadow:none;
+    }
+}
+
+//Floating button
+.btn-floating {
+    position: relative;
+    z-index: 1;
+    vertical-align: middle;
+    display: inline-block;
+    overflow: hidden;
+    width: $btn-floating-size;
+    height: $btn-floating-size;
+    padding: 0;
+    border-radius: 50%;
+    margin: 10px;
+    @extend .z-depth-1-half;
+    background-color: $btn-floating-color;
+    color: $btn-floating-color-raised;
+    cursor: pointer;
+    transition: 0.3s;
+    i {
+        display: inline-block;
+        width: inherit;
+        color: $btn-floating-color-raised;
+        font-size: $btn-floating-icon-size;
+        line-height: $btn-floating-size;
+        text-align: center;
+    }
+    &:hover {
+        @extend .z-depth-2;
+    }
+    &:before {
+        border-radius: 0;
+    }
+    &.btn-sm,
+    &.btn-small {
+        width: $btn-floating-size / 1.3;
+        height: $btn-floating-size / 1.3;
+        i {
+            font-size: $btn-floating-icon-size / 1.3;
+            line-height: $btn-floating-size / 1.3;
+        }
+    }
+    &.btn-lg,
+    &.btn-large {
+        width: $btn-floating-size * 1.3;
+        height: $btn-floating-size * 1.3;
+        i {
+            font-size: $btn-floating-icon-size * 1.3;
+            line-height: $btn-floating-size * 1.3;
+        }
+    }
+}
+// Fixed Action Button
+.fixed-action-btn {
+    position: fixed;
+    z-index: 998;
+    right: 35px;
+    bottom: 35px;
+    padding-top: 15px;
+    margin-bottom: 0;
+    ul {
+        position: absolute;
+        right: 0;
+        bottom: 64px;
+        left: 0;
+        margin: 0;
+        padding:0;
+        list-style-type:none;
+        text-align: center;
+        li {
+            margin-bottom: 15px;
+        }
+        a {
+            &.btn-floating {
+                opacity: 0;
+            }
+        }
+    }
+}
+button, html [type="button"], [type="reset"], [type="submit"] {
+    -webkit-appearance: none;
+}
+// Rounded buttons
+.btn-rounded {
+    border-radius: 10em;
+}
+
+// Gradient buttons
+@each $name, $val in $gradients-premium {
+    @include make-gradient-button($name, $val);
+}

@@ -18,77 +18,46 @@
   <meta name="twitter:title" content="Increate Starter Project">
   <meta name="twitter:description" content="Increate Starter Project Descriptions">
   <meta name="twitter:image" content="./assets/logo.png">
-  
-  <link rel="icon" type="image/png" href="./assets/logo.png">
-  <style type="text/css">
-    body, html {
+
+    <title>Community of Christ Thornton</title>
+
+    <!-- Google Tag Manager --
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NPNBG9K');</script>
+    -- End Google Tag Manager -->
+
+
+<!-- Font Awesome -->
+<link rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+
+<script
+src="https://code.jquery.com/jquery-3.2.1.js"
+integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+crossorigin="anonymous"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="assets/css/mdb.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
+
+    <style type="text/css">
+      body, html {
       height: 100%;
-    }
-    .app-loading {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100%;
-    }
-
-    .app-loading .spinner {
-      height: 200px;
-      width: 200px;
-      animation: rotate 2s linear infinite;
-      transform-origin: center center;
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      margin: auto;
-    }
-
-    .app-loading .spinner .path {
-      stroke-dasharray: 1, 200;
-      stroke-dashoffset: 0;
-      animation: dash 1.5s ease-in-out infinite;
-      stroke-linecap: round;
-      stroke: #ddd;
-    }
-
-    @keyframes rotate {
-      100% {
-        transform: rotate(360deg);
       }
-    }
-
-    @keyframes dash {
-      0% {
-        stroke-dasharray: 1, 200;
-        stroke-dashoffset: 0;
-      }
-      50% {
-        stroke-dasharray: 89, 200;
-        stroke-dashoffset: -35px;
-      }
-      100% {
-        stroke-dasharray: 89, 200;
-        stroke-dashoffset: -124px;
-      }
-    }
-  </style>
+    </style>
   <link rel="manifest" href="manifest.webmanifest">
   <meta name="theme-color" content="#1976d2">
 </head>
 <body>
 
   <increate-root>
-<!--
-    <div class="app-loading">
-      <div class="logo">
-      <svg class="spinner" viewBox="25 25 50 50">
-        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
-      </svg>
-    </div>
--->
   </increate-root>
   <script>
     console.log("Google Analytics disabled in Index.html");
@@ -102,6 +71,120 @@
     ga('create', 'UA-53234284-5', 'auto');
 */
   </script>
+
+
+  <!-- JQuery -->
+    <script type="text/javascript" src="assets/js/jquery-3.2.1.min.js"></script>
+
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="assets/js/popper.min.js"></script>
+
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="assets/js/mdb.min.js"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+    <script src="https://maps.google.com/maps/api/js"></script>
+
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+  
+    <script type="text/javascript">
+       (function(){
+          emailjs.init("user_TL44J9bvjZJV4clkkZokL");
+       })();
+    </script>
+
+    <script>
+        //Animation init
+        new WOW().init();
+
+        //Modal
+        $('#myModal').on('shown.bs.modal', function () {
+            $('#myInput').focus()
+        })
+
+        // Material Select Initialization
+        $(document).ready(function () {
+            $('.mdb-select').material_select();
+        });
+
+        // MDB Lightbox Init
+        $(function () {
+            $("#mdb-lightbox-ui").load("../mdb-addons/mdb-lightbox-ui.html");
+        });
+
+      /*
+        var container = document.querySelector('.custom-scrollbar');
+        Ps.initialize(container, {
+            wheelSpeed: 2,
+            wheelPropagation: true,
+            minScrollbarLength: 20
+        });
+*/
+    </script>
+
+    <script>
+        $(function () {
+            var selectedClass = "";
+            $(".filter").click(function () {
+                selectedClass = $(this).attr("data-rel");
+                $("#gallery").fadeTo(100, 0.1);
+                $("#gallery div").not("." + selectedClass).fadeOut().removeClass('animation');
+                setTimeout(function () {
+                    $("." + selectedClass).fadeIn().addClass('animation');
+                    $("#gallery").fadeTo(300, 1);
+                }, 300);
+            });
+        });
+
+        function regular_map() {
+
+            var var_location = new google.maps.LatLng(39.869310, -104.995060);
+
+            var var_mapoptions = {
+                center: var_location,
+                zoom: 14
+            };
+
+            var var_map = new google.maps.Map(document.getElementById("map-container"),
+                var_mapoptions);
+
+            var var_marker = new google.maps.Marker({
+                position: var_location,
+                map: var_map,
+                title: "Community of Christ Thornton, CO"
+            });
+
+        }
+
+        function sendContactInfo(){
+
+            var name =  $("#form-contact-name").val();
+            var email = $("#form-contact-email").val();
+            var phone = $("#form-contact-phone").val();
+            var message = $("#form-contact-message").val();
+
+            emailjs.send("cofchristThornton","cofchristThornton",{"contact_name": name, "conact_email": email, "conact_phone": phone, "conact_message": message})
+                .then(function(response) {
+                    toastr["success"]("Message Sent")
+                    console.log("SUCCESS. status=%d, text=%s", response.status, response.text);
+                }, function(err) {
+                    toastr["error"]("Message Not Sent")
+                    console.log("FAILED. error=", err);
+                });
+        }
+        
+        google.maps.event.addDomListener(window, 'load', regular_map);
+    </script>
+
+<!--    
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvbBUeTUHbnVhe1eb54GLbqEbPKPGoMEY&callback=initMap"
+    async defer></script>
+-->
   <noscript>Please enable JavaScript to continue using this application.</noscript>
 </body>
 </html>

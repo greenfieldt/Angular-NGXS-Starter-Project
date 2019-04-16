@@ -1,0 +1,124 @@
+//Navs, Tabs and Pills
+.nav-tabs {
+    border: 0;
+    padding: $tabs-padding;
+    margin-left: $tabs-margin-x;
+    margin-right: $tabs-margin-x;
+    margin-bottom: $tabs-margin-y;
+    background-color: $default-color;
+    z-index: 2;
+    position: relative;
+    @include border-radius(2px);
+    @extend .z-depth-1-half;
+    .nav-item + .nav-item {
+        margin-left: 0;
+    }
+    .nav-link {
+        border: 0;
+        color: $white;
+    }
+}
+
+.nav-tabs {
+    .nav-link.active,
+    .nav-item.open .nav-link {
+        background-color: rgba(255, 255, 255, 0.2);
+        color: #fff;
+        @include transition(all 1s);
+        @include border-radius(2px);
+    }
+}
+
+.md-pills {
+    border: 0;
+    li {
+        padding: $pills-padding;
+    }
+    .nav-link {
+        @include transition(all 0.4s);
+        @include border-radius(2px);
+        color: #666;
+        text-align: center;
+        &:hover {
+            background-color: $rgba-grey-light;
+        }
+        &.active {
+            color: $white; //comment because when we have background color white, we didnt see a
+            @extend .z-depth-1;
+            background-color: $default-color;
+        }
+        &.active:hover {
+            @extend .z-depth-1-half;
+        }
+    }
+}
+
+@each $name, $color in $material-colors {
+    .pills-#{$name} {
+        .nav-item {
+            .nav-link {
+                &.active {
+                    background-color: $color;
+                }
+            }
+        }
+    }
+    .tabs-#{$name} {
+        background-color: $color;
+    }
+}
+
+.tab-content {
+    padding: 1rem;
+    padding-top: 2rem;
+    z-index: 1;
+    border-radius: 0 0 0.3rem 0.3rem;
+    &.vertical {
+        padding-top: 0;
+    }
+}
+
+.classic-tabs {
+    @include flexbox()
+    white-space: nowrap;
+    overflow-x: auto;
+    border-radius: 0.3rem 0.3rem 0 0;
+    @media (min-width: 62rem) {
+        overflow-x: hidden;
+    }
+    li {
+        @include flex(1 0 30%);
+        @media (min-width: 62em) {
+            flex:inherit;
+        }
+        a {
+            display: block;
+            padding: $classic-tabs-padding-y $classic-tabs-padding-x;
+            font-size: $classic-tabs-font-size;
+            text-transform: uppercase;
+            color: $classic-tabs-color;
+            text-align: center;
+            border-radius: 0;
+            &.active {
+                border-bottom: 3px solid;
+                color: $white;
+            }
+        }
+        @media (min-width: 62em) {
+            &:first-child {
+                margin-left: $classic-tabs-margin-left;
+            }           
+        }
+    }
+    @each $name, $color in $ctbc {
+        &.#{$name} {
+            li {
+                a {
+                    &.active {
+                        border-color: $color;
+                    }
+                }
+            }
+        }
+    }
+}

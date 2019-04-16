@@ -1,0 +1,123 @@
+/***************
+  Material select
+***************/
+%user-select-none {
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    -o-user-select:none;
+    user-select:none;
+}
+.select-label {
+    position: absolute;
+}
+.select-wrapper {
+    position: relative;
+    input.select-dropdown {
+        position: relative;
+        cursor: pointer;
+        background-color: transparent;
+        border: none;
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+        border-bottom-color: $input-border-color;
+        outline: none;
+        height: 3rem;
+        line-height: 3rem;
+        width: 100%;
+        font-size: 1rem;
+        margin: 0 0 15px 0;
+        padding: 0;
+        display: block;
+        &:disabled {
+            color: $rgba-black-light;
+            border-bottom-color: $rgba-black-light;
+            cursor: default;
+        }
+    }
+    .select-dropdown {
+        @extend %user-select-none;
+    }
+
+    .search-wrap {
+        padding: 1rem 0;
+        width: 93%;
+        display: block;
+        margin: 0 auto;
+        input {
+            padding-bottom: .4rem;
+        }
+
+    }
+
+    span.caret {
+        color: initial;
+        position: absolute;
+        right: 0;
+        top: 16px;
+        font-size: 10px;
+        &.disabled {
+            color: $input-disabled-color;
+        }
+    }
+    & + label {
+        position: absolute;
+        top: -14px;
+        font-size: $label-font-size;
+    }
+    i {
+        color: $rgba-black-light;
+    }
+
+    ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
+}
+
+select {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    display: none !important;
+    &.browser-default {
+        display: block !important;
+    }
+    &:disabled {
+        color: $rgba-black-light;
+    }
+}
+
+.select-dropdown {
+    ul {
+        list-style-type:none;
+        padding:0;
+    }
+    li {
+        img {
+            height: $dropdown-item-height - 10;
+            width: $dropdown-item-height - 10;
+            margin: 3px 12px;
+            float: right;
+        }
+
+        &.disabled, &.disabled > span, &.optgroup {
+            color: $rgba-black-light;
+            background-color: transparent!important;
+            cursor: context-menu;
+        }
+
+        &.optgroup {
+            border-top: 1px solid $dropdown-hover-bg-color;
+            &.selected > span {
+                color: rgba(0, 0, 0, .7);
+            }
+            & > span {
+                color: rgba(0, 0, 0, .4);
+            }
+        }
+
+    }
+}
+
+.multiple-select-dropdown li [type="checkbox"] + label {
+    height: 10px;
+}

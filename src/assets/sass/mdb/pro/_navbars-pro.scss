@@ -1,0 +1,67 @@
+// Navbars pro
+.navbar {
+    .nav-item {
+        &.avatar {
+            padding: 0;
+            &.active {
+                background-color: transparent!important;
+            }
+            .dropdown-toggle {
+                padding: 0;
+                img {
+                    height: $navbar-avatar-height;
+                }
+                &:after {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+.double-nav {
+    z-index: 100;
+    color: $white;
+    @media (max-width: $medium-screen) {
+        padding-top: $navbar-double-small-padding;
+        padding-bottom: $navbar-double-small-padding;
+    }
+    .container {
+        @media (max-width: 768px) {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+    a {
+        color: $white;
+        font-size: $navbar-double-font-size;
+    }
+    .breadcrumb-dn {
+       // margin-top: $navbar-double-small-padding;
+        p {
+            margin: 0;
+            padding-top: 0;
+            padding-left: $navbar-breadcrumb-dn-padding;
+        }
+        @media (max-width: 993px) {
+            display: none;
+        }
+    }
+    .button-collapse {
+        position: absolute;
+        top: $navbar-button-collapse-top;
+        left: $navbar-button-collapse-left;
+        font-size: $navbar-button-collapse-font-size;
+        @media (min-width: $sidenav-breakpoint) {
+            display: none;
+        }
+        @media (max-width: $sidenav-breakpoint) {
+            display: block;
+            position: relative;
+            font-size: $navbar-button-collapse-fs-sm;
+            margin-top: $navbar-button-collapse-mt;
+            margin-right: $navbar-button-collapse-mx;
+            margin-left: $navbar-button-collapse-mx;
+        }
+    }
+}
