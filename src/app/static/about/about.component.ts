@@ -13,18 +13,7 @@ export class AboutComponent implements OnInit {
 
     constructor() { }
 
-    public loadScript() {
-        let body = <HTMLDivElement>document.body;
-        let script = document.createElement('script');
-        script.innerHTML = '';
-        script.src = 'assets/news-app-dcfdf98018818e301e7c.js';
-        script.async = true;
-        script.defer = true;
-        body.appendChild(script);
-    }
-
     ngOnInit() {
-        this.loadScript();
     }
 
 }
