@@ -1,4 +1,4 @@
-@import '~@angular/material/theming';
+//@import '~@angular/material/theming';
 
 $toolbar-breakpoint: 600px;
 
@@ -15,5 +15,5 @@ $grid-breakpoints: (
   xl: 1200px
 );
 
-$success-colors: mat-palette($mat-green, 400);
-$warning-colors: mat-palette($mat-amber, 400);
+//$success-colors: mat-palette($mat-green, 400);
+//$warning-colors: mat-palette($mat-amber, 400);

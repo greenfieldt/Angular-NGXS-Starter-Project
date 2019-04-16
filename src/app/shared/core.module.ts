@@ -52,6 +52,7 @@ export function isSSR(): boolean { return typeof window === "undefined"; }
     ],
     declarations: [AppShellNoRenderDirective, AppShellRenderDirective],
     providers: [
+
         NotificationService,
         {
             provide: HTTP_INTERCEPTORS,

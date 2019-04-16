@@ -16,7 +16,7 @@ import {
 
 import { Login, Logout } from './shared/state/auth.actions';
 
-import { MatSelectChange } from '@angular/material';
+//import { MatSelectChange } from '@angular/material';
 import { Router, NavigationEnd } from '@angular/router';
 import { routeAnimations } from './shared/animations/route.animations';
 import { environment as env } from '../environments/environment'
@@ -127,7 +127,7 @@ export class AppComponent {
     }
 
 
-    onLanguageSelect($event: MatSelectChange) {
+    onLanguageSelect($event: any) {
         this.store.dispatch(new ChangeLanguage($event.value));
 
     }

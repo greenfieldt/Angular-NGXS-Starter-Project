@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { TranslateModule } from '@ngx-translate/core';
-
+/*
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
@@ -26,6 +26,11 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatSliderModule } from '@angular/material/';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material';
+*/
+
+import { ButtonsModule, InputsModule, CardsFreeModule, WavesModule, IconsModule, ModalModule } from 'angular-bootstrap-md';
+
+
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -103,24 +108,30 @@ library.add(
         FormsModule,
 
         TranslateModule,
-
-        MatButtonModule,
-        MatToolbarModule,
-        MatSelectModule,
-        MatTabsModule,
-        MatInputModule,
-        MatProgressSpinnerModule,
-        MatChipsModule,
-        MatCardModule,
-        MatSidenavModule,
-        MatCheckboxModule,
-        MatListModule,
-        MatMenuModule,
-        MatIconModule,
-        MatTooltipModule,
-        MatSnackBarModule,
-        MatSlideToggleModule,
-        MatDividerModule,
+        /*
+                MatButtonModule,
+                MatToolbarModule,
+                MatSelectModule,
+                MatTabsModule,
+                MatInputModule,
+                MatProgressSpinnerModule,
+                MatChipsModule,
+                MatCardModule,
+                MatSidenavModule,
+                MatCheckboxModule,
+                MatListModule,
+                MatMenuModule,
+                MatIconModule,
+                MatTooltipModule,
+                MatSnackBarModule,
+                MatSlideToggleModule,
+                MatDividerModule,
+        */
+        ButtonsModule,
+        InputsModule,
+        WavesModule,
+        IconsModule,
+        CardsFreeModule,
 
         FontAwesomeModule
     ],
@@ -135,27 +146,33 @@ library.add(
         ReactiveFormsModule,
 
         TranslateModule,
-
-        MatButtonModule,
-        MatMenuModule,
-        MatTabsModule,
-        MatChipsModule,
-        MatInputModule,
-        MatProgressSpinnerModule,
-        MatCheckboxModule,
-        MatCardModule,
-        MatSidenavModule,
-        MatListModule,
-        MatSelectModule,
-        MatToolbarModule,
-        MatIconModule,
-        MatTooltipModule,
-        MatSnackBarModule,
-        MatSlideToggleModule,
-        MatDividerModule,
-        MatSliderModule,
-        MatDatepickerModule,
-        MatNativeDateModule,
+        /*
+                MatButtonModule,
+                MatMenuModule,
+                MatTabsModule,
+                MatChipsModule,
+                MatInputModule,
+                MatProgressSpinnerModule,
+                MatCheckboxModule,
+                MatCardModule,
+                MatSidenavModule,
+                MatListModule,
+                MatSelectModule,
+                MatToolbarModule,
+                MatIconModule,
+                MatTooltipModule,
+                MatSnackBarModule,
+                MatSlideToggleModule,
+                MatDividerModule,
+                MatSliderModule,
+                MatDatepickerModule,
+                MatNativeDateModule,
+        */
+        ButtonsModule,
+        InputsModule,
+        WavesModule,
+        IconsModule,
+        CardsFreeModule,
 
         FontAwesomeModule,
 

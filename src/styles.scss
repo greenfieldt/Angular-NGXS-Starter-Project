@@ -6,19 +6,19 @@
 
 @import 'styles-reset';
 
-@import '../node_modules/@angular/material/theming';
+//@import '../node_modules/@angular/material/theming';
 
-@include mat-core();
+//@include mat-core();
 
-@import 'themes/default-theme.scss';
-@import 'themes/dark-theme.scss';
+//@import 'themes/default-theme.scss';
+//@import 'themes/dark-theme.scss';
 
 @import 'styles-reset.scss-theme';
-@import 'app/app.component.scss-theme';
-@import 'app/static/home/home.component.scss-theme';
-@import 'app/static/about/about.component.scss-theme';
+//@import 'app/app.component.scss-theme';
+//@import 'app/static/home/home.component.scss-theme';
+//@import 'app/static/about/about.component.scss-theme';
 
-
+/*
 @mixin custom-components-theme($theme) {
   @include increate-styles-reset-theme($theme);
   @include increate-app-component-theme($theme);
@@ -38,3 +38,6 @@
   @include angular-material-theme($increate-dark-theme);
   @include custom-components-theme($increate-dark-theme);
 }
+*/
+
+
