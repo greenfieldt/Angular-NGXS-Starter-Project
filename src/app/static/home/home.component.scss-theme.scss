@@ -1,11 +1,11 @@
 @import '~@angular/material/theming';
 
-@mixin increate-home-component-theme($theme) {
+@mixin AngularAdvisors-home-component-theme($theme) {
   $foreground: map-get($theme, foreground);
   $background: map-get($theme, background);
   $accent: map-get($theme, accent);
 
-  increate-home {
+  AngularAdvisors-home {
     .background {
       color: mat-color($foreground, text);
       background-color: mat-color($background, background);

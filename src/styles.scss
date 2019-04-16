@@ -20,21 +20,21 @@
 
 
 @mixin custom-components-theme($theme) {
-  @include increate-styles-reset-theme($theme);
-  @include increate-app-component-theme($theme);
-  @include increate-home-component-theme($theme);
-  @include increate-about-component-theme($theme);
+  @include AngularAdvisors-styles-reset-theme($theme);
+  @include AngularAdvisors-app-component-theme($theme);
+  @include AngularAdvisors-home-component-theme($theme);
+  @include AngularAdvisors-about-component-theme($theme);
 
 }
 
 
 .default-theme {
-  @include angular-material-theme($increate-theme);
-  @include custom-components-theme($increate-theme);
+  @include angular-material-theme($AngularAdvisors-theme);
+  @include custom-components-theme($AngularAdvisors-theme);
 
 }
 
 .dark-theme {
-  @include angular-material-theme($increate-dark-theme);
-  @include custom-components-theme($increate-dark-theme);
+  @include angular-material-theme($AngularAdvisors-dark-theme);
+  @include custom-components-theme($AngularAdvisors-dark-theme);
 }

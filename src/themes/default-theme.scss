@@ -1,5 +1,5 @@
-$increate-primary: mat-palette($mat-indigo, 800, 300, 900);
-$increate-accent: mat-palette($mat-light-blue);
-$increate-warn: mat-palette($mat-pink, 600);
+$AngularAdvisors-primary: mat-palette($mat-indigo, 800, 300, 900);
+$AngularAdvisors-accent: mat-palette($mat-light-blue);
+$AngularAdvisors-warn: mat-palette($mat-pink, 600);
 
-$increate-theme: mat-light-theme($increate-primary, $increate-accent, $increate-warn);
+$AngularAdvisors-theme: mat-light-theme($AngularAdvisors-primary, $AngularAdvisors-accent, $AngularAdvisors-warn);

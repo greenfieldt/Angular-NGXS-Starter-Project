@@ -20,7 +20,7 @@ type Rate = {
 }
 
 @Component({
-    selector: 'increate-home',
+    selector: 'AngularAdvisors-home',
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush

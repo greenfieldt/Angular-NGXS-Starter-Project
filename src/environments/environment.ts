@@ -9,7 +9,7 @@ export const environment = {
     i18nPrefix: '',
     test: false,
     envName: 'DEV',
-    appName: "Increate",
+    appName: "AngularAdvisors",
     versions: {
         app: VERSION.version,
     }

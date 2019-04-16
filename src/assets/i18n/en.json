@@ -1,11 +1,11 @@
 {
-    "increate.title.short": "Increate short (english)",
-    "increate.title.long": "Increate long (english)",
-    "increate.menu.login": "Login (english)",
+    "AngularAdvisors.title.short": "AngularAdvisors short (english)",
+    "AngularAdvisors.title.long": "AngularAdvisors long (english)",
+    "AngularAdvisors.menu.login": "Login (english)",
     "imcreate.menu.logout": "Logout (english)",
-    "increate.header.github": "Github (english)",
-    "increate.menu.home": "Home (english)",
-    "increate.menu.about": "About (english)",
-    "increate.menu.logout": "Logout (english)",
-    "increate.footer.changelog": "ChangeLog (english)"
+    "AngularAdvisors.header.github": "Github (english)",
+    "AngularAdvisors.menu.home": "Home (english)",
+    "AngularAdvisors.menu.about": "About (english)",
+    "AngularAdvisors.menu.logout": "Logout (english)",
+    "AngularAdvisors.footer.changelog": "ChangeLog (english)"
 }

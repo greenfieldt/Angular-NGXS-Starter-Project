@@ -10,10 +10,10 @@ skip_files:
 
 handlers:
 - url: /(.*\.(gif|png|jpeg|jpg|css|js|ico|json|txt|webmanifest))$
-  static_files: dist/Increate/\1
-  upload: dist/Increate/(.*)
+  static_files: dist/AngularAdvisors/\1
+  upload: dist/AngularAdvisors/(.*)
 
 - url: /(.*)
-  static_files: dist/Increate/index.html
-  upload: dist/Increate/index.html
+  static_files: dist/AngularAdvisors/index.html
+  upload: dist/AngularAdvisors/index.html
   expiration: "1m"

@@ -26,7 +26,7 @@ import { isPlatformBrowser } from '@angular/common';
 
 
 @Component({
-    selector: 'increate-root',
+    selector: 'AngularAdvisors-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
     animations: [routeAnimations],
@@ -44,8 +44,8 @@ export class AppComponent {
     sub: Subscription = new Subscription();
 
     navigation = [
-        { link: 'about', label: 'increate.menu.about' },
-        { link: 'home', label: 'increate.menu.home' }
+        { link: 'about', label: 'AngularAdvisors.menu.about' },
+        { link: 'home', label: 'AngularAdvisors.menu.home' }
     ];
 
     navigationSideMenu = [

@@ -6,7 +6,7 @@
       <div class="branding">
 	<img alt="logo" [src]=logo />
 	<span data-testid="title">
-	  {{ 'increate.title.short' | translate}}
+	  {{ 'AngularAdvisors.title.short' | translate}}
 	</span>
       </div>
 
@@ -42,13 +42,13 @@
 	  <span routerLink="" class="branding spacer center d-none
 				     d-sm-inline d-md-none">
 	    <img alt="logo" [src]="logo" />
-	    {{'increate.title.short' | translate }}
+	    {{'AngularAdvisors.title.short' | translate }}
 	  </span>
 
 	  <span routerLink="" class="branding spacer d-none
 				     d-md-inline">
 	    <img alt="logo" [src]="logo" />
-	    {{ 'increate.title.long' | translate}}
+	    {{ 'AngularAdvisors.title.long' | translate}}
 	  </span>
 
           <span class="d-none d-md-inline">
@@ -67,7 +67,7 @@
 		  *ngIf="!(isAuthenticated$ | async)"
 		  (click)="onLoginClick()"
 		  aria-label="Login">
-            {{ 'increate.menu.login' | translate }}
+            {{ 'AngularAdvisors.menu.login' | translate }}
           </button>
 
           <button *ngIf="(isAuthenticated$ | async)"
@@ -81,9 +81,9 @@
 	  
           <mat-menu #toolbarUserMenu="matMenu">
             <button mat-menu-item (click)="onLogoutClick()"
-		    [attr.aria-label]="'increate.menu.logout' | translate">
+		    [attr.aria-label]="'AngularAdvisors.menu.logout' | translate">
               <mat-icon><fa-icon icon="power-off"></fa-icon></mat-icon>
-              <span>{{ 'increate.menu.logout' | translate }}</span>
+              <span>{{ 'AngularAdvisors.menu.logout' | translate }}</span>
             </button>
           </mat-menu>
 
@@ -93,7 +93,7 @@
             <fa-icon icon="cog"></fa-icon>
           </button>
 
-          <a [matTooltip]="'increate.header.github' | translate"
+          <a [matTooltip]="'AngularAdvisors.header.github' | translate"
              matTooltipPosition="before"
              mat-icon-button
              class="link d-none d-sm-inline"
@@ -154,9 +154,9 @@
         <div class="row">
           <div class="col-12 signature">
             &#169; <span class="year"
-            data-testid="footer-year">{{year}}</span> - Increate LLC
+            data-testid="footer-year">{{year}}</span> - AngularAdvisors LLC
             <br class="d-block d-sm-none">
-            <a [matTooltip]="'increate.footer.changelog' | translate"
+            <a [matTooltip]="'AngularAdvisors.footer.changelog' | translate"
                matTooltipPosition="before"
                href="https://github.com/your project
                here/blob/master/CHANGELOG.md" aria-label="Change Log" target="_blank" rel="noopener">
