@@ -46,6 +46,7 @@ function onIntersection(entries, onScriptLoaded) {
 }
 
 
+
 @Component({
     selector: 'increate-home',
     templateUrl: './home.component.html',
