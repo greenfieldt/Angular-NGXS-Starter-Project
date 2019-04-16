@@ -7,7 +7,7 @@
     "start": "ng serve",
     "start:prod": "npm run clean && npm run build:prod  && npm run express",
     "start:pgssr": "npm run clean && npm run compile:server && npm run build:prod && npm run build:ssr:prod && npm run generate:prerender && npm run express",
-    "start:ssr": "npm run clearn && npm run compile:server && npm run build:prod && npm run build:ssr:prod && npm run serve:ssr",
+    "start:ssr": "npm run clean && npm run compile:server && npm run build:prod && npm run build:ssr:prod && npm run serve:ssr",
 
     "build": "ng build",
     "build:prod": "node version.js && ng build --prod=true --aot=true --vendorChunk=true --buildOptimizer=true",
