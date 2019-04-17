@@ -1,11 +1,11 @@
 {
-    "increate.title.short": "Increate short (english)",
-    "increate.title.long": "Increate long (english)",
-    "increate.menu.login": "Login (english)",
+    "CofChrist.title.short": "CofChrist short (english)",
+    "CofChrist.title.long": "CofChrist long (english)",
+    "CofChrist.menu.login": "Login (english)",
     "imcreate.menu.logout": "Logout (english)",
-    "increate.header.github": "Github (english)",
-    "increate.menu.home": "Home (english)",
-    "increate.menu.about": "About (english)",
-    "increate.menu.logout": "Logout (english)",
-    "increate.footer.changelog": "ChangeLog (english)"
+    "CofChrist.header.github": "Github (english)",
+    "CofChrist.menu.home": "Home (english)",
+    "CofChrist.menu.about": "About (english)",
+    "CofChrist.menu.logout": "Logout (english)",
+    "CofChrist.footer.changelog": "ChangeLog (english)"
 }

@@ -8,12 +8,12 @@ const routes: Routes = [
     {
         path: 'home',
         component: HomeComponent,
-        data: { title: 'increate.menu.home' }
+        data: { title: 'CofChrist.menu.home' }
     },
     {
         path: 'about',
         component: AboutComponent,
-        data: { title: 'increate.menu.about' },
+        data: { title: 'CofChrist.menu.about' },
         canActivate: [AuthGuardService]
     }
 

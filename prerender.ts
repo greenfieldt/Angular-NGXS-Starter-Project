@@ -19,16 +19,16 @@ import { ROUTES } from './static.paths';
 const express = require('express');
 const compression = require('compression');
 
-const CONTEXT = `/${process.env.CONTEXT || 'Increate'}`;
+const CONTEXT = `/${process.env.CONTEXT || 'CofChrist'}`;
 const PORT = 7722;
 
 const app = express();
 
 //we expect to be in the dist directory 
 app.use(compression());
-app.use(CONTEXT, express.static(__dirname + '/Increate'));
-app.use('/', express.static(__dirname + '/Increate'));
-app.use('*', express.static(__dirname + '/Increate'));
+app.use(CONTEXT, express.static(__dirname + '/CofChrist'));
+app.use('/', express.static(__dirname + '/CofChrist'));
+app.use('*', express.static(__dirname + '/CofChrist'));
 
 let httpServer = app.listen(PORT, () => {
 
@@ -36,12 +36,12 @@ let httpServer = app.listen(PORT, () => {
 
 
     // * NOTE :: leave this as require() since this file is built Dynamically from webpack
-    const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require('./Increate-server/main');
+    const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require('./CofChrist-server/main');
 
-    const BROWSER_FOLDER = join(process.cwd(), 'Increate');
+    const BROWSER_FOLDER = join(process.cwd(), 'CofChrist');
 
     // Load the index.html file containing referances to your application bundle.
-    const index = readFileSync(join('Increate', 'index.html'), 'utf8');
+    const index = readFileSync(join('CofChrist', 'index.html'), 'utf8');
 
     let previousRender = Promise.resolve();
 
@@ -63,7 +63,7 @@ let httpServer = app.listen(PORT, () => {
                     //providing an http interceptor to allow server side use
                     //of httpclient 
                     provide: 'serverUrl',
-                    useValue: `http://localhost:${PORT}/Increate`,
+                    useValue: `http://localhost:${PORT}/CofChrist`,
                 },
                 provideModuleMap(LAZY_MODULE_MAP)
             ]

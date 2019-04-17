@@ -3,7 +3,7 @@ import { ROUTE_ANIMATIONS_ELEMENTS } from '../../shared/animations/route.animati
 
 
 @Component({
-    selector: 'increate-about',
+    selector: 'CofChrist-about',
     templateUrl: './about.component.html',
     styleUrls: ['./about.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush

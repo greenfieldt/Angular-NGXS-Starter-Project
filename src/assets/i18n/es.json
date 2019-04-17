@@ -1,12 +1,12 @@
 {
-    "increate.title.short": "Increate short (spanish)",
-    "increate.title.long": "Increate long (spanish)",
-    "increate.menu.login": "Login (spanish)",
+    "CofChrist.title.short": "CofChrist short (spanish)",
+    "CofChrist.title.long": "CofChrist long (spanish)",
+    "CofChrist.menu.login": "Login (spanish)",
     "imcreate.menu.logout": "Logout (spanish)",
-    "increate.header.github": "Github (spanish)",
-    "increate.menu.home": "Home (spanish)",
-    "increate.menu.about": "About (spanish)",
-    "increate.menu.logout": "Logout (spanish)",
-    "increate.footer.changelog": "ChangeLog (spanish)"
+    "CofChrist.header.github": "Github (spanish)",
+    "CofChrist.menu.home": "Home (spanish)",
+    "CofChrist.menu.about": "About (spanish)",
+    "CofChrist.menu.logout": "Logout (spanish)",
+    "CofChrist.footer.changelog": "ChangeLog (spanish)"
 
 }

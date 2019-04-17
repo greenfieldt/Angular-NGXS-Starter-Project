@@ -1,4 +1,4 @@
-# Increate
+# CofChrist
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.2.
 
@@ -25,16 +25,16 @@ Run `npm run serve:ssr` to start the SSR server. Navigate to `http://localhost:4
 
 ## Build
 
-Run `npm run build` to build the project. The build artifacts will be stored in the `dist/Increate` directory. 
+Run `npm run build` to build the project. The build artifacts will be stored in the `dist/CofChrist` directory. 
 
 Run `npm run build:prod` to build the prod project. The build artifacts will be stored in the `dist/Incrate` directory. 
 
-Run `npm run build:ssr` to build the SSR project. The build artifacts will be stored in the `dist/Increate-server` directory. 
+Run `npm run build:ssr` to build the SSR project. The build artifacts will be stored in the `dist/CofChrist-server` directory. 
 
-Run `npm run build:ssr:prod` to build the SSR prod project. The build artifacts will be stored in the `dist/Increate-server` directory. 
+Run `npm run build:ssr:prod` to build the SSR prod project. The build artifacts will be stored in the `dist/CofChrist-server` directory. 
 
 Run `npm run generate:prerender` to do compile time SSR to
-pre-generate the index.html file located in `dist/Increate`. This file will be overwritten 
+pre-generate the index.html file located in `dist/CofChrist`. This file will be overwritten 
 
 Run `ng compile:server` to compile server.ts and prerender.ts (into
 the dist folder)

@@ -27,7 +27,7 @@ import { isPlatformBrowser } from '@angular/common';
 
 
 @Component({
-    selector: 'increate-root',
+    selector: 'CofChrist-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
     animations: [routeAnimations],
@@ -45,8 +45,8 @@ export class AppComponent {
     sub: Subscription = new Subscription();
 
     navigation = [
-        { link: 'about', label: 'increate.menu.about' },
-        { link: 'home', label: 'increate.menu.home' }
+        { link: 'about', label: 'CofChrist.menu.about' },
+        { link: 'home', label: 'CofChrist.menu.home' }
     ];
 
     navigationSideMenu = [

@@ -19,7 +19,7 @@ const PORT = process.env.PORT || 4000;
 const DIST_FOLDER = join(process.cwd(), 'dist');
 
 // * NOTE :: leave this as require() since this file is built Dynamically from webpack
-const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require('./Increate-server/main');
+const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require('./CofChrist-server/main');
 
 // Our Universal express-engine (found @ https://github.com/angular/universal/tree/master/modules/express-engine)
 app.engine('html', ngExpressEngine({
@@ -30,17 +30,17 @@ app.engine('html', ngExpressEngine({
 }));
 
 app.set('view engine', 'html');
-app.set('views', join(DIST_FOLDER, 'Increate'));
+app.set('views', join(DIST_FOLDER, 'CofChrist'));
 
 // Example Express Rest API endpoints
 // app.get('/api/**', (req, res) => { });
 
 // Server static files from /browser
-app.get('*.*', express.static(join(DIST_FOLDER, 'Increate'), {
+app.get('*.*', express.static(join(DIST_FOLDER, 'CofChrist'), {
     maxAge: '1y'
 }));
 
-app.get('*.*', express.static(join(DIST_FOLDER, 'Increate/assets'), {
+app.get('*.*', express.static(join(DIST_FOLDER, 'CofChrist/assets'), {
     maxAge: '1y'
 }));
 

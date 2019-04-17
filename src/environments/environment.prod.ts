@@ -6,7 +6,7 @@ export const environment = {
     i18nPrefix: '',
     test: false,
     envName: 'PROD',
-    appName: "increate.title.long",
+    appName: "CofChrist.title.long",
     versions: {
         app: VERSION.version,
     }

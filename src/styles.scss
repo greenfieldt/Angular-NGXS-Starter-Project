@@ -20,23 +20,23 @@
 
 /*
 @mixin custom-components-theme($theme) {
-  @include increate-styles-reset-theme($theme);
-  @include increate-app-component-theme($theme);
-  @include increate-home-component-theme($theme);
-  @include increate-about-component-theme($theme);
+  @include CofChrist-styles-reset-theme($theme);
+  @include CofChrist-app-component-theme($theme);
+  @include CofChrist-home-component-theme($theme);
+  @include CofChrist-about-component-theme($theme);
 
 }
 
 
 .default-theme {
-  @include angular-material-theme($increate-theme);
-  @include custom-components-theme($increate-theme);
+  @include angular-material-theme($CofChrist-theme);
+  @include custom-components-theme($CofChrist-theme);
 
 }
 
 .dark-theme {
-  @include angular-material-theme($increate-dark-theme);
-  @include custom-components-theme($increate-dark-theme);
+  @include angular-material-theme($CofChrist-dark-theme);
+  @include custom-components-theme($CofChrist-dark-theme);
 }
 */
 

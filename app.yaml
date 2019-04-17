@@ -10,10 +10,10 @@ skip_files:
 
 handlers:
 - url: /(.*\.(gif|png|jpeg|jpg|css|js|ico|json|txt|webmanifest))$
-  static_files: dist/Increate/\1
-  upload: dist/Increate/(.*)
+  static_files: dist/CofChrist/\1
+  upload: dist/CofChrist/(.*)
 
 - url: /(.*)
-  static_files: dist/Increate/index.html
-  upload: dist/Increate/index.html
+  static_files: dist/CofChrist/index.html
+  upload: dist/CofChrist/index.html
   expiration: "1m"
