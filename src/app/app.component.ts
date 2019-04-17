@@ -4,6 +4,7 @@ import { tap, take, filter } from 'rxjs/operators';
 import { Store, Select } from '@ngxs/store';
 import * as checkBrowser from 'check-browser';
 import { Language, languages } from './shared/state/settings.state';
+
 import {
     ChangeLanguage,
     ChangePageAnimationsDisabled,

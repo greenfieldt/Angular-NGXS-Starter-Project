@@ -13,6 +13,9 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ToastModule, ToastService } from 'ng-uikit-pro-standard';
+
+
 
 @NgModule({
     declarations: [
@@ -25,6 +28,8 @@ import { HttpClientModule } from '@angular/common/http';
 
         SharedModule,
         CoreModule,
+
+//        ToastModule.forRoot(),
 
         StaticModule,
 

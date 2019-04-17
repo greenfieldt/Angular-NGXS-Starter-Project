@@ -32,7 +32,6 @@ export function isSSR(): boolean { return typeof window === "undefined"; }
         // angular
         CommonModule,
         HttpClientModule,
-
         // ngxs
         NgxsModule.forRoot([SettingState, AuthState], { developmentMode: !environment.production }),
         environment.production

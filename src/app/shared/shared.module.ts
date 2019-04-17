@@ -28,8 +28,13 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material';
 */
 
-import { ButtonsModule, InputsModule, CardsFreeModule, WavesModule, IconsModule, ModalModule } from 'angular-bootstrap-md';
+//import { ButtonsModule, InputsModule, CardsFreeModule, WavesModule, IconsModule, ModalModule, NavbarModule, NavbarComponent } from 'angular-bootstrap-md';
 
+import { ButtonsModule, InputsModule, CardsFreeModule, WavesModule, IconsModule, ModalModule, NavbarModule, NavbarComponent } from 'ng-uikit-pro-standard';
+
+
+
+NavbarComponent
 
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -98,9 +103,6 @@ library.add(
     faBook
 );
 
-//import { BigInputComponent } from './big-input/big-input.component';
-//import { BigInputActionComponent } from './big-input/big-input-action.component';
-//import { RtlSupportDirective } from './rtl-support/rtl-support.directive';
 
 @NgModule({
     imports: [
@@ -132,7 +134,8 @@ library.add(
         WavesModule,
         IconsModule,
         CardsFreeModule,
-
+        NavbarModule,
+        ModalModule,
         FontAwesomeModule
     ],
     declarations: [
@@ -173,7 +176,7 @@ library.add(
         WavesModule,
         IconsModule,
         CardsFreeModule,
-
+        NavbarModule,
         FontAwesomeModule,
 
         //        BigInputComponent,

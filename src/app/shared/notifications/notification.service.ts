@@ -1,11 +1,13 @@
 import { Injectable, NgZone } from '@angular/core';
 
 //import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
+//import { ToastService } from 'ng-uikit-pro-standard';
 
 @Injectable()
 export class NotificationService {
     constructor(
         // private readonly snackBar: MatSnackBar,
+  //      private readonly toastService: ToastService,
         private readonly zone: NgZone
     ) { }
 
@@ -48,5 +50,6 @@ export class NotificationService {
         // Need to open snackBar from Angular zone to prevent issues with its position per
         // https://stackoverflow.com/questions/50101912/snackbar-position-wrong-when-use-errorhandler-in-angular-5-and-material
         //this.zone.run(() => this.snackBar.open(message, null, configuration));
+       // this.zone.run(() => this.toastService.show(message, null, null));
     }
 }

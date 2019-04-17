@@ -8,15 +8,24 @@
 
     <!--Navigation & Intro-->
     <header>
-
+      
         <!--Navbar-->
-        <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
-            <div class="container">
-                <img class="navbar-brand" src="assets/img/graphics/CommunityOfChrist.png" style="height:50%"  alt="Temple">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        <mdb-navbar #navbar SideClass="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+          <div class="container">
+
+	    <mdb-navbar-brand>
+                <img class="navbar-brand"
+		     src="assets/img/graphics/CommunityOfChrist.png"
+		     style="height:50%"  alt="Temple">
+	    </mdb-navbar-brand>
+	    
+                <button mdbBtn class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+		  <span class="navbar-toggler-icon"></span>
                 </button>
+
+
+		
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!--Links-->
                     <ul class="navbar-nav mr-auto smooth-scroll">
@@ -62,7 +71,7 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+        </mdb-navbar>
         <!--/Navbar-->
 
         <!-- Intro Section -->
