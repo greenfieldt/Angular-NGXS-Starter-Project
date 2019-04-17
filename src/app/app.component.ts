@@ -89,6 +89,9 @@ export class AppComponent {
     @Select(state => state.settings.language) language$: Observable<string>;
     @Select(state => state.settings.theme) theme$: Observable<string>;
 
+    toKalendar() {
+        document.getElementById("kalendar").scrollIntoView();
+    }
 
     ngOnDestroy() {
         if (this.sub)
