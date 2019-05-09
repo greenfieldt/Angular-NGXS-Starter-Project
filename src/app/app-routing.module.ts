@@ -8,13 +8,13 @@ const routes: Routes = [
         pathMatch: 'full'
     },
     {
+        path: 'dynamic',
+        loadChildren: './dynamic/dynamic.module#DynamicModule'
+    },
+    {
         path: '**',
         redirectTo: 'home'
     },
-    {
-        path: 'dynamic',
-        loadChildren: 'app/dynamic/dynamic.module#BlogsModule'
-    }
 
 ];
 

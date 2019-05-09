@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DynamicHomeComponent } from './dynamichome/dynamichome.component';
+import { BlogpostComponent } from './blogpost/blogpost.component';
 
 const routes: Routes = [
     {
@@ -9,14 +10,16 @@ const routes: Routes = [
         children: [
             {
                 path: '',
-                redirectTo: 'todos',
+                redirectTo: 'blog',
                 pathMatch: 'full'
             },
             {
-                path: 'todos',
-                component: TodosContainerComponent,
-                data: { title: 'anms.examples.menu.todos' }
+                path: 'blog/:id',
+                component: BlogpostComponent,
+                pathMatch: 'full',
+                data: { title: 'increate.menu.blog' }
             },
+
         ]
     }
 ];

@@ -6,5 +6,8 @@
     "increate.menu.home": "Home",
     "increate.menu.about": "Playing with Technology",
     "increate.menu.logout": "Logout",
+    "increate.menu.dynamichome": "Dynamic Home",
+    "increate.menu.blogs": "Blogs",
+    "increate.menu.blog" : "Blog Post ",
     "increate.footer.changelog": "ChangeLog"
 }
