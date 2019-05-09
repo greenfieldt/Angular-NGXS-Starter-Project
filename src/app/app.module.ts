@@ -13,6 +13,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
+import { DynamicModule } from './dynamic/dynamic.module';
 
 @NgModule({
     declarations: [
@@ -34,7 +35,8 @@ import { HttpClientModule } from '@angular/common/http';
 
         GraphQLModule,
 
-        HttpClientModule
+        HttpClientModule,
+
     ],
     providers: [],
     bootstrap: [AppComponent]

@@ -17,7 +17,7 @@
           {{item.label | translate}}
         </a>
 
-	<a mat-list-item href="https://github.com/"
+	<a mat-list-item href="https://github.com/greenfieldt"
           aria-label="GitHub" target="_blank" rel="noopener">
           Github
         </a>
@@ -88,21 +88,21 @@
           </mat-menu>
 
 
-	  
+	  <!--
           <button mat-icon-button aria-label="Settings" routerLink="settings" class="d-none d-sm-inline">
             <fa-icon icon="cog"></fa-icon>
           </button>
-
+-->
           <a [matTooltip]="'increate.header.github' | translate"
              matTooltipPosition="before"
              mat-icon-button
              class="link d-none d-sm-inline"
-             href="https://github.com/"
+             href="https://github.com/greenfieldt"
 	     aria-label="GitHub"
              target="_blank" rel="noopener">
             <fa-icon [icon]="['fab','github']"></fa-icon>
           </a>
-
+<!--
 	  <span *ngIf="language$ | async as language">
             <mat-select [ngModel]="language" (selectionChange)="onLanguageSelect($event)">
               <mat-option *ngFor="let l of languages" [value]="l">
@@ -110,7 +110,7 @@
               </mat-option>
             </mat-select>
           </span>
-	  
+	  -->
 	</mat-toolbar>
       </div>
     
@@ -123,7 +123,7 @@
       <div appShellNoRender class="footer">
         <div class="row">
           <div class="col-sm-12 links">
-            <a href="https://www.github.com/" aria-label="GitHub" target="_blank" rel="noopener">
+            <a href="https://www.github.com/greenfieldt" aria-label="GitHub" target="_blank" rel="noopener">
               <fa-icon [icon]="['fab','github']"></fa-icon>
               <span>Github</span>
             </a>
@@ -134,20 +134,6 @@
             <a href="https://www.twitter.com/" aria-label="Twitter" target="_blank" rel="noopener">
               <fa-icon [icon]="['fab','twitter']"></fa-icon>
               <span>Twitter</span>
-            </a>
-            <a href="https://www.youtube.com/"
-               target="_blank" rel="noopener" aria-label="YouTube">
-              <fa-icon [icon]="['fab','youtube']"></fa-icon>
-              <span>Youtube</span>
-            </a>
-            <a href="https://www.instagram.com/" target="_blank"
-	       aira-label="Instagram" rel="noopener">
-              <fa-icon [icon]="['fab','instagram']"></fa-icon>
-              <span>Instagram</span>
-            </a>
-            <a href="https://www.slides.com/" aria-label="Slides" target="_blank" rel="noopener">
-              <fa-icon icon="play-circle"></fa-icon>
-              <span>Slides</span>
             </a>
           </div>
         </div>

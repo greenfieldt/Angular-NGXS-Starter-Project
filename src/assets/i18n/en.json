@@ -1,11 +1,10 @@
 {
-    "increate.title.short": "Increate short (english)",
-    "increate.title.long": "Increate long (english)",
-    "increate.menu.login": "Login (english)",
-    "imcreate.menu.logout": "Logout (english)",
-    "increate.header.github": "Github (english)",
-    "increate.menu.home": "Home (english)",
-    "increate.menu.about": "About (english)",
-    "increate.menu.logout": "Logout (english)",
-    "increate.footer.changelog": "ChangeLog (english)"
+    "increate.title.short": "Increate",
+    "increate.title.long": "Increate Software",
+    "increate.menu.login": "Login",
+    "increate.header.github": "Github",
+    "increate.menu.home": "Home",
+    "increate.menu.about": "Playing with Technology",
+    "increate.menu.logout": "Logout",
+    "increate.footer.changelog": "ChangeLog"
 }
