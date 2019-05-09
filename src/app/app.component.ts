@@ -44,8 +44,10 @@ export class AppComponent {
     sub: Subscription = new Subscription();
 
     navigation = [
+        { link: 'home', label: 'increate.menu.home' },
         { link: 'about', label: 'increate.menu.about' },
-        { link: 'home', label: 'increate.menu.home' }
+        { link: 'dynamic', label: 'increate.menu.dynamic' }
+
     ];
 
     navigationSideMenu = [

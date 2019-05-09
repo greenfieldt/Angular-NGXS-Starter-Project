@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DynamicHomeComponent } from './dynamichome/dynamichome.component';
 import { BlogpostComponent } from './blogpost/blogpost.component';
+import { PlayingWithTechComponent } from './playing-with-tech/playing-with-tech.component';
 
 const routes: Routes = [
     {
@@ -25,6 +26,13 @@ const routes: Routes = [
                 component: BlogpostComponent,
                 data: { title: 'increate.menu.blog' }
             },
+            {   //sometimes I put the blog post in assests/blogs and just
+                //pass the file name
+                path: 'pwt/:file',
+                component: PlayingWithTechComponent,
+                data: { title: 'increate.menu.pwt' }
+            },
+
 
         ]
     }

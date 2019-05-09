@@ -14,7 +14,7 @@ const routes: Routes = [
         path: 'about',
         component: AboutComponent,
         data: { title: 'increate.menu.about' },
-        canActivate: [AuthGuardService]
+        //canActivate: [AuthGuardService]
     }
 
 ];

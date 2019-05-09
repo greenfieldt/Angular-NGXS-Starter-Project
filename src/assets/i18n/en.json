@@ -4,10 +4,11 @@
     "increate.menu.login": "Login",
     "increate.header.github": "Github",
     "increate.menu.home": "Home",
-    "increate.menu.about": "Playing with Technology",
+    "increate.menu.about": "About",
     "increate.menu.logout": "Logout",
-    "increate.menu.dynamichome": "Dynamic Home",
+    "increate.menu.dynamic": "Playing With Technology",
     "increate.menu.blogs": "Blogs",
-    "increate.menu.blog" : "Blog Post ",
+    "increate.menu.blog" : "Blog Post",
+    "increate.menu.pwt": "Playing With Technology",
     "increate.footer.changelog": "ChangeLog"
 }
