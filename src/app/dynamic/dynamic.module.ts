@@ -6,6 +6,7 @@ import { SharedModule } from '../shared/shared.module';
 import { DynamicRoutingModule } from './dynamic-routing.module';
 
 import { MarkdownModule } from 'ngx-markdown';
+
 @NgModule({
     declarations: [BlogpostComponent, DynamicHomeComponent],
     imports: [

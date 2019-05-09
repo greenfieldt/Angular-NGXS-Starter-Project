@@ -13,10 +13,16 @@ const routes: Routes = [
                 redirectTo: 'blog',
                 pathMatch: 'full'
             },
-            {
-                path: 'blog/:id',
+            {   //sometimes I put the blog post in assests/blogs and just
+                //pass the file name
+                path: 'blog/:file',
                 component: BlogpostComponent,
-                pathMatch: 'full',
+                data: { title: 'increate.menu.blog' }
+            },
+            {   //but mostly I put them at the root level of public github repos
+                //and access them with the raw url
+                path: 'blog/:repo/:branch/:file',
+                component: BlogpostComponent,
                 data: { title: 'increate.menu.blog' }
             },
 
