@@ -14,7 +14,7 @@ import {
     InitializeSettings
 } from './shared/state/setting.actions';
 
-import { Login, Logout } from './shared/state/auth.actions';
+import { Login, Logout, EmailLogin } from './shared/state/auth.actions';
 
 import { MatSelectChange } from '@angular/material';
 import { Router, NavigationEnd } from '@angular/router';
@@ -133,7 +133,7 @@ export class AppComponent {
     }
 
     onLoginClick($event) {
-        this.store.dispatch(new Login({ username: 'greenfit', password: 'password' }));
+        this.store.dispatch(new EmailLogin('emailadress', 'password'));
     }
 
     onLogoutClick() {

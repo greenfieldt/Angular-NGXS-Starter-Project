@@ -16,10 +16,10 @@ import { tap, filter, take } from 'rxjs/operators'
 import { TitleService } from '../title/title.service';
 
 
-export const DEFAULT_THEME = 'default-theme';
+export const DEFAULT_THEME = 'black-skin';
 
-export type Theme = 'default-theme' | 'dark-theme';
-export const themes: Theme[] = ['default-theme', 'dark-theme'];
+export type Theme = 'white-skin' | 'black-skin' | 'default-skin' | 'no-skin';
+export const themes: Theme[] = ['white-skin', 'black-skin', 'default-skin', 'no-skin'];
 
 
 export type Language = 'en' | 'es';
@@ -54,7 +54,7 @@ export class SettingState {
         private router: Router) {
 
 
-        console.log("SettingState starting");
+//        console.log("SettingState starting");
 
     }
 
@@ -98,7 +98,7 @@ export class SettingState {
 
         const classList = this.overlayContainer.getContainerElement().classList;
         const toRemove = Array.from(classList)
-            .filter((item: string) => item.includes('-theme'));
+            .filter((item: string) => item.includes('-skin'));
 
         if (toRemove.length) {
             classList.remove(...toRemove);

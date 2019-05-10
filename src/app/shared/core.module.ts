@@ -12,8 +12,12 @@ import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-tran
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { environment } from '../../environments/environment';
+
 import { SettingState } from './state/settings.state';
 import { AuthState } from './state/auth.state';
+import { ContactsState } from './state/contacts.state';
+import { SocialState } from './state/social.state';
+
 import { NotificationService } from './notifications/notification.service';
 import { HttpErrorInterceptor } from './http-interceptors/http-error-interceptor.service';
 import { AppErrorHandler } from './error-handler/app-error-handler.service';
@@ -25,7 +29,13 @@ import { UniversalInterceptor } from './http-interceptors/universal-interceptor.
 import { AppShellNoRenderDirective } from './ssr/app-shell-no-render';
 import { AppShellRenderDirective } from './ssr/app-shell-render';
 
-export function isSSR(): boolean { return typeof window === "undefined"; }
+
+
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { UsersState } from './state/users.state';
 
 @NgModule({
     imports: [
@@ -33,13 +43,21 @@ export function isSSR(): boolean { return typeof window === "undefined"; }
         CommonModule,
         HttpClientModule,
 
+        //firebase
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFireAuthModule,
+        AngularFirestoreModule,
+        AngularFireStorageModule,
+
+
+
         // ngxs
-        NgxsModule.forRoot([SettingState, AuthState], { developmentMode: !environment.production }),
+        NgxsModule.forRoot([SettingState, AuthState, UsersState, ContactsState, SocialState], { developmentMode: !environment.production }),
         environment.production
             ? []
             : [NgxsReduxDevtoolsPluginModule.forRoot(),
             NgxsLoggerPluginModule.forRoot()],
-        NgxsStoragePluginModule.forRoot({ key: 'settings' }),
+        NgxsStoragePluginModule.forRoot({ key: ['settings', 'auth'] }),
         NgxsRouterPluginModule.forRoot(),
         // 3rd party
         TranslateModule.forRoot({
