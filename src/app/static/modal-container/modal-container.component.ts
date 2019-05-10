@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { tap, take } from 'rxjs/operators';
 import { LoginComponent } from '../login/login.component';
-import { ForgotPasswordComponent } from '../forgotpassword/forgot-password.component';
+import { ForgotPasswordComponent } from '../forgot-password/forgot-password.component';
 import { SetPasswordComponent } from '../set-password/set-password.component';
+import { SigninComponent } from '../signin/signin.component';
 
 
 @Component({
@@ -36,18 +37,24 @@ export class ModalContainerComponent implements OnInit {
                 } else if (x.component === 'forgotpassword') {
                     this.dialogRef = this.dialog.open(
                         ForgotPasswordComponent, { width: '400px' });
-                }
-                else if (x.component === 'setpassword') {
+                } else if (x.component === 'signin') {
+                    this.dialogRef = this.dialog.open(
+                        SigninComponent, { width: '400px' });
+                } else if (x.component === 'setpassword') {
                     this.dialogRef = this.dialog.open(
                         SetPasswordComponent, { width: '400px' });
                 }
 
+                this.dialogRef.afterClosed().pipe(
+                    take(1),
+                ).subscribe(() => {
+                    router.navigateByUrl('/');
+                });
+
+
             })
         ).subscribe());
 
-        this.dialogRef.afterClosed().subscribe(() => {
-            //router.navigateByUrl('/');
-        });
     }
 
     ngOnInit() {

@@ -63,7 +63,10 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "Increate:build"
+              "browserTarget": "Increate:build",
+	      "sslKey": "./misc/host.key",
+	      "sslCert": "./misc/host.cert"
+
           },
           "configurations": {
             "production": {

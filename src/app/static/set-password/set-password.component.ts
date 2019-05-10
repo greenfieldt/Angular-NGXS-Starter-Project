@@ -84,6 +84,9 @@ export class SetPasswordComponent implements OnInit {
                         ).subscribe();
                     })
                 ));
+
+            //need to do something with the state so we know it worked
+            this.reset();
         }
     }
 

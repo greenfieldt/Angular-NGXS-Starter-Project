@@ -18,8 +18,8 @@ import { TitleService } from '../title/title.service';
 
 export const DEFAULT_THEME = 'black-skin';
 
-export type Theme = 'white-skin' | 'black-skin' | 'default-skin' | 'no-skin';
-export const themes: Theme[] = ['white-skin', 'black-skin', 'default-skin', 'no-skin'];
+export type Theme = 'default-theme' | 'dark-theme';
+export const themes: Theme[] = ['default-theme', 'dark-theme'];
 
 
 export type Language = 'en' | 'es';
@@ -54,7 +54,7 @@ export class SettingState {
         private router: Router) {
 
 
-//        console.log("SettingState starting");
+        //        console.log("SettingState starting");
 
     }
 

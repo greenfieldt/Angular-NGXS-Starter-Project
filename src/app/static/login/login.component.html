@@ -4,9 +4,6 @@
     </span>
   </mat-toolbar>
 
-<ng-container *ngIf="formValueChanges$ | async as updatedForm">
-    {{update(updatedForm)}}
-</ng-container>
   
   <form [formGroup]="form" >
     <div class="row">
@@ -60,7 +57,7 @@
           </div>
 
 
-	  <a [routerLink]="{ outlets: { modal: 'modal/setpassword'
+	  <a [routerLink]="{ outlets: { modal: 'modal/signin'
 	  } }" class="col-md-8">Sign Up</a>
           <span flex></span>
 	  <a [routerLink]="{ outlets: { modal: 'modal/forgotpassword' } }" class="col-md-8" >Forgot Password</a>

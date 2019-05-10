@@ -44,7 +44,18 @@
     "increate.setpassword.form.invalid.password": "Invalid Password",
     "increate.setpassword.form.invalid.password.match": "Password Don't Match",
     
-    "increate.setpassword.form.submit": "Set Password"
+    "increate.setpassword.form.submit": "Set Password",
+
+
+    "increate.signin.form.title": "Create Account",
+    "increate.signin.form.subtitle": "",
+    "increate.signin.form.name": "Name",
+    "increate.signin.form.invalid.name": "Please Enter Your Name",
+    "increate.signin.form.email": "Email",
+    "increate.signin.form.invalid.email": "Invalid Email",
+    
+    "increate.signin.form.submit": "Create Account",
+    "increate.signin.form.cancel": "Cancel"
 
 
 }
