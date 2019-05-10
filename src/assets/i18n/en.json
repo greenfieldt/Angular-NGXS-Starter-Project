@@ -23,7 +23,15 @@
     "increate.login.form.submit": "Submit",
     "increate.login.form.cancel": "Cancel",
     "increate.login.form.forgot": "Forgot Password",
-    "increate.login.form.forgot": "Sign Up"
+    "increate.login.form.forgot": "Sign Up",
     
+
+    "increate.forgotpassword.form.title": "Forgot Password",
+   "increate.forgotpassword.form.subtitle": "",
+    "increate.forgotpassword.form.email": "Email",
+    "increate.forgotpassword.form.invalid.email": "Invalid Email",
     
+    "increate.forgotpassword.form.submit": "Send Reset Email",
+    "increate.form.returnToLogIn": "Return To Log In"
+
 }
