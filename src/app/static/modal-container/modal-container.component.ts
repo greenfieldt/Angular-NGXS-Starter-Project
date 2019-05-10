@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { LoginComponent } from '../login/login.component';
 import { ForgotPasswordComponent } from '../forgotpassword/forgot-password.component';
+import { SetPasswordComponent } from '../set-password/set-password.component';
 
 
 @Component({
@@ -36,6 +37,11 @@ export class ModalContainerComponent implements OnInit {
                     this.dialogRef = this.dialog.open(
                         ForgotPasswordComponent, { width: '400px' });
                 }
+                else if (x.component === 'setpassword') {
+                    this.dialogRef = this.dialog.open(
+                        SetPasswordComponent, { width: '400px' });
+                }
+
             })
         ).subscribe());
 

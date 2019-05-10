@@ -8,14 +8,16 @@ import { AboutComponent } from './about/about.component';
 import { LoginComponent } from './login/login.component';
 import { ForgotPasswordComponent } from './forgotpassword/forgot-password.component';
 import { ModalContainerComponent } from './modal-container/modal-container.component';
+import { SetPasswordComponent } from './set-password/set-password.component';
 
 @NgModule({
     declarations: [HomeComponent,
         AboutComponent,
         LoginComponent,
         ForgotPasswordComponent,
-        ModalContainerComponent],
-    entryComponents: [LoginComponent, ForgotPasswordComponent],
+        ModalContainerComponent,
+        SetPasswordComponent],
+    entryComponents: [LoginComponent, ForgotPasswordComponent, SetPasswordComponent],
 
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     imports: [

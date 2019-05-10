@@ -1,12 +1,10 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { Validators, FormBuilder } from '@angular/forms';
-import { TranslateService } from '@ngx-translate/core';
 import { Observable, timer } from 'rxjs';
 import { tap, take, filter, debounceTime } from 'rxjs/operators'
 
 import { Store, Select } from '@ngxs/store';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '../../shared/animations/route.animations';
-import { NotificationService } from '../../shared/notifications/notification.service';
 import { EmailLogin } from 'src/app/shared/state/auth.actions';
 import { MatDialog } from '@angular/material';
 
@@ -30,22 +28,15 @@ export class LoginComponent implements OnInit {
         password: ['', [Validators.required]],
     });
 
-    formValueChanges$: Observable<LoginForm>;
-
     loginFailed = false;
     loginErrorMessage = "";
 
     constructor(private fb: FormBuilder,
         private matDialog: MatDialog,
         private store: Store,
-        private translate: TranslateService,
-        private notificationService: NotificationService,
         private changeDetRef: ChangeDetectorRef) { }
 
     ngOnInit() {
-        this.formValueChanges$ = this.form.valueChanges.pipe(
-            debounceTime(500),
-        );
         this.isAuthenticated$.pipe(
             filter(x => !!x),
             tap((x) => {
@@ -56,10 +47,6 @@ export class LoginComponent implements OnInit {
             }),
             take(1),
         ).subscribe();
-    }
-
-    update(form: LoginForm) {
-        console.log("Update form");
     }
 
     save() {
@@ -86,9 +73,6 @@ export class LoginComponent implements OnInit {
 
 
     reset() {
-        this.form.reset();
-        this.form.clearValidators();
-        this.form.clearAsyncValidators();
         this.matDialog.closeAll();
     }
 }

@@ -60,7 +60,8 @@
           </div>
 
 
-	  <a href="" class="col-md-8">Sign Up</a>
+	  <a [routerLink]="{ outlets: { modal: 'modal/setpassword'
+	  } }" class="col-md-8">Sign Up</a>
           <span flex></span>
 	  <a [routerLink]="{ outlets: { modal: 'modal/forgotpassword' } }" class="col-md-8" >Forgot Password</a>
 
