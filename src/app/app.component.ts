@@ -23,7 +23,7 @@ import { environment as env } from '../environments/environment'
 import { SEOService } from './shared/seo/seo.service';
 import { TitleService } from './shared/title/title.service';
 import { isPlatformBrowser } from '@angular/common';
-import { LoginComponent } from './dynamic/login/login.component';
+import { LoginComponent } from './static/login/login.component';
 
 
 @Component({
@@ -47,7 +47,7 @@ export class AppComponent {
     navigation = [
         { link: 'home', label: 'increate.menu.home' },
         { link: 'about', label: 'increate.menu.about' },
-        { link: 'dynamic', label: 'increate.menu.dynamic' }
+        { link: 'dynamic', label: 'increate.menu.dynamic' },
 
     ];
 
@@ -138,7 +138,7 @@ export class AppComponent {
     }
 
     onLoginClick($event) {
-        let dialogRef = this.dialog.open(LoginComponent, { width: '400px' });
+        this.router.navigate([{ outlets: { modal: 'modal/login' } }]);
     }
 
     onLogoutClick() {
