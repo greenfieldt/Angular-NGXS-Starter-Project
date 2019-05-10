@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@
 import { Validators, FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material';
 import { Observable, timer } from 'rxjs';
-import { tap, take, filter, debounceTime } from 'rxjs/operators'
+import { tap, take, filter, debounceTime } from 'rxjs/operators';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '../../shared/animations/route.animations';
 import { Store } from '@ngxs/store';
 import { EmailLoginResetPassword } from 'src/app/shared/state/auth.actions';
@@ -14,13 +14,13 @@ export interface PasswordResetForm {
 
 
 @Component({
-    selector: 'app-password',
-    templateUrl: './password.component.html',
-    styleUrls: ['./password.component.scss'],
+    selector: 'app-forgot-password',
+    templateUrl: './forgot-password.component.html',
+    styleUrls: ['./forgot-password.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 
 })
-export class PasswordComponent implements OnInit {
+export class ForgotPasswordComponent implements OnInit {
     loginFailed = false;
     loginErrorMessage = "";
     routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;

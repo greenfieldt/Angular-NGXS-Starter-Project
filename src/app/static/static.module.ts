@@ -6,16 +6,16 @@ import { SharedModule } from '../shared/shared.module';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { LoginComponent } from './login/login.component';
-import { PasswordComponent } from './password/password.component';
+import { ForgotPasswordComponent } from './forgotpassword/forgot-password.component';
 import { ModalContainerComponent } from './modal-container/modal-container.component';
 
 @NgModule({
     declarations: [HomeComponent,
         AboutComponent,
         LoginComponent,
-        PasswordComponent,
+        ForgotPasswordComponent,
         ModalContainerComponent],
-    entryComponents: [LoginComponent, PasswordComponent],
+    entryComponents: [LoginComponent, ForgotPasswordComponent],
 
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     imports: [

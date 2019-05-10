@@ -27,11 +27,19 @@
     
 
     "increate.forgotpassword.form.title": "Forgot Password",
-   "increate.forgotpassword.form.subtitle": "",
+    "increate.forgotpassword.form.subtitle": "",
     "increate.forgotpassword.form.email": "Email",
     "increate.forgotpassword.form.invalid.email": "Invalid Email",
     
     "increate.forgotpassword.form.submit": "Send Reset Email",
-    "increate.form.returnToLogIn": "Return To Log In"
+    "increate.form.returnToLogIn": "Return To Log In",
+
+    "increate.setpassword.form.title": "Set Password",
+    "increate.setgotpassword.form.subtitle": "",
+    "increate.setgotpassword.form.email": "Email",
+    "increate.setgotpassword.form.invalid.email": "Invalid Email",
+    
+    "increate.setpassword.form.submit": "Set Password"
+
 
 }

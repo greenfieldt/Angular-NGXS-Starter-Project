@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { LoginComponent } from '../login/login.component';
-import { PasswordComponent } from '../password/password.component';
+import { ForgotPasswordComponent } from '../forgotpassword/forgot-password.component';
 
 
 @Component({
@@ -19,7 +19,9 @@ export class ModalContainerComponent implements OnInit {
 
     dialogRef;
 
-    constructor(private dialog: MatDialog, private route: ActivatedRoute, private router: Router) {
+    constructor(private dialog: MatDialog,
+        private route: ActivatedRoute,
+        private router: Router) {
         this.sub.add(route.params.pipe(
             tap((x) => {
                 if (this.dialogRef) {
@@ -32,7 +34,7 @@ export class ModalContainerComponent implements OnInit {
                         LoginComponent, { width: '400px' });
                 } else if (x.component === 'forgotpassword') {
                     this.dialogRef = this.dialog.open(
-                        PasswordComponent, { width: '400px' });
+                        ForgotPasswordComponent, { width: '400px' });
                 }
             })
         ).subscribe());
