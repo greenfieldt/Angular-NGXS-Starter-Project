@@ -7,10 +7,15 @@ import { DynamicRoutingModule } from './dynamic-routing.module';
 
 import { MarkdownModule } from 'ngx-markdown';
 import { PlayingWithTechComponent } from './playing-with-tech/playing-with-tech.component';
+import { LoginComponent } from './login/login.component';
+import { PasswordComponent } from './password/password.component';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
-    declarations: [BlogpostComponent, DynamicHomeComponent, PlayingWithTechComponent],
+    declarations: [BlogpostComponent, DynamicHomeComponent, PlayingWithTechComponent, LoginComponent, PasswordComponent, ContactComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    exports: [LoginComponent],
+    entryComponents: [LoginComponent],
     imports: [
         SharedModule,
         DynamicRoutingModule,

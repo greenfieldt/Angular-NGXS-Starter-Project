@@ -14,11 +14,13 @@ import { environment } from '../environments/environment';
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
 import { DynamicModule } from './dynamic/dynamic.module';
+import { LoginComponent } from './dynamic/login/login.component';
+
 
 @NgModule({
     declarations: [
         AppComponent,
-
+        LoginComponent
     ],
     imports: [
         BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -38,6 +40,7 @@ import { DynamicModule } from './dynamic/dynamic.module';
         HttpClientModule,
 
     ],
+    entryComponents: [LoginComponent],
     providers: [],
     bootstrap: [AppComponent]
 })

@@ -10,5 +10,20 @@
     "increate.menu.blogs": "Blogs",
     "increate.menu.blog" : "Blog Post",
     "increate.menu.pwt": "Playing With Technology",
-    "increate.footer.changelog": "ChangeLog"
+    "increate.footer.changelog": "ChangeLog",
+
+    "increate.login.form.title": "Log In",
+    "increate.login.form.subtitle": "",
+    "increate.login.form.email": "Email",
+    "increate.login.form.invalid.email": "Invalid Email",
+    
+    "increate.login.form.password": "Password",
+    "increate.login.form.invalid.password": "Invalid Password",
+    
+    "increate.login.form.submit": "Submit",
+    "increate.login.form.cancel": "Cancel",
+    "increate.login.form.forgot": "Forgot Password",
+    "increate.login.form.forgot": "Sign Up"
+    
+    
 }

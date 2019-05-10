@@ -16,13 +16,14 @@ import {
 
 import { Login, Logout, EmailLogin } from './shared/state/auth.actions';
 
-import { MatSelectChange } from '@angular/material';
+import { MatSelectChange, MatDialog } from '@angular/material';
 import { Router, NavigationEnd } from '@angular/router';
 import { routeAnimations } from './shared/animations/route.animations';
 import { environment as env } from '../environments/environment'
 import { SEOService } from './shared/seo/seo.service';
 import { TitleService } from './shared/title/title.service';
 import { isPlatformBrowser } from '@angular/common';
+import { LoginComponent } from './dynamic/login/login.component';
 
 
 @Component({
@@ -59,6 +60,7 @@ export class AppComponent {
         private seo: SEOService,
         private title: TitleService,
         private store: Store,
+        private dialog: MatDialog,
         @Inject(PLATFORM_ID) private platformId) {
         /*
 	  I have GA turned off in Index.html -- If you want to use it
@@ -136,7 +138,7 @@ export class AppComponent {
     }
 
     onLoginClick($event) {
-        this.store.dispatch(new EmailLogin('emailadress', 'password'));
+        let dialogRef = this.dialog.open(LoginComponent, { width: '400px' });
     }
 
     onLogoutClick() {

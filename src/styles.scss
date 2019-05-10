@@ -18,6 +18,7 @@
 @import 'app/static/home/home.component.scss-theme';
 @import 'app/static/about/about.component.scss-theme';
 @import 'app/dynamic/dynamichome/dynamichome.component.scss-theme';
+@import 'app/dynamic/login/login.component.scss-theme';
 
 
 @mixin custom-components-theme($theme) {
@@ -26,6 +27,7 @@
   @include increate-home-component-theme($theme);
   @include increate-about-component-theme($theme);
   @include increate-dynamichome-component-theme($theme);
+  @include increate-login-component-theme($theme);
 
 }
 
