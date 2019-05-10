@@ -17,6 +17,7 @@
 @import 'app/app.component.scss-theme';
 @import 'app/static/home/home.component.scss-theme';
 @import 'app/static/about/about.component.scss-theme';
+@import 'app/static/login/login.component.scss-theme';
 
 
 @mixin custom-components-theme($theme) {
@@ -24,6 +25,7 @@
   @include increate-app-component-theme($theme);
   @include increate-home-component-theme($theme);
   @include increate-about-component-theme($theme);
+  @include increate-login-component-theme($theme);
 
 }
 

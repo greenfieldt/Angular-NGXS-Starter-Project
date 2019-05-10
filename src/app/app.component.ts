@@ -133,7 +133,8 @@ export class AppComponent {
     }
 
     onLoginClick($event) {
-        this.store.dispatch(new EmailLogin('emailadress', 'password'));
+        //        this.store.dispatch(new EmailLogin('emailadress', 'password'));
+        this.router.navigate([{ outlets: { modal: 'modal/login' } }]);
     }
 
     onLogoutClick() {

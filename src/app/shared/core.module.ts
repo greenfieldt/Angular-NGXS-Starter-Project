@@ -56,9 +56,8 @@ import { UsersState } from './state/users.state';
         environment.production
             ? []
             : [NgxsReduxDevtoolsPluginModule.forRoot(),
-            NgxsLoggerPluginModule.forRoot()],
+            NgxsLoggerPluginModule.forRoot(), NgxsRouterPluginModule.forRoot()],
         NgxsStoragePluginModule.forRoot({ key: ['settings', 'auth'] }),
-        NgxsRouterPluginModule.forRoot(),
         // 3rd party
         TranslateModule.forRoot({
             loader: {
