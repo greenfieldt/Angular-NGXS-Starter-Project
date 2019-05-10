@@ -36,7 +36,10 @@ export class EmailSignInLink {
 
 export class EmailContinueSignInLink {
     static readonly type = '[Auth] Continue Email Sign In Link';
-    constructor(public password: string, public href: string, public userCredintal: string,
+    constructor(public password: string,
+        public href: string,
+        public email: string,
+        public name: string,
         public errorCallback?: ({ }) => void
     ) { }
 }

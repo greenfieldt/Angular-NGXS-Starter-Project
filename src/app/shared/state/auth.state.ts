@@ -84,7 +84,7 @@ export class AuthState {
     @Action(EmailContinueSignInLink)
     async emailContinueSignInLink(ctx: StateContext<AuthStateModel>,
         action: EmailContinueSignInLink) {
-        let result = await this.authService.emailContinueSignInLink(action.href, action.userCredintal);
+        let result = await this.authService.emailContinueSignInLink(action.href, action.email, action.name);
         if (result && result.code) {
             if (action.errorCallback)
                 action.errorCallback(result);

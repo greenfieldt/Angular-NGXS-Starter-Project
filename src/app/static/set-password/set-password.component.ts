@@ -39,7 +39,7 @@ export class SetPasswordComponent implements OnInit {
     constructor(private fb: FormBuilder,
         private matDialog: MatDialog,
         private store: Store,
-		private router: Router,
+        private router: Router,
         private changeDetRef: ChangeDetectorRef) { }
 
     ngOnInit() {
@@ -66,6 +66,7 @@ export class SetPasswordComponent implements OnInit {
             this.store.dispatch(
                 new EmailContinueSignInLink(this.form.get('password').value,
                     this.router.url,
+                    this.form.get('email').value,
                     this.form.get('name').value,
                     ((err: any) => {
                         console.log(err);

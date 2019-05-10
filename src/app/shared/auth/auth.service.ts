@@ -134,11 +134,11 @@ export class AuthService {
             });
     }
 
-    emailContinueSignInLink(href, userCredintacl): Promise<any> {
+    emailContinueSignInLink(href, email, name): Promise<any> {
         const pID = this.platformId;
         if (this.afAuth.auth.isSignInWithEmailLink(href)) {
             // The client SDK will parse the code from the link for you.
-            return this.afAuth.auth.signInWithEmailLink(userCredintacl.email, href).then(() => {
+            return this.afAuth.auth.signInWithEmailLink(email, href).then(() => {
                 const data = {
                     uid: null,
                     email: null,
@@ -147,7 +147,7 @@ export class AuthService {
                     isAnonymous: null
                 };
 
-                data.displayName = userCredintacl.displayName
+                data.displayName = name
                     || this.afAuth.auth.currentUser.email;
                 data.isAnonymous = this.afAuth.auth.currentUser.isAnonymous
                     || false;
