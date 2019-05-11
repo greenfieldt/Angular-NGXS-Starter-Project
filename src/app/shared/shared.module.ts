@@ -61,7 +61,6 @@ import {
     faInstagram,
     faYoutube
 } from '@fortawesome/free-brands-svg-icons';
-import { SpinnerComponent } from './spinner/spinner/spinner/spinner.component';
 
 library.add(
     faBars,
@@ -93,6 +92,8 @@ library.add(
     faStream,
     faBook
 );
+
+import { SpinnerComponent } from './/spinner/spinner.component';
 
 //import { BigInputComponent } from './big-input/big-input.component';
 //import { BigInputActionComponent } from './big-input/big-input-action.component';

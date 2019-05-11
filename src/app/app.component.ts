@@ -26,7 +26,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { themes } from './shared/state/settings.state';
 import { NotificationService } from './shared/notifications/notification.service';
 import { SpinnerService } from './shared/spinner/spinner.service';
-import { SpinnerDefaultConfig } from './shared/spinner/spinner/spinner/spinner.overlay';
+import { SpinnerDefaultConfig } from './shared/spinner/spinner.overlay';
 
 
 
@@ -143,7 +143,9 @@ export class AppComponent {
     onLoginClick($event) {
         //        this.store.dispatch(new EmailLogin('emailadress', 'password'));
         //this.router.navigate([{ outlets: { modal: 'modal/login' } }]);
-        this.spinner.open(SpinnerDefaultConfig);
+        let spc = SpinnerDefaultConfig;
+        spc.defaultTimeOut = 10000000000;
+        this.spinner.open(spc);
     }
 
     onLogoutClick() {

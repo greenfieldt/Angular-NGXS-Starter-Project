@@ -28,7 +28,6 @@ import { SEOService } from './seo/seo.service';
 import { UniversalInterceptor } from './http-interceptors/universal-interceptor.service';
 import { AppShellNoRenderDirective } from './ssr/app-shell-no-render';
 import { AppShellRenderDirective } from './ssr/app-shell-render';
-import { SpinnerComponent } from './spinner/spinner/spinner/spinner.component';
 
 
 

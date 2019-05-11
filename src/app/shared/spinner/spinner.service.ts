@@ -1,6 +1,6 @@
 import { Injectable, ComponentRef, Injector, InjectionToken } from '@angular/core';
 import { Overlay, OverlayRef } from '@angular/cdk/overlay';
-import { SpinnerComponent } from './spinner/spinner/spinner.component';
+import { SpinnerComponent } from './spinner.component';
 import { ComponentPortal, PortalInjector } from '@angular/cdk/portal';
 import { SPINNER_DATA, SpinnerConfig, SpinnerOverlayRef } from './spinner.overlay';
 
@@ -13,7 +13,7 @@ export class SpinnerService {
     OverlaySpinnerConfig = {
         hasBackdrop: true,
         backdropClass: 'dark-backdrop',
-        panelClass: 'tm-file-preview-dialog-panel',
+        panelClass: '',
         scrollStrategy: this.overlay.scrollStrategies.block(),
         positionStrategy: this.overlay.position()
             .global().centerHorizontally().centerVertically()
