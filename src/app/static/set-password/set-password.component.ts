@@ -89,6 +89,11 @@ export class SetPasswordComponent implements OnInit {
         }
         else {
             this.store.dispatch(
+                //EmailContinuesigninlink uses the email and name from the form
+                //and not the one stored in state because whether those values
+                //will actually be there is use case dependent.  They probably will
+                //if you are signing yourself up but if you are in an admin use case
+                //and entering someone else's email address they won't be there
                 new EmailContinueSignInLink(this.form.get('password').value,
                     this.router.url,
                     this.form.get('email').value,

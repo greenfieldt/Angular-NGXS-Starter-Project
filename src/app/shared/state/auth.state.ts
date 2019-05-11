@@ -13,6 +13,9 @@ export type PartialEmailSignUpState =
     'AccountCreated' |
     'PasswordSet';
 
+export type PartialPasswordReset =
+    'PasswordResetLinkSent';
+
 
 export class PartialEmailSignUp {
     name: string;
@@ -34,6 +37,7 @@ export class DBAuthStateModel {
 export class AuthStateModel extends DBAuthStateModel {
     isAuthenticated: boolean;
     partialEmailSignUp?: PartialEmailSignUp;
+    partialResetPassword?: PartialPasswordReset;
 }
 
 @State<AuthStateModel>({
@@ -162,10 +166,15 @@ export class AuthState {
     @Action(EmailLoginResetPassword)
     async emailLoginResetPassword(ctx: StateContext<AuthStateModel>,
         action: EmailLoginResetPassword) {
+        ctx.patchState({ partialResetPassword: null });
         let result = await this.authService.emailResetPassword(action.email);
-        if (result && result.code)
+        if (result && result.code) {
             if (action.errorCallback)
                 action.errorCallback(result);
+        }
+        else {
+            ctx.patchState({ partialResetPassword: 'PasswordResetLinkSent' });
+        }
     }
 
     @Action(EmailLogin)
