@@ -1,0 +1,10 @@
+@import 'styles-variables';
+//This file is for any global overlay styles that we may need
+
+//spinner
+.cdk-overlay-backdrop.cdk-overlay-backdrop-showing {
+  &.dark-backdrop {
+    background: #000;
+    opacity: 0.65 !important;
+  }
+}

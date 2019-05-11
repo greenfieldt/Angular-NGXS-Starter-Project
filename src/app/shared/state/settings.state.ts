@@ -19,7 +19,8 @@ export const DEFAULT_THEME = 'default-theme';
 
 
 export type Theme = 'default-theme' | 'dark-theme';
-export const themes: any = //['default-theme', 'dark-theme'];
+//I'm moving towards using themes the way angular material io does it
+export const themes: any =
     [
         {
             primary: '#283593',
@@ -52,7 +53,7 @@ export interface SettingsStateModel {
     name: 'settings',
     defaults: {
         language: 'en',
-        theme: DEFAULT_THEME,
+        theme: 'default-theme',
         stickyHeader: true,
         pageAnimations: true,
         pageAnimationsDisabled: false,
@@ -111,7 +112,7 @@ export class SettingState {
 
         const classList = this.overlayContainer.getContainerElement().classList;
         const toRemove = Array.from(classList)
-            .filter((item: string) => item.includes('-skin'));
+            .filter((item: string) => item.includes('-theme'));
 
         if (toRemove.length) {
             classList.remove(...toRemove);

@@ -25,6 +25,9 @@ import { TitleService } from './shared/title/title.service';
 import { isPlatformBrowser } from '@angular/common';
 import { themes } from './shared/state/settings.state';
 import { NotificationService } from './shared/notifications/notification.service';
+import { SpinnerService } from './shared/spinner/spinner.service';
+import { SpinnerDefaultConfig } from './shared/spinner/spinner.overlay';
+
 
 
 @Component({
@@ -148,9 +151,13 @@ export class AppComponent {
         this.store.dispatch(new Logout());
 
     }
+    onSettings() {
+    }
     onThemeSelect(theme) {
         console.log(theme);
         this.store.dispatch(new ChangeTheme(theme));
+
+
         this.notification.info("Theme Changed");
     }
 

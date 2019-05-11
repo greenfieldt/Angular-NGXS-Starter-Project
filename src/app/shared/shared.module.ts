@@ -93,6 +93,8 @@ library.add(
     faBook
 );
 
+import { SpinnerComponent } from './/spinner/spinner.component';
+
 //import { BigInputComponent } from './big-input/big-input.component';
 //import { BigInputActionComponent } from './big-input/big-input-action.component';
 //import { RtlSupportDirective } from './rtl-support/rtl-support.directive';
@@ -122,13 +124,16 @@ library.add(
         MatSlideToggleModule,
         MatDividerModule,
         MatGridListModule,
-        FontAwesomeModule
+        FontAwesomeModule,
+
     ],
     declarations: [
         //        BigInputComponent,
         //        BigInputActionComponent,
         //        RtlSupportDirective
+        SpinnerComponent
     ],
+    entryComponents: [SpinnerComponent],
     exports: [
         CommonModule,
         FormsModule,
@@ -158,10 +163,10 @@ library.add(
         MatNativeDateModule,
         MatGridListModule,
         FontAwesomeModule,
-
         //        BigInputComponent,
         //        BigInputActionComponent,
         //        RtlSupportDirective
+        SpinnerComponent
     ]
 })
 export class SharedModule { }

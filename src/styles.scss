@@ -10,6 +10,8 @@
 
 @include mat-core();
 
+@import 'styles-overlay.scss';
+
 @import 'themes/default-theme.scss';
 @import 'themes/dark-theme.scss';
 
