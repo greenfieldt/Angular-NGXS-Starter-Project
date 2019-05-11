@@ -19,10 +19,12 @@ import { Login, Logout, EmailLogin } from './shared/state/auth.actions';
 import { MatSelectChange } from '@angular/material';
 import { Router, NavigationEnd } from '@angular/router';
 import { routeAnimations } from './shared/animations/route.animations';
-import { environment as env } from '../environments/environment'
+import { environment as env } from '../environments/environment';
 import { SEOService } from './shared/seo/seo.service';
 import { TitleService } from './shared/title/title.service';
 import { isPlatformBrowser } from '@angular/common';
+import { themes } from './shared/state/settings.state';
+import { NotificationService } from './shared/notifications/notification.service';
 
 
 @Component({
@@ -40,6 +42,7 @@ export class AppComponent {
     year = new Date().getFullYear();
     isProd = env.production;
     envName = env.envName;
+    themes = themes;
 
     sub: Subscription = new Subscription();
 
@@ -56,6 +59,7 @@ export class AppComponent {
     constructor(private router: Router,
         private seo: SEOService,
         private title: TitleService,
+		private notification: NotificationService,
         private store: Store,
         @Inject(PLATFORM_ID) private platformId) {
         /*
@@ -141,5 +145,11 @@ export class AppComponent {
         this.store.dispatch(new Logout());
 
     }
+    onThemeSelect(theme) {
+        console.log(theme);
+        this.store.dispatch(new ChangeTheme(theme));
+        this.notification.info("Theme Changed");
+    }
+
 
 }

@@ -29,7 +29,6 @@ type Rate = {
 export class HomeComponent implements OnInit {
     routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
 
-
     rates$: Observable<any[]>;
     loading$: Observable<boolean>;
     errors$: Observable<any>;
