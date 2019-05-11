@@ -7,6 +7,8 @@ import { Store, Select } from '@ngxs/store';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '../../shared/animations/route.animations';
 import { EmailLogin } from 'src/app/shared/state/auth.actions';
 import { MatDialog } from '@angular/material';
+import { SpinnerService } from 'src/app/shared/spinner/spinner.service';
+import { SpinnerDefaultConfig } from 'src/app/shared/spinner/spinner.overlay';
 
 export interface LoginForm {
     email: string;
@@ -30,9 +32,10 @@ export class LoginComponent implements OnInit {
 
     loginFailed = false;
     loginErrorMessage = "";
- 
+
     constructor(private fb: FormBuilder,
         private matDialog: MatDialog,
+        private spinner: SpinnerService,
         private store: Store,
         private changeDetRef: ChangeDetectorRef) { }
 
@@ -40,6 +43,8 @@ export class LoginComponent implements OnInit {
         this.isAuthenticated$.pipe(
             filter(x => !!x),
             tap((x) => {
+                if (this.spinnerRef)
+                    this.spinnerRef.close();
 
                 //do something here if login works
                 this.matDialog.closeAll();
@@ -49,12 +54,18 @@ export class LoginComponent implements OnInit {
         ).subscribe();
     }
 
+    spinnerRef;
+
     save() {
+        let config = SpinnerDefaultConfig;
+        config.defaultTimeOut = undefined;
+        this.spinnerRef = this.spinner.open(config);
+
         this.store.dispatch(
             new EmailLogin(this.form.get('email').value,
                 this.form.get('password').value,
                 ((err: any) => {
-                    console.log(err);
+                    this.spinnerRef.close();
                     this.loginErrorMessage = err.message;
                     this.loginFailed = true;
                     this.changeDetRef.detectChanges();
@@ -75,5 +86,5 @@ export class LoginComponent implements OnInit {
     reset() {
         this.matDialog.closeAll();
     }
-    
+
 }
