@@ -1,12 +1,14 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { Validators, FormBuilder, FormControl } from '@angular/forms';
-import { Observable, timer } from 'rxjs';
+import { Observable, timer, Subscription } from 'rxjs';
 import { tap, take, filter, debounceTime } from 'rxjs/operators'
 import { Store } from '@ngxs/store';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '../../shared/animations/route.animations'
 import { MatDialog } from '@angular/material';
 import { EmailContinueSignInLink } from 'src/app/shared/state/auth.actions';
 import { Router } from '@angular/router';
+import { PartialEmailSignUp } from 'src/app/shared/state/auth.state';
+import { NotificationService } from 'src/app/shared/notifications/notification.service';
 
 
 export interface LoginForm {
@@ -32,6 +34,8 @@ export class SetPasswordComponent implements OnInit {
         password2: ['', [Validators.required]]
     });
 
+    sub: Subscription = new Subscription();
+
 
     setPasswordFailed = false;
     setPasswordErrorMessage = "";
@@ -39,12 +43,33 @@ export class SetPasswordComponent implements OnInit {
     constructor(private fb: FormBuilder,
         private matDialog: MatDialog,
         private store: Store,
+        private notification: NotificationService,
         private router: Router,
         private changeDetRef: ChangeDetectorRef) { }
 
     ngOnInit() {
+        this.sub.add(this.store.select(state => state.auth.partialEmailSignUp).pipe(
+            tap((x: PartialEmailSignUp) => {
+
+                if (x.state === 'EmailedSignInLink') {
+                    this.form.get('name').setValue(x.name);
+                    this.form.get('email').setValue(x.email);
+                }
+                else if (x.state === 'AccountCreated') {
+                    //if I had a spinner I could spinner it right here
+                }
+                else if (x.state === 'PasswordSet') {
+                    this.notification.success("Account Created!");
+                    this.close();
+                }
+            }),
+        ).subscribe());
+
     }
 
+    ngOnDestroy() {
+        this.sub.unsubscribe();
+    }
 
     save() {
         if (this.form.get('password').value != this.form.get('password2').value) {
@@ -85,13 +110,12 @@ export class SetPasswordComponent implements OnInit {
                     })
                 ));
 
-            //need to do something with the state so we know it worked
-            this.reset();
+
         }
     }
 
 
-    reset() {
+    close() {
         this.matDialog.closeAll();
     }
 

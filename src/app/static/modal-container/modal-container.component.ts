@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatDialogRef } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { tap, take } from 'rxjs/operators';
@@ -19,37 +19,37 @@ export class ModalContainerComponent implements OnInit {
     sub: Subscription = new Subscription();
 
 
-    dialogRef;
-
+    dialogRef: MatDialogRef<any>;
+    dialog_sub: Subscription;
     constructor(private dialog: MatDialog,
         private route: ActivatedRoute,
         private router: Router) {
         this.sub.add(route.params.pipe(
             tap((x) => {
                 if (this.dialogRef) {
-                    this.dialogRef.close();
-                    this.dialogRef = null;
-                }
-                console.log(x);
-                if (x.component === 'login') {
-                    this.dialogRef = this.dialog.open(
-                        LoginComponent, { width: '400px' });
-                } else if (x.component === 'forgotpassword') {
-                    this.dialogRef = this.dialog.open(
-                        ForgotPasswordComponent, { width: '400px' });
-                } else if (x.component === 'signin') {
-                    this.dialogRef = this.dialog.open(
-                        SigninComponent, { width: '400px' });
-                } else if (x.component === 'setpassword') {
-                    this.dialogRef = this.dialog.open(
-                        SetPasswordComponent, { width: '400px' });
-                }
+                    //The case when we are already showing a dialog and
+                    //have been asked to show another one
 
-                this.dialogRef.afterClosed().pipe(
-                    take(1),
-                ).subscribe(() => {
-                    router.navigateByUrl('/');
-                });
+                    if (this.dialog_sub) {
+                        //We don't need to route to / anymore because we are
+                        //going to open another dialog
+                        this.dialog_sub.unsubscribe();
+                    }
+                    //but we still need to close the dialog that is already open
+                    this.dialogRef.close();
+                    //Now we need to wait for our close to finish and then
+                    //start the next dialog 
+                    this.dialogRef.afterClosed().pipe(
+                        take(1),
+                    ).subscribe(() => {
+                        this.createModal(x);
+                    });
+
+                }
+                else {
+                    //The case when there wasn't already a dialog showing
+                    this.createModal(x);
+                }
 
 
             })
@@ -57,10 +57,38 @@ export class ModalContainerComponent implements OnInit {
 
     }
 
+    createModal(modal) {
+        console.log(modal);
+        if (modal.component === 'login') {
+            this.dialogRef = this.dialog.open(
+                LoginComponent, { width: '400px' });
+        } else if (modal.component === 'forgotpassword') {
+            this.dialogRef = this.dialog.open(
+                ForgotPasswordComponent, { width: '400px' });
+        } else if (modal.component === 'signin') {
+            this.dialogRef = this.dialog.open(
+                SigninComponent, { width: '400px' });
+        } else if (modal.component === 'setpassword') {
+            this.dialogRef = this.dialog.open(
+                SetPasswordComponent, { width: '400px' });
+        }
+        //wait to reset the router
+        //this is what closes things down if you click off the dialog
+        //we save the sub here so we can stop this action if you open
+        //another dialog from within a dialog
+        this.dialog_sub = this.dialogRef.afterClosed().pipe(
+            take(1),
+        ).subscribe(() => {
+            this.router.navigateByUrl('/');
+        });
+
+
+    }
     ngOnInit() {
 
     }
-    ngOnDestroy() {
+
+    ngOnDestory() {
         this.sub.unsubscribe();
     }
 }

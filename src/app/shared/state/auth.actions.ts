@@ -30,6 +30,7 @@ export class EmailCreateUser {
 export class EmailSignInLink {
     static readonly type = '[Auth] Email Sign In Link';
     constructor(public email: string,
+        public name: string,
         public errorCallback?: ({ }) => void
     ) { }
 }
