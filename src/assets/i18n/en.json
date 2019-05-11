@@ -73,12 +73,11 @@
     "increate.features.guide": "Guide",
     "increate.features.lazyloading.description": "Faster startup time with lazy loaded feature modules",
     "increate.features.lazyloading.title": "Lazy loading",
-    "increate.features.ngrx": "One way data flow powered by RxJS Observables",
+    "increate.features.ngxs": "State management the Angular way",
     "increate.features.ngxtranslate": "An internationalization library for Angular",
     "increate.features.rxjs": "Reactive programming with async collections using Observables",
     "increate.features.themes.description": "Flexible theming support for provided and custom components",
     "increate.features.themes.title": "Themes",
-    "increate.features.title": "Features",
     "increate.features.typescript": "Superior developer experience, code completion, refactoring and less bugs"
 
 }

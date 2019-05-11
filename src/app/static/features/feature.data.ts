@@ -32,10 +32,10 @@ export const features: Feature[] = [
         documentation: 'https://cli.angular.io/'
     },
     {
-        name: 'NgRx',
-        version: env.versions.ngrx,
-        description: 'increate.features.ngrx',
-        github: 'https://github.com/ngrx/platform',
+        name: 'NgXs',
+        version: env.versions.ngxs,
+        description: 'increate.features.ngxs',
+        github: 'https://github.com/ngxs/platform',
         documentation: 'http://ngrx.github.io/',
     },
     {

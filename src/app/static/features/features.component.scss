@@ -12,6 +12,15 @@
 mat-card {
   margin: 0 0 20px 0;
 
+  mat-card-content
+  {
+      justify-content: center;
+  }
+  img {
+      width:300px;
+      height:100px;
+  }
+  
   mat-card-title {
     position: relative;
 

@@ -13,6 +13,9 @@
         <mat-card-subtitle rtl>
           {{ feature.description | translate }}
         </mat-card-subtitle>
+	<mat-card-content>
+	  <img src="/assets/green-checkmark.svg" />
+	</mat-card-content>
         <mat-card-actions>
           <a *ngIf="feature.github" mat-icon-button [href]="feature.github" target="_blank">
             <fa-icon [icon]="['fab','github']"></fa-icon>

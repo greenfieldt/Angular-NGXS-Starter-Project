@@ -76,7 +76,6 @@
     "increate.features.rxjs": "Reactive programming with async collections using Observables",
     "increate.features.themes.description": "Flexible theming support for provided and custom components",
     "increate.features.themes.title": "Themes",
-    "increate.features.title": "Features",
     "increate.features.typescript": "Superior developer experience, code completion, refactoring and less bugs"
 
     

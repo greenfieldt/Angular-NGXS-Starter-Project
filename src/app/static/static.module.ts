@@ -11,6 +11,7 @@ import { ModalContainerComponent } from './modal-container/modal-container.compo
 import { SetPasswordComponent } from './set-password/set-password.component';
 import { SigninComponent } from './signin/signin.component';
 import { FeaturesComponent } from './features/features.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 @NgModule({
     declarations: [HomeComponent,
@@ -20,7 +21,8 @@ import { FeaturesComponent } from './features/features.component';
         ModalContainerComponent,
         SetPasswordComponent,
         SigninComponent,
-        FeaturesComponent],
+        FeaturesComponent,
+        ContactUsComponent],
     entryComponents: [LoginComponent,
         ForgotPasswordComponent,
         SetPasswordComponent,
