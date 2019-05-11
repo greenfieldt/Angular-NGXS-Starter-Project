@@ -36,7 +36,7 @@ export class SpinnerService {
         const containerRef: ComponentRef<SpinnerComponent> =
             _overlayRef.attach(spinnerPortal);
 
-        return containerRef.instance;
+        return this.overlayRef;
 
     }
 
