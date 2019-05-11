@@ -112,7 +112,11 @@
 	  </div>
 
 	  
-          <button mat-icon-button aria-label="Settings" routerLink="settings" class="d-none d-sm-inline">
+          <button mat-icon-button aria-label="Settings"
+			   routerLink="settings" class="d-none
+							d-sm-inline"
+		  (click)="onSettings()"
+		  >
             <fa-icon icon="cog"></fa-icon>
           </button>
 

@@ -141,20 +141,23 @@ export class AppComponent {
     }
 
     onLoginClick($event) {
-        //        this.store.dispatch(new EmailLogin('emailadress', 'password'));
-        //this.router.navigate([{ outlets: { modal: 'modal/login' } }]);
-        let spc = SpinnerDefaultConfig;
-        spc.defaultTimeOut = 10000000000;
-        this.spinner.open(spc);
+        this.router.navigate([{ outlets: { modal: 'modal/login' } }]);
     }
 
     onLogoutClick() {
         this.store.dispatch(new Logout());
 
     }
+    onSettings() {
+        let spc = SpinnerDefaultConfig;
+        spc.defaultTimeOut = 3000;
+        this.spinner.open(spc);
+    }
     onThemeSelect(theme) {
         console.log(theme);
         this.store.dispatch(new ChangeTheme(theme));
+
+
         this.notification.info("Theme Changed");
     }
 
