@@ -5,10 +5,10 @@ import { tap, take, filter, debounceTime } from 'rxjs/operators'
 
 import { Store, Select } from '@ngxs/store';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '../../shared/animations/route.animations';
-import { EmailLogin } from 'src/app/shared/state/auth.actions';
+import { EmailLogin } from '../../shared/state/auth.actions';
 import { MatDialog } from '@angular/material';
-import { SpinnerService } from 'src/app/shared/spinner/spinner.service';
-import { SpinnerDefaultConfig, SpinnerOverlayRef } from 'src/app/shared/spinner/spinner.overlay';
+import { SpinnerService } from '../../shared/spinner/spinner.service';
+import { SpinnerDefaultConfig, SpinnerOverlayRef } from '../../shared/spinner/spinner.overlay';
 
 export interface LoginForm {
     email: string;

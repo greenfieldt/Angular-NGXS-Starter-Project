@@ -5,9 +5,9 @@ import { Observable, timer, Subscription } from 'rxjs';
 import { tap, take, filter, debounceTime } from 'rxjs/operators';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '../../shared/animations/route.animations';
 import { Store } from '@ngxs/store';
-import { EmailLoginResetPassword } from 'src/app/shared/state/auth.actions';
-import { PartialPasswordReset, AuthState, AuthStateModel } from 'src/app/shared/state/auth.state';
-import { NotificationService } from 'src/app/shared/notifications/notification.service';
+import { EmailLoginResetPassword } from '../../shared/state/auth.actions';
+import { PartialPasswordReset, AuthState, AuthStateModel } from '../../shared/state/auth.state';
+import { NotificationService } from '../../shared/notifications/notification.service';
 
 
 export interface PasswordResetForm {

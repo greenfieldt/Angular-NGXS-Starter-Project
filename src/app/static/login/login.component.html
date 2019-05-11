@@ -57,10 +57,17 @@
           </div>
 
 
-	  <a [routerLink]="{ outlets: { modal: 'modal/signin'
-	  } }" class="col-md-8">Sign Up</a>
+	  <a [routerLink]="{ outlets: { modal: 'modal/signin'} }"
+	     class="col-md-8">
+	    {{ 'increate.login.form.signup' | translate }}
+	  </a>
           <span flex></span>
-	  <a [routerLink]="{ outlets: { modal: 'modal/forgotpassword' } }" class="col-md-8" >Forgot Password</a>
+
+	  <a [routerLink]="{ outlets: { modal: 'modal/forgotpassword' } }"
+	     class="col-md-8"
+	     >
+	    {{ 'increate.login.form.forgot' | translate }}
+	  </a>
 
 
 	  </md-dialog-actions>

@@ -5,12 +5,12 @@ import { tap, take, filter, debounceTime } from 'rxjs/operators'
 import { Store } from '@ngxs/store';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '../../shared/animations/route.animations'
 import { MatDialog } from '@angular/material';
-import { EmailContinueSignInLink } from 'src/app/shared/state/auth.actions';
+import { EmailContinueSignInLink } from '../../shared/state/auth.actions';
 import { Router } from '@angular/router';
-import { PartialEmailSignUp } from 'src/app/shared/state/auth.state';
-import { NotificationService } from 'src/app/shared/notifications/notification.service';
-import { SpinnerService } from 'src/app/shared/spinner/spinner.service';
-import { SpinnerOverlayRef, SpinnerDefaultConfig } from 'src/app/shared/spinner/spinner.overlay';
+import { PartialEmailSignUp } from '../../shared/state/auth.state';
+import { NotificationService } from '../../shared/notifications/notification.service';
+import { SpinnerService } from '../../shared/spinner/spinner.service';
+import { SpinnerOverlayRef, SpinnerDefaultConfig } from '../../shared/spinner/spinner.overlay';
 
 
 export interface LoginForm {

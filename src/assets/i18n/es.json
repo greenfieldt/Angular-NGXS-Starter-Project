@@ -1,12 +1,62 @@
 {
-    "increate.title.short": "Increate short (spanish)",
-    "increate.title.long": "Increate long (spanish)",
-    "increate.menu.login": "Login (spanish)",
-    "imcreate.menu.logout": "Logout (spanish)",
-    "increate.header.github": "Github (spanish)",
-    "increate.menu.home": "Home (spanish)",
-    "increate.menu.about": "About (spanish)",
-    "increate.menu.logout": "Logout (spanish)",
-    "increate.footer.changelog": "ChangeLog (spanish)"
+    "increate.title.short": "Increate",
+    "increate.title.long": "Increate Software",
+    "increate.menu.login": "Iniciar Sesión",
+    "increate.header.github": "Github",
+    "increate.menu.home": "Página de Inicio",
+    "increate.menu.about": "Sobre",
+    "increate.menu.logout": "Desloguearse",
+    "increate.menu.dynamic": "Jugando Con la Tecnología",
+    "increate.menu.blogs": "Blogs",
+    "increate.menu.blog" : "Blog Post",
+    "increate.menu.pwt": "Jugando Con la Tecnología",
+    "increate.footer.changelog": "Cambios",
+
+    "increate.login.form.title": "Iniciar Sesión",
+    "increate.login.form.subtitle": "",
+    "increate.login.form.email": "Correo Electrónico",
+    "increate.login.form.invalid.email": "Correo Electrónico no Valido",
+    
+    "increate.login.form.password": "Contraseña",
+    "increate.login.form.invalid.password": "Contraseña no Valido",
+    
+    "increate.login.form.submit": "Enviar",
+    "increate.login.form.cancel": "Cancelar",
+    "increate.login.form.forgot": "Olvidó Contraseña",
+    "increate.login.form.signup": "Crear Cuenta",
+
+
+    "increate.forgotpassword.form.title": "Olvidó Contraseña",
+    "increate.forgotpassword.form.subtitle": "",
+    "increate.forgotpassword.form.email": "Correo Electrónico",
+    "increate.forgotpassword.form.invalid.email": "Correo Electrónico no Valido",
+    
+    "increate.forgotpassword.form.submit": "Restablecer la Contraseña",
+    "increate.form.returnToLogIn": "Devolución a Iniciar Sesión",
+
+    "increate.setpassword.form.title": "Establecer Contraseña",
+    "increate.setpassword.form.subtitle": "",
+    "increate.setpassword.form.name": "Nombre",
+    "increate.setpassword.form.invalid.name": "Por favor ingrese su nombre",
+    "increate.setpassword.form.email": "Correo Electrónico",
+    "increate.setpassword.form.invalid.email": "Correo Electrónico no Valido",
+    "increate.setpassword.form.password": "Contraseña",
+    "increate.setpassword.form.invalid.password": "Contraseña no Valido",
+    "increate.setpassword.form.invalid.password.match": "Las Contraseñas no Coinciden",
+    
+    "increate.setpassword.form.submit": "Establecer la Contraseña",
+
+
+    "increate.signin.form.title": "Crear Cuenta",
+    "increate.signin.form.subtitle": "",
+    "increate.signin.form.name": "Nombre",
+    "increate.signin.form.invalid.name": "Por favor ingrese su nombre",
+    "increate.signin.form.email": "Correo Electrónico",
+    "increate.signin.form.invalid.email": "Correo Electrónico no Valido",
+    
+    "increate.signin.form.submit": "Crear Cuenta",
+    "increate.signin.form.cancel": "Cancelar"
+
 
 }
+

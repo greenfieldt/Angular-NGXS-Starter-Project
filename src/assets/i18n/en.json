@@ -23,8 +23,8 @@
     "increate.login.form.submit": "Submit",
     "increate.login.form.cancel": "Cancel",
     "increate.login.form.forgot": "Forgot Password",
-    "increate.login.form.forgot": "Sign Up",
-    
+    "increate.login.form.signup": "Create Account",
+
 
     "increate.forgotpassword.form.title": "Forgot Password",
     "increate.forgotpassword.form.subtitle": "",
