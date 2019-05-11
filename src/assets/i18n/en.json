@@ -61,8 +61,19 @@
     "increate.signin.form.cancel": "Cancel",
 
 
+    "increate.contactus.form.title": "Stay Informed",
+    "increate.contactus.form.subtitle": "Receive our News Letter",
+    "increate.contactus.form.name": "Name",
+    "increate.contactus.form.invalid.name": "Please Enter Your Name",
+    "increate.contactus.form.email": "Email",
+    "increate.contactus.form.invalid.email": "Invalid Email",
+    
+    "increate.contactus.form.submit": "send",
 
-    "increate.features.title": "Created With",
+
+    
+
+    "increate.features.title": "This Site Created With",
     "increate.features.angular": "Modern powerful framework",
     "increate.features.angular-cli": "A command line interface for Angular",
     "increate.features.angular-material": "Material design component library",
