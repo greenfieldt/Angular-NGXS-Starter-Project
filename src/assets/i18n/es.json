@@ -11,7 +11,9 @@
     "increate.menu.blog" : "Blog Post",
     "increate.menu.pwt": "Jugando Con la Tecnología",
     "increate.footer.changelog": "Cambios",
+    "increate.menu.changetheme": "Cambio Colours",
 
+    
     "increate.login.form.title": "Iniciar Sesión",
     "increate.login.form.subtitle": "",
     "increate.login.form.email": "Correo Electrónico",
@@ -55,8 +57,29 @@
     "increate.signin.form.invalid.email": "Correo Electrónico no Valido",
     
     "increate.signin.form.submit": "Crear Cuenta",
-    "increate.signin.form.cancel": "Cancelar"
+    "increate.signin.form.cancel": "Cancelar",
 
+
+    "increate.features.title": "Created With",
+    "increate.features.angular": "Modern powerful framework",
+    "increate.features.angular-cli": "A command line interface for Angular",
+    "increate.features.angular-material": "Material design component library",
+    "increate.features.bootstrap": "Responsive layout from battle tested, world most famous UI library",
+    "increate.features.cypress": "Cypress is a next generation front end testing tool built for the modern web.",
+    "increate.features.documentation": "Docs",
+    "increate.features.fontawesome": "Easy to use vector icons and social logos",
+    "increate.features.guide": "Guide",
+    "increate.features.lazyloading.description": "Faster startup time with lazy loaded feature modules",
+    "increate.features.lazyloading.title": "Lazy loading",
+    "increate.features.ngrx": "One way data flow powered by RxJS Observables",
+    "increate.features.ngxtranslate": "An internationalization library for Angular",
+    "increate.features.rxjs": "Reactive programming with async collections using Observables",
+    "increate.features.themes.description": "Flexible theming support for provided and custom components",
+    "increate.features.themes.title": "Themes",
+    "increate.features.title": "Features",
+    "increate.features.typescript": "Superior developer experience, code completion, refactoring and less bugs"
+
+    
 
 }
 
