@@ -10,6 +10,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { ModalContainerComponent } from './modal-container/modal-container.component';
 import { SetPasswordComponent } from './set-password/set-password.component';
 import { SigninComponent } from './signin/signin.component';
+import { FeaturesComponent } from './features/features.component';
 
 @NgModule({
     declarations: [HomeComponent,
@@ -18,7 +19,8 @@ import { SigninComponent } from './signin/signin.component';
         ForgotPasswordComponent,
         ModalContainerComponent,
         SetPasswordComponent,
-        SigninComponent],
+        SigninComponent,
+        FeaturesComponent],
     entryComponents: [LoginComponent,
         ForgotPasswordComponent,
         SetPasswordComponent,
