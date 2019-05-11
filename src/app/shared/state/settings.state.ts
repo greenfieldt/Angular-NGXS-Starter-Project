@@ -16,10 +16,10 @@ import { tap, filter, take } from 'rxjs/operators'
 import { TitleService } from '../title/title.service';
 
 
-export const DEFAULT_THEME = 'black-skin';
 
 export type Theme = 'default-theme' | 'dark-theme';
-export const themes: any = //['default-theme', 'dark-theme'];
+//I'm moving towards using themes the way angular material io does it
+export const themes: any =
     [
         {
             primary: '#283593',
@@ -111,7 +111,7 @@ export class SettingState {
 
         const classList = this.overlayContainer.getContainerElement().classList;
         const toRemove = Array.from(classList)
-            .filter((item: string) => item.includes('-skin'));
+            .filter((item: string) => item.includes('-theme'));
 
         if (toRemove.length) {
             classList.remove(...toRemove);
