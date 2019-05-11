@@ -61,6 +61,7 @@ import {
     faInstagram,
     faYoutube
 } from '@fortawesome/free-brands-svg-icons';
+import { SpinnerComponent } from './spinner/spinner/spinner/spinner.component';
 
 library.add(
     faBars,
@@ -122,13 +123,16 @@ library.add(
         MatSlideToggleModule,
         MatDividerModule,
         MatGridListModule,
-        FontAwesomeModule
+        FontAwesomeModule,
+
     ],
     declarations: [
         //        BigInputComponent,
         //        BigInputActionComponent,
         //        RtlSupportDirective
+        SpinnerComponent
     ],
+    entryComponents: [SpinnerComponent],
     exports: [
         CommonModule,
         FormsModule,
@@ -158,10 +162,10 @@ library.add(
         MatNativeDateModule,
         MatGridListModule,
         FontAwesomeModule,
-
         //        BigInputComponent,
         //        BigInputActionComponent,
         //        RtlSupportDirective
+        SpinnerComponent
     ]
 })
 export class SharedModule { }

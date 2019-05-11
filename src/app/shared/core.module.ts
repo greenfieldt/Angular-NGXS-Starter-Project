@@ -28,6 +28,7 @@ import { SEOService } from './seo/seo.service';
 import { UniversalInterceptor } from './http-interceptors/universal-interceptor.service';
 import { AppShellNoRenderDirective } from './ssr/app-shell-no-render';
 import { AppShellRenderDirective } from './ssr/app-shell-render';
+import { SpinnerComponent } from './spinner/spinner/spinner/spinner.component';
 
 
 
@@ -36,6 +37,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { UsersState } from './state/users.state';
+import { SpinnerService } from './spinner/spinner.service';
 
 @NgModule({
     imports: [
@@ -85,6 +87,7 @@ import { UsersState } from './state/users.state';
         AuthGuardService,
         TitleService,
         SEOService,
+        SpinnerService,
         { provide: ErrorHandler, useClass: AppErrorHandler },
     ],
     exports: [TranslateModule, AppShellNoRenderDirective, AppShellRenderDirective]

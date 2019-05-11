@@ -25,6 +25,9 @@ import { TitleService } from './shared/title/title.service';
 import { isPlatformBrowser } from '@angular/common';
 import { themes } from './shared/state/settings.state';
 import { NotificationService } from './shared/notifications/notification.service';
+import { SpinnerService } from './shared/spinner/spinner.service';
+import { SpinnerDefaultConfig } from './shared/spinner/spinner/spinner/spinner.overlay';
+
 
 
 @Component({
@@ -59,7 +62,8 @@ export class AppComponent {
     constructor(private router: Router,
         private seo: SEOService,
         private title: TitleService,
-		private notification: NotificationService,
+        private spinner: SpinnerService,
+        private notification: NotificationService,
         private store: Store,
         @Inject(PLATFORM_ID) private platformId) {
         /*
@@ -138,7 +142,8 @@ export class AppComponent {
 
     onLoginClick($event) {
         //        this.store.dispatch(new EmailLogin('emailadress', 'password'));
-        this.router.navigate([{ outlets: { modal: 'modal/login' } }]);
+        //this.router.navigate([{ outlets: { modal: 'modal/login' } }]);
+        this.spinner.open(SpinnerDefaultConfig);
     }
 
     onLogoutClick() {
