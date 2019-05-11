@@ -60,6 +60,18 @@
     "increate.signin.form.cancel": "Cancelar",
 
 
+    "increate.contactus.form.title": "Mantente informado",
+    "increate.contactus.form.subtitle": "
+Recibe Nuestra Carta de Noticias",
+    "increate.contactus.form.name": "Nombre",
+    "increate.contactus.form.invalid.name": "Por favor ingrese su nombre",
+    "increate.contactus.form.email": "Correo Electrónico",
+    "increate.contactus.form.invalid.email": "Correo Electrónico no Valido",
+    
+    "increate.contactus.form.submit": "Enviar",
+
+
+    
     "increate.features.title": "Created With",
     "increate.features.angular": "Modern powerful framework",
     "increate.features.angular-cli": "A command line interface for Angular",
