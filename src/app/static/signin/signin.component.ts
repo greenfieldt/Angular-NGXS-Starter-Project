@@ -8,6 +8,8 @@ import { ROUTE_ANIMATIONS_ELEMENTS } from '../../shared/animations/route.animati
 import { EmailLogin, EmailCreateUser, EmailSignInLink } from 'src/app/shared/state/auth.actions';
 import { MatDialog } from '@angular/material';
 import { NotificationService } from 'src/app/shared/notifications/notification.service';
+import { SpinnerOverlayRef, SpinnerDefaultConfig } from 'src/app/shared/spinner/spinner.overlay';
+import { SpinnerService } from 'src/app/shared/spinner/spinner.service';
 
 export interface LoginForm {
     email: string;
@@ -29,11 +31,14 @@ export class SigninComponent implements OnInit {
         email: ['', [Validators.required, Validators.email]],
     });
 
+    spinnerRef: SpinnerOverlayRef;
+
     signinFailed = false;
     signinErrorMessage = "";
 
     constructor(private fb: FormBuilder,
         private matDialog: MatDialog,
+        private spinner: SpinnerService,
         private notification: NotificationService,
         private store: Store,
         private changeDetRef: ChangeDetectorRef) { }
@@ -47,12 +52,20 @@ export class SigninComponent implements OnInit {
     }
 
     save() {
+        //This will take some back and forth with the server so let's start
+        //a spinner which we will stop when we get the password complete
+        //state or encounter an error
+        let config = SpinnerDefaultConfig;
+        config.defaultTimeOut = undefined;
+        this.spinnerRef = this.spinner.open(config);
 
         this.store.dispatch(
             new EmailSignInLink(this.form.get('email').value,
                 this.form.get('name').value,
                 ((err: any) => {
-                    console.log(err);
+                    if (this.spinnerRef)
+                        this.spinnerRef.close();
+
                     this.signinErrorMessage = err.message;
                     this.signinFailed = true;
                     this.changeDetRef.detectChanges();
@@ -71,6 +84,8 @@ export class SigninComponent implements OnInit {
         this.sub.add(this.store.select(state => state.auth.partialEmailSignUp).pipe(
             filter((x) => !!x), //we may get a null if we have old state and need to clear it
             tap((x) => {
+                if (this.spinnerRef)
+                    this.spinnerRef.close();
                 this.notification.success("Check Your Email!");
                 this.close();
             }),

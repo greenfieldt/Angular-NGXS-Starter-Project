@@ -9,6 +9,8 @@ import { EmailContinueSignInLink } from 'src/app/shared/state/auth.actions';
 import { Router } from '@angular/router';
 import { PartialEmailSignUp } from 'src/app/shared/state/auth.state';
 import { NotificationService } from 'src/app/shared/notifications/notification.service';
+import { SpinnerService } from 'src/app/shared/spinner/spinner.service';
+import { SpinnerOverlayRef, SpinnerDefaultConfig } from 'src/app/shared/spinner/spinner.overlay';
 
 
 export interface LoginForm {
@@ -36,12 +38,14 @@ export class SetPasswordComponent implements OnInit {
 
     sub: Subscription = new Subscription();
 
+    spinnerRef: SpinnerOverlayRef;
 
     setPasswordFailed = false;
     setPasswordErrorMessage = "";
 
     constructor(private fb: FormBuilder,
         private matDialog: MatDialog,
+        private spinner: SpinnerService,
         private store: Store,
         private notification: NotificationService,
         private router: Router,
@@ -56,9 +60,13 @@ export class SetPasswordComponent implements OnInit {
                     this.form.get('email').setValue(x.email);
                 }
                 else if (x.state === 'AccountCreated') {
-                    //if I had a spinner I could spinner it right here
+                    //There isn't much to do in this staate
+                    //but wait for the password to get set
                 }
                 else if (x.state === 'PasswordSet') {
+                    if (this.spinnerRef)
+                        this.spinnerRef.close();
+
                     this.notification.success("Account Created!");
                     this.close();
                 }
@@ -72,6 +80,7 @@ export class SetPasswordComponent implements OnInit {
     }
 
     save() {
+
         if (this.form.get('password').value != this.form.get('password2').value) {
             this.setPasswordErrorMessage = "Passwords Don't Match";
             this.setPasswordFailed = true;
@@ -88,6 +97,14 @@ export class SetPasswordComponent implements OnInit {
 
         }
         else {
+
+            //This will take some back and forth with the server so let's start
+            //a spinner which we will stop when we get the password complete
+            //state or encounter an error
+            let config = SpinnerDefaultConfig;
+            config.defaultTimeOut = undefined;
+            this.spinnerRef = this.spinner.open(config);
+
             this.store.dispatch(
                 //EmailContinuesigninlink uses the email and name from the form
                 //and not the one stored in state because whether those values
@@ -99,7 +116,8 @@ export class SetPasswordComponent implements OnInit {
                     this.form.get('email').value,
                     this.form.get('name').value,
                     ((err: any) => {
-                        console.log(err);
+                        if (this.spinnerRef)
+                            this.spinnerRef.close();
                         this.setPasswordErrorMessage = err.message;
                         this.setPasswordFailed = true;
                         this.changeDetRef.detectChanges();
