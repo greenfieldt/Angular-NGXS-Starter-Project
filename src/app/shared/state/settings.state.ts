@@ -52,7 +52,7 @@ export interface SettingsStateModel {
     name: 'settings',
     defaults: {
         language: 'en',
-        theme: DEFAULT_THEME,
+        theme: 'default-theme',
         stickyHeader: true,
         pageAnimations: true,
         pageAnimationsDisabled: false,
