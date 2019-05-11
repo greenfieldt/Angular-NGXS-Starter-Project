@@ -1,0 +1,70 @@
+<mat-toolbar>
+    <span class="title-center">
+      {{ 'increate.signin.form.title' | translate }}
+    </span>
+  </mat-toolbar>
+
+  
+  <form [formGroup]="form" >
+    <div class="row">
+      <div class="col">
+	<mat-card>
+          <span class="d-flex justify-content-between align-items-baseline">
+            <h2>{{ 'increate.signin.form.subtitle' | translate }}</h2>
+          </span>
+
+
+          <div class="row">
+            <mat-form-field class="col" [ngClass]="routeAnimationsElements">
+              <input matInput type="name" placeholder="{{ 'increate.signin.form.name' | translate }}"
+                formControlName="name">
+              <mat-error *ngIf="form.get('name').invalid">
+                {{ 'increate.signin.form.invalid.name' | translate }}
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+
+	  
+	  <div class="row">
+            <mat-form-field class="col" [ngClass]="routeAnimationsElements">
+              <input matInput placeholder="{{ 'increate.signin.form.email' | translate }}"
+                formControlName="email" type="email">
+              <mat-error *ngIf="form.get('email').hasError('required')">
+                {{ 'increate.signin.form.invalid.email' | translate }}
+              </mat-error>
+              <mat-error *ngIf="form.get('email').hasError('email')">
+                {{ 'increate.signin.form.invalid.email' | translate }}</mat-error>
+            </mat-form-field>
+          </div>
+
+	  
+
+
+	  <md-dialog-actions layout="row">
+
+	  <div class="danger">
+	    {{signinErrorMessage}}
+	  </div>
+
+	    
+	  <div class="row buttons d-flex justify-content-between pad">
+            <button type="button" mat-raised-button color="accent"
+              [ngClass]="routeAnimationsElements" (click)="save()">
+              {{ 'increate.signin.form.submit' | translate }}
+            </button>
+
+            <button type="close" mat-raised-button (click)="close()" [ngClass]="routeAnimationsElements">
+              {{ 'increate.signin.form.cancel' | translate }}
+            </button>
+          </div>
+
+
+
+	  </md-dialog-actions>
+	  
+        </mat-card>
+	
+      </div>
+    </div>
+  </form>

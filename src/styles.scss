@@ -19,6 +19,10 @@
 @import 'app/static/about/about.component.scss-theme';
 @import 'app/dynamic/dynamichome/dynamichome.component.scss-theme';
 @import 'app/static/login/login.component.scss-theme';
+@import 'app/static/forgot-password/forgot-password.component.scss-theme';
+@import 'app/static/set-password/set-password.component.scss-theme';
+@import 'app/static/signin/signin.component.scss-theme';
+
 
 
 @mixin custom-components-theme($theme) {
@@ -28,7 +32,9 @@
   @include increate-about-component-theme($theme);
   @include increate-dynamichome-component-theme($theme);
   @include increate-login-component-theme($theme);
-
+  @include increate-forgot-password-component-theme($theme);
+  @include increate-set-password-component-theme($theme);
+  @include increate-signin-component-theme($theme);
 }
 
 

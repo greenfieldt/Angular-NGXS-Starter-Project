@@ -17,9 +17,23 @@ import { TitleService } from '../title/title.service';
 
 export const DEFAULT_THEME = 'default-theme';
 
-export type Theme = 'default-theme' | 'dark-theme';
-export const themes: Theme[] = ['default-theme', 'dark-theme'];
 
+export type Theme = 'default-theme' | 'dark-theme';
+export const themes: any = //['default-theme', 'dark-theme'];
+    [
+        {
+            primary: '#283593',
+            accent: '#03a9f4',
+            name: 'default-theme',
+            isDark: false,
+        },
+        {
+            primary: '#212529',
+            accent: '#303030',
+            name: 'dark-theme',
+            isDark: true,
+        }
+    ];
 
 export type Language = 'en' | 'es';
 export const languages: Language[] = ['en', 'es'];

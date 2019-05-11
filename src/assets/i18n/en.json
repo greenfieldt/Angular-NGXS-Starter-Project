@@ -23,7 +23,39 @@
     "increate.login.form.submit": "Submit",
     "increate.login.form.cancel": "Cancel",
     "increate.login.form.forgot": "Forgot Password",
-    "increate.login.form.forgot": "Sign Up"
+    "increate.login.form.forgot": "Sign Up",
     
+
+    "increate.forgotpassword.form.title": "Forgot Password",
+    "increate.forgotpassword.form.subtitle": "",
+    "increate.forgotpassword.form.email": "Email",
+    "increate.forgotpassword.form.invalid.email": "Invalid Email",
     
+    "increate.forgotpassword.form.submit": "Send Reset Email",
+    "increate.form.returnToLogIn": "Return To Log In",
+
+    "increate.setpassword.form.title": "Set Password",
+    "increate.setpassword.form.subtitle": "",
+    "increate.setpassword.form.name": "Name",
+    "increate.setpassword.form.invalid.name": "Please Enter Your Name",
+    "increate.setpassword.form.email": "Email",
+    "increate.setpassword.form.invalid.email": "Invalid Email",
+    "increate.setpassword.form.password": "Password",
+    "increate.setpassword.form.invalid.password": "Invalid Password",
+    "increate.setpassword.form.invalid.password.match": "Password Don't Match",
+    
+    "increate.setpassword.form.submit": "Set Password",
+
+
+    "increate.signin.form.title": "Create Account",
+    "increate.signin.form.subtitle": "",
+    "increate.signin.form.name": "Name",
+    "increate.signin.form.invalid.name": "Please Enter Your Name",
+    "increate.signin.form.email": "Email",
+    "increate.signin.form.invalid.email": "Invalid Email",
+    
+    "increate.signin.form.submit": "Create Account",
+    "increate.signin.form.cancel": "Cancel"
+
+
 }

@@ -6,7 +6,23 @@ import { Navigate } from '@ngxs/router-plugin';
 import { Observable, timer, Subscription } from 'rxjs';
 import { first, map, mergeMap, filter, tap } from 'rxjs/operators';
 import { UsersStateModel } from './users.state';
+import produce from 'immer';
 
+export type PartialEmailSignUpState =
+    'EmailedSignInLink' |
+    'AccountCreated' |
+    'PasswordSet';
+
+export type PartialPasswordReset =
+    'PasswordResetLinkSent';
+
+
+export class PartialEmailSignUp {
+    name: string;
+    email: string;
+    date: string;
+    state: PartialEmailSignUpState;
+}
 
 export class DBAuthStateModel {
     token?: string;
@@ -20,12 +36,14 @@ export class DBAuthStateModel {
 
 export class AuthStateModel extends DBAuthStateModel {
     isAuthenticated: boolean;
+    partialEmailSignUp?: PartialEmailSignUp;
+    partialResetPassword?: PartialPasswordReset;
 }
 
 @State<AuthStateModel>({
     name: 'auth',
     defaults: {
-        isAuthenticated: false
+        isAuthenticated: false,
     }
 })
 export class AuthState {
@@ -58,9 +76,15 @@ export class AuthState {
 
 
     @Action(UpdateLoggedInUser)
-    updateLoggedInUser({ setState }: StateContext<AuthStateModel>,
+    updateLoggedInUser(ctx: StateContext<AuthStateModel>,
         action: UpdateLoggedInUser) {
-        setState(action.payload);
+        const pesu = ctx.getState().partialEmailSignUp;
+        if (pesu) {
+            ctx.setState({ ...action.payload, partialEmailSignUp: pesu });
+        }
+        else {
+            ctx.setState(action.payload);
+        }
     }
 
     @Action(EmailCreateUser)
@@ -75,22 +99,47 @@ export class AuthState {
     @Action(EmailSignInLink)
     async emailSignInLink(ctx: StateContext<AuthStateModel>,
         action: EmailSignInLink) {
+        //since this is the first step in the email sign flow we need to clear
+        //out any old Partialemailsignup state
+        ctx.patchState({ partialEmailSignUp: null });
+
+
+        //we are asking firebase to email a signin link to someone
         let result = await this.authService.emailSignInLink(action.email);
-        if (result && result.code)
+        if (result && result.code) {
             if (action.errorCallback)
                 action.errorCallback(result);
+        }
+        else {
+            //set the Partialemailsignup state
+            const pesu: PartialEmailSignUp = {
+                name: action.name,
+                email: action.email,
+                date: Date.now().toString(),
+                state: 'EmailedSignInLink'
+            };
+            ctx.patchState({ partialEmailSignUp: pesu });
+        }
     }
 
     @Action(EmailContinueSignInLink)
     async emailContinueSignInLink(ctx: StateContext<AuthStateModel>,
         action: EmailContinueSignInLink) {
-        let result = await this.authService.emailContinueSignInLink(action.href, action.userCredintal);
+        let result = await this.authService.emailContinueSignInLink(action.href, action.email, action.name);
         if (result && result.code) {
             if (action.errorCallback)
                 action.errorCallback(result);
         }
         else {
             //it worked so let's set the password
+            //set the Partialemailsignup state
+
+            const pesu =
+                produce(ctx.getState().partialEmailSignUp, (x) => {
+                    x.state = 'AccountCreated';
+                });
+
+            ctx.patchState({ partialEmailSignUp: pesu });
 
             result = await this.authService.emailContinueSignInLinkSetPassword(action.password);
 
@@ -98,6 +147,15 @@ export class AuthState {
                 if (action.errorCallback)
                     action.errorCallback(result);
             }
+            else {
+                //set the Partialemailsignup state
+                const pesu =
+                    produce(ctx.getState().partialEmailSignUp, (x) => {
+                        x.state = 'PasswordSet';
+                    });
+                ctx.patchState({ partialEmailSignUp: pesu });
+            }
+
         }
     }
 
@@ -108,10 +166,15 @@ export class AuthState {
     @Action(EmailLoginResetPassword)
     async emailLoginResetPassword(ctx: StateContext<AuthStateModel>,
         action: EmailLoginResetPassword) {
+        ctx.patchState({ partialResetPassword: null });
         let result = await this.authService.emailResetPassword(action.email);
-        if (result && result.code)
+        if (result && result.code) {
             if (action.errorCallback)
                 action.errorCallback(result);
+        }
+        else {
+            ctx.patchState({ partialResetPassword: 'PasswordResetLinkSent' });
+        }
     }
 
     @Action(EmailLogin)

@@ -10,7 +10,7 @@ export const environment = {
     test: false,
     envName: 'DEV',
     appName: "Increate",
-    continueURL: 'https://localhost:4200/user',
+    continueURL: 'https://localhost:4200/home(modal:modal/setpassword)',
     dynamicLinkDomain: 'IncreateSoftware.page.link',
     firebaseFunctionURL: 'https://us-central1-increatesoftware.cloudfunctions.net/',
     firebase: {
