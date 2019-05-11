@@ -8,7 +8,7 @@ import { ROUTE_ANIMATIONS_ELEMENTS } from '../../shared/animations/route.animati
 import { EmailLogin } from 'src/app/shared/state/auth.actions';
 import { MatDialog } from '@angular/material';
 import { SpinnerService } from 'src/app/shared/spinner/spinner.service';
-import { SpinnerDefaultConfig } from 'src/app/shared/spinner/spinner.overlay';
+import { SpinnerDefaultConfig, SpinnerOverlayRef } from 'src/app/shared/spinner/spinner.overlay';
 
 export interface LoginForm {
     email: string;
@@ -24,11 +24,12 @@ export interface LoginForm {
 export class LoginComponent implements OnInit {
     routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
     @Select(state => state.auth.isAuthenticated) isAuthenticated$: Observable<boolean>;
-
     form = this.fb.group({
         email: ['', [Validators.required, Validators.email]],
         password: ['', [Validators.required]],
     });
+
+    spinnerRef: SpinnerOverlayRef;
 
     loginFailed = false;
     loginErrorMessage = "";
@@ -54,7 +55,6 @@ export class LoginComponent implements OnInit {
         ).subscribe();
     }
 
-    spinnerRef;
 
     save() {
         let config = SpinnerDefaultConfig;
