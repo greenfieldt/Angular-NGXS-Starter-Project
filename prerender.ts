@@ -68,8 +68,14 @@ let httpServer = app.listen(PORT, () => {
                 provideModuleMap(LAZY_MODULE_MAP)
             ]
         })).then(html => {
+            console.log("Writing pre-render to", fullPath);
             writeFileSync(join(fullPath, 'index.html'), html);
-            httpServer.close();
+            console.log("Wrote");
         });
+
     });
-})
+    previousRender.then(_ => {
+        httpServer.close();
+        process.exit(0);
+    });
+});

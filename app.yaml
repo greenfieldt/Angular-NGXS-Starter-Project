@@ -12,8 +12,10 @@ handlers:
 - url: /(.*\.(gif|png|jpeg|jpg|css|js|ico|json|txt|webmanifest|svg))$
   static_files: dist/Increate/\1
   upload: dist/Increate/(.*)
+  secure: always
 
 - url: /(.*)
   static_files: dist/Increate/index.html
   upload: dist/Increate/index.html
   expiration: "1m"
+  secure: always
