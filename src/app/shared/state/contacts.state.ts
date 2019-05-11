@@ -10,13 +10,13 @@ import { produce } from 'immer';
 
 
 export class Contact {
-    uid: string;
+    uid?: string;
     name: string;
     email: string;
     phone?: string;
     message?: string;
     createdAt?: any;
-    processed: boolean = false;
+    processed?: boolean = false;
 }
 export class ContactsStateModel {
     contacts: Contact[];

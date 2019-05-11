@@ -10,6 +10,7 @@ import { MatDialog } from '@angular/material';
 import { NotificationService } from '../../shared/notifications/notification.service';
 import { SpinnerOverlayRef, SpinnerDefaultConfig } from '../../shared/spinner/spinner.overlay';
 import { SpinnerService } from '../../shared/spinner/spinner.service';
+import { AddContact } from 'src/app/shared/state/contacts.actions';
 
 
 export interface LoginForm {
@@ -53,9 +54,14 @@ export class ContactUsComponent implements OnInit {
     }
 
     save() {
+        const contact = {
+            email: this.form.get('email').value,
+            name: this.form.get('name').value,
+        }
+
+        this.store.dispatch(new AddContact(contact));
+        this.form.reset();
+        this.notification.success("You've been added!");
     }
 
-    close() {
-
-    }
 }
