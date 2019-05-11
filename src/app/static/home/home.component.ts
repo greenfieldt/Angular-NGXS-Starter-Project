@@ -1,4 +1,4 @@
-import { Inject, Component, OnInit, ChangeDetectionStrategy, ViewChild, ElementRef, PLATFORM_ID } from '@angular/core';
+import { Inject, Component, OnInit, ChangeDetectionStrategy, ViewChild, ElementRef, PLATFORM_ID, ViewChildren } from '@angular/core';
 import { Store, Select } from '@ngxs/store';
 import { themes } from '../../shared/state/settings.state'
 import { ChangeTheme } from '../../shared/state/setting.actions';
@@ -34,17 +34,23 @@ function loadScript(deadline, scriptOnload?) {
 
 //we are passing in a callback that allows us to do whatever we need to do
 //when it is time to load the below the fold content 
-function onIntersection(entries, onScriptLoaded) {
+function onIntersection(entries) {
     entries.forEach(entry => {
-        entry.target.classList.toggle('visible', entry.intersectionRatio > 0);
-        if (entry.intersectionRatio > 0) {
-            (window as any).requestIdleCallback((deadline) => loadScript(deadline, onScriptLoaded), { timeout: 1000 });
-            // Stop watching 
-            HomeComponent.observer.unobserve(entry.target);
+        if (entry.target.id === "belowthefold") {
+            //this.attachBTF(this)
         }
+        else if (entry.target.id === "makefocus") {
+            entry.target.classList.toggle('make-focus-animation',
+                entry.intersectionRatio > .99);
+        }
+        else if (entry.target.id === "makebig") {
+            entry.target.classList.toggle('make-big-animation',
+                entry.intersectionRatio > .99);
+        }
+
+        entry.target.classList.toggle('visible', entry.intersectionRatio > 0);
     });
 }
-
 
 
 @Component({
@@ -56,6 +62,9 @@ function onIntersection(entries, onScriptLoaded) {
 })
 export class HomeComponent implements OnInit {
     @ViewChild('belowTheFold') btf: ElementRef;
+    @ViewChild('makefocus') makeFocus: ElementRef;
+    @ViewChildren('makebig') makeBig;
+
     static observer: IntersectionObserver;
 
 
@@ -96,14 +105,19 @@ export class HomeComponent implements OnInit {
         if (isPlatformBrowser(this.platformId)) {
             let intersectionObserverOptions = {
                 root: null,
-                rootMargin: '150px',
-                threshold: 1.0
+                rootMargin: '0px',
+                threshold: [0, 1.0]
             }
 
             HomeComponent.observer = new IntersectionObserver(
-                (entries) => onIntersection(entries, () => this.attachBTF(this))
-                , intersectionObserverOptions);
+                (entries) => onIntersection(entries),
+                intersectionObserverOptions);
+
             HomeComponent.observer.observe(this.btf.nativeElement);
+            HomeComponent.observer.observe(this.makeFocus.nativeElement);
+            this.makeBig.forEach(div => {
+                HomeComponent.observer.observe(div.nativeElement);
+            });
 
         }
     }
