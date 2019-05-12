@@ -55,7 +55,7 @@ export class ContactUsComponent implements OnInit {
 
     save() {
 
-        if (this.form.get('email').hasError || this.form.get('name').hasError) {
+        if (this.form.status === 'INVALID') {
             this.contactUsErrorMessage = "You must provide a name and email";
             this.changeDetRef.detectChanges();
 

@@ -74,6 +74,7 @@
     "intl": "^1.2.5",
     "ngx-markdown": "^7.1.5",
     "ngxs": "github:ngxs/store",
+    "node-sass": "^4.12.0",
     "org": "^0.2.0",
     "prismjs": "^1.16.0",
     "require": "^2.4.20",
