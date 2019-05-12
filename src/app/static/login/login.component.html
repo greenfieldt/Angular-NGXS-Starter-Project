@@ -48,24 +48,32 @@
 	  <div class="row buttons d-flex justify-content-between pad">
             <button type="button"
 		    [disabled]="form.invalid"
+		    [attr.aria-label]="'increate.login.form.submit' | translate"
 		    mat-raised-button color="accent"
               [ngClass]="routeAnimationsElements" (click)="save()">
               {{ 'increate.login.form.submit' | translate }}
             </button>
 
-            <button type="reset" mat-raised-button (click)="reset()" [ngClass]="routeAnimationsElements">
+            <button type="reset"
+		    [attr.aria-label]="'increate.login.form.cancel' | translate"
+
+		    mat-raised-button (click)="reset()" [ngClass]="routeAnimationsElements">
               {{ 'increate.login.form.cancel' | translate }}
             </button>
           </div>
 
 
-	  	  <a [routerLink]="{ outlets: { modal: 'modal/signin'} }"
+	  	  <a [routerLink]="{ outlets: { modal: 'modal/signin'}
+				   }"
+		    [attr.aria-label]="'increate.login.form.signup' | translate"
 	     class="col-md-8">
 	    {{ 'increate.login.form.signup' | translate }}
 	  </a>
           <span flex></span>
 
-	  <a [routerLink]="{ outlets: { modal: 'modal/forgotpassword' } }"
+	  <a [routerLink]="{ outlets: { modal: 'modal/forgotpassword'
+			   } }"
+		    [attr.aria-label]="'increate.login.form.forgot' | translate"
 	     class="col-md-8"
 	     >
 	    {{ 'increate.login.form.forgot' | translate }}
