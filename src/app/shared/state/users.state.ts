@@ -1,10 +1,10 @@
-import { State, Action, StateContext, Selector, Store } from '@ngxs/store';
+import { State, Action, StateContext, Selector, Store, Select } from '@ngxs/store';
 import { InitializeUsers, RetreiveUsers, RemoveUser, UpdateCUrentUserProfile } from './users.actions';
 import { DbService } from '../firestore/db.service';
 
 
-import { Observable, Subscription } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { Observable, Subscription, of } from 'rxjs';
+import { tap, switchMap, map } from 'rxjs/operators';
 import { DBAuthStateModel } from './auth.state';
 import { AdminService } from '../auth/admin.service';
 import { Logout } from './auth.actions';
@@ -26,10 +26,25 @@ export class UsersStateModel {
 export class UsersState {
 
     sub: Subscription = new Subscription();
+    //Who I am and what role do I have
     me$: Observable<any>;
+    myRole$: Observable<string>;
     myUID = '';
 
     constructor(private db: DbService, private store: Store, private admin: AdminService) {
+
+        //Watch my role so I can turn off all the observables that won't
+        //work due to backend database security unless you are an
+        //admin
+
+        this.myRole$ = this.store.select(state => state.auth).pipe(
+            map((x) => {
+                if (!x)
+                    return 'none';
+                else
+                    return x.role;
+            }
+            ));
 
         this.me$ = this.store.select(state => state.auth).pipe(
             tap((x) => {
@@ -49,11 +64,22 @@ export class UsersState {
 
 
     @Action(InitializeUsers)
-    initializeUsers({ getState, patchState }: StateContext<UsersStateModel>) {
+    initializeUsers({ setState, getState, patchState }: StateContext<UsersStateModel>) {
 
-        this.sub.add(this.db.collection$('users').pipe(
-            tap((users) => {
-                this.store.dispatch(new RetreiveUsers(users as DBAuthStateModel[]))
+        this.sub.add(this.myRole$.pipe(
+            switchMap((role) => {
+                if (role === 'admin') {
+                    return this.db.collection$('users').pipe(
+                        tap((users) => {
+                            this.store.dispatch(new RetreiveUsers(users as DBAuthStateModel[]));
+                        }));
+                }
+                else {
+                    //clear out the data
+                    setState({ usersList: null });
+                    return of();
+                }
+
             })
         ).subscribe());
 
@@ -95,7 +121,7 @@ export class UsersState {
     }
 
     @Action(UpdateCUrentUserProfile)
-    UpdateCUrentUserProfile({setState}: StateContext<UsersStateModel>,
+    UpdateCUrentUserProfile({ setState }: StateContext<UsersStateModel>,
         action: UpdateCUrentUserProfile) {
         const uid = action.payload.uid;
         this.db.updateAt(`users/${uid}`, action.payload);

@@ -1,5 +1,9 @@
 import { Contact } from './contacts.state';
 
+export class InitializeContacts {
+    static readonly type = '[Contacts] Initialize Contacts';
+    constructor() { }
+}
 
 export class AddContact {
     static readonly type = '[Contacts] Add Contact';
@@ -13,7 +17,7 @@ export class UpdateContact {
 
 export class DeleteProcessedContact {
     static readonly type = '[Contact] Delete Processed Contact';
-    constructor(public uid: Contact) {}
+    constructor(public uid: Contact) { }
 }
 
 export class UpdateContacts {
