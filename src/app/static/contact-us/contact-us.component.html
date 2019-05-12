@@ -13,7 +13,10 @@
 
           <div class="row">
             <mat-form-field class="col" [ngClass]="routeAnimationsElements">
-              <input matInput type="name" placeholder="{{ 'increate.contactus.form.name' | translate }}"
+              <input matInput
+		    [attr.aria-label]="'increate.contactus.form.name' | translate"
+		     type="name"
+		     placeholder="{{ 'increate.contactus.form.name' | translate }}"
                 formControlName="name">
               <mat-error *ngIf="form.get('name').invalid">
                 {{ 'increate.contactus.form.invalid.name' | translate }}
@@ -25,8 +28,11 @@
 	  
 	  <div class="row">
             <mat-form-field class="col" [ngClass]="routeAnimationsElements">
-              <input matInput placeholder="{{ 'increate.contactus.form.email' | translate }}"
-                formControlName="email" type="email">
+              <input matInput
+		     [attr.aria-label]="'increate.contactus.form.email' | translate"
+		     placeholder="{{ 'increate.contactus.form.email' | translate }}"
+                     formControlName="email"
+		     type="email">
               <mat-error *ngIf="form.get('email').hasError('required')">
                 {{ 'increate.contactus.form.invalid.email' | translate }}
               </mat-error>
@@ -46,8 +52,9 @@
 
 	    
 	  <div class="row buttons d-flex justify-content-between pad">
-            <button type="button"
+            <button matButton type="button"
 		    [disabled]="form.invalid"
+		    [attr.aria-label]="'increate.contactus.form.submit' | translate"
 		    mat-raised-button color="accent"
               [ngClass]="routeAnimationsElements" (click)="save()">
               {{ 'increate.contactus.form.submit' | translate }}

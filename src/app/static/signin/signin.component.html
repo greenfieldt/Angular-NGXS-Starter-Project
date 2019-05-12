@@ -50,13 +50,16 @@
 	    
 	  <div class="row buttons d-flex justify-content-between pad">
             <button type="button"
+		    [attr.aria-label]="'increate.signin.form.submit' | translate"
 		    [disabled]="form.invalid"
 		    mat-raised-button color="accent"
               [ngClass]="routeAnimationsElements" (click)="save()">
               {{ 'increate.signin.form.submit' | translate }}
             </button>
 
-            <button type="close" mat-raised-button (click)="close()" [ngClass]="routeAnimationsElements">
+            <button type="close"
+		    aria-label="close"
+		    mat-raised-button (click)="close()" [ngClass]="routeAnimationsElements">
               {{ 'increate.signin.form.cancel' | translate }}
             </button>
           </div>

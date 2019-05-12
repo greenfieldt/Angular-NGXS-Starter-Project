@@ -91,8 +91,10 @@
 	  <div *ngIf="true">
 	    <button mat-icon-button
 		    [mat-menu-trigger-for]="themeMenu"
-		    [matTooltip]="'increate.menu.changetheme' | translate"
+		    [matTooltip]="'increate.menu.theme' | translate"
+		    [attr.aria-label]="'increate.menu.theme' | translate"
 		    tabindex="-1">
+	      
 	      <fa-icon icon="paint-brush"></fa-icon>
 	    </button>
 	    
