@@ -1,5 +1,5 @@
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
-import { auth } from 'firebase/app';
+import { auth, User } from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
 
 import { Md5 } from 'ts-md5';
@@ -10,6 +10,7 @@ import { Store } from '@ngxs/store';
 import { Navigate } from '@ngxs/router-plugin';
 import { isPlatformBrowser } from '@angular/common';
 import { environment } from '../../../environments/environment';
+import { DBAuthStateModel } from '../state/auth.state';
 
 @Injectable({
     providedIn: 'root'
@@ -25,6 +26,11 @@ export class AuthService {
         private db: DbService,
         @Inject(PLATFORM_ID) private platformId
     ) {
+        //This observable is watching firestore user account for
+        //changes in my user information
+
+        //When this changes the AuthState class will see it and
+        //update our local state
         this.user$ = this.afAuth.authState.pipe(
             switchMap(user => {
                 return user ? db.doc$(`users/${user.uid}`) : of(null);
@@ -42,15 +48,8 @@ export class AuthService {
         return await this.updateUserData(creds.user);
     }
 
-    private updateUserData({ uid, email, displayName, photoURL, isAnonymous }) {
-        const data = {
-            uid,
-            email,
-            displayName,
-            photoURL,
-            isAnonymous
-        };
-
+    private updateUserData(data: DBAuthStateModel) {
+        const uid = data.uid;
         this.db.updateAt(`users/${uid}`, data);
     }
 
@@ -197,12 +196,13 @@ export class AuthService {
 
 
     emailCreateUser(email: string, password: string): Promise<any> {
-        const data = {
+        const data: DBAuthStateModel = {
             uid: null,
             email: null,
             displayName: null,
             photoURL: null,
-            isAnonymous: null
+            isAnonymous: null,
+            role: 'user'
         };
 
 
@@ -214,6 +214,7 @@ export class AuthService {
                 data.uid = user.user.uid;
                 data.photoURL = user.user.photoURL || 'https://www.gravatar.com/avatar/' + Md5.hashStr(this.afAuth.auth.currentUser.uid) + '?d=identicon';
                 data.email = user.user.email;
+                //role always starts out as user 
                 this.updateUserData(data);
                 return data;
 
@@ -227,28 +228,31 @@ export class AuthService {
 
 
     emailLogin(email, password): Promise<any> {
-        const data = {
+        const data: DBAuthStateModel = {
             uid: null,
             email: null,
             displayName: null,
             photoURL: null,
-            isAnonymous: null
+            isAnonymous: null,
+            role: null
         };
 
 
         return this.afAuth.auth
-            .signInWithEmailAndPassword(email, password).then((user) => {
+            .signInWithEmailAndPassword(email, password).then((user: any/*UserCredential*/) => {
 
-                // How to handle the first user made for firebase console
 
-                /*   data.displayName = user.user.displayName;
-                   data.isAnonymous = user.user.isAnonymous || false;
-                   data.uid = user.user.uid
-                   data.photoURL = user.user.photoURL || '';
-                   data.email = user.user.email;
-   
-                   this.updateUserData(data);
-                   return data; */
+                data.displayName = user.displayName;
+                data.isAnonymous = user.isAnonymous || false;
+                data.uid = user.uid
+                data.photoURL = user.photoURL || '';
+                data.email = user.email;
+                //we have to start off in the "user" role
+                data.role = 'user';
+                //how should we handle the first logged in user?
+                //this.updateUserData(data);
+
+                return data;
             }).
             catch((err) => {
                 // couldn't log in for some reason

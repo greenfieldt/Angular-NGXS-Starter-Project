@@ -1,15 +1,16 @@
-import { State, Action, StateContext, Selector, Store } from '@ngxs/store';
+import { State, Action, StateContext, Selector, Store, Select } from '@ngxs/store';
 
 import { Navigate } from '@ngxs/router-plugin';
-import { Observable, Subscription } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { Observable, Subscription, of } from 'rxjs';
+import { tap, switchMap, map } from 'rxjs/operators';
 
 import {
     AuthenticateFaceBook,
     PostToFacebook,
     UpdateSocialAccounts,
     ConnectFaceBook,
-    SelectFaceBookPage
+    SelectFaceBookPage,
+    InitializeSocialAccounts
 } from './social.actions';
 import { DbService } from '../firestore/db.service';
 import { produce } from 'immer';
@@ -29,7 +30,7 @@ export class FBAccount extends FBUserDetails {
 
 
 export class SocialStateModel {
-    fbaccount: FBAccount;
+    fbaccount?: FBAccount;
 }
 
 
@@ -47,14 +48,52 @@ export class SocialStateModel {
 })
 export class SocialState {
     sub: Subscription = new Subscription();
+
+    //Who I am and role do I have
     me$: Observable<any>;
+    myRole$: Observable<string>;
     myUID = '';
 
     constructor(private db: DbService, private fbService: FacebookService, private store: Store) {
 
-        this.sub.add(this.db.collection$('social/facebook/public/').pipe(
-            tap((x: any) => {
-                this.store.dispatch(new UpdateSocialAccounts(x));
+    }
+
+    ngOnDestory() {
+        this.sub.unsubscribe();
+    }
+
+    @Action(InitializeSocialAccounts)
+    initializeSocialAccounts({ setState }: StateContext<SocialStateModel>) {
+
+        //Watch my role so I can turn off all the observables that won't
+        //work due to backend database security unless you are an
+        //admin
+        this.myRole$ = this.store.select(state => state.auth).pipe(
+            map((x) => {
+                if (!x)
+                    return 'none';
+                else
+                    return x.role;
+            }
+            ));
+
+        this.sub.add(this.myRole$.pipe(
+            switchMap((role) => {
+                if (role === 'admin') {
+                    return this.db.collection$('social/facebook/public/').pipe(
+                        tap((x: any) => {
+                            this.store.dispatch(new UpdateSocialAccounts(x));
+                        }));
+                }
+                else {
+                    const data: FBAccount = {
+                        authenticated: false, pages: [''],
+                        createdAt: ''
+                    };
+                    //clear out all the data we might have been showing before
+                    setState({ fbaccount: null });
+                    return of();
+                }
             })
         ).subscribe());
 
@@ -68,10 +107,7 @@ export class SocialState {
             ));
         this.sub.add(this.me$.subscribe());
 
-    }
 
-    ngOnDestory() {
-        this.sub.unsubscribe();
     }
 
     @Action(UpdateSocialAccounts)

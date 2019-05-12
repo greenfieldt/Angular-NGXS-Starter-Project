@@ -7,6 +7,9 @@ import { Observable, timer, Subscription } from 'rxjs';
 import { first, map, mergeMap, filter, tap } from 'rxjs/operators';
 import { UsersStateModel } from './users.state';
 import produce from 'immer';
+import { InitializeContacts } from './contacts.actions';
+import { InitializeSocialAccounts } from './social.actions';
+import { InitializeUsers } from './users.actions';
 
 export type PartialEmailSignUpState =
     'EmailedSignInLink' |
@@ -32,6 +35,7 @@ export class DBAuthStateModel {
     displayName?: string;
     photoURL?: string;
     isAnonymous?: boolean;
+    role?: string;
 }
 
 export class AuthStateModel extends DBAuthStateModel {
@@ -51,7 +55,9 @@ export class AuthState {
     sub: Subscription = new Subscription();
 
     @Selector()
-    static token(state: AuthStateModel) { return state.token; }
+    static isAdministrator(state: AuthStateModel) { return state.role === 'admin'; }
+
+
 
     constructor(private store: Store, private authService: AuthService) {
         this.sub.add(authService.user$.pipe(
@@ -84,6 +90,15 @@ export class AuthState {
         }
         else {
             ctx.setState(action.payload);
+        }
+        if (action.payload.role === 'admin') {
+            //turn on admin state
+            this.store.dispatch(new InitializeContacts());
+            this.store.dispatch(new InitializeSocialAccounts());
+            this.store.dispatch(new InitializeUsers());
+            //We don't have to worry so much about turning them off
+            //they will watch your role and automatically turn off and on
+            //as you change users once they are started 
         }
     }
 
@@ -183,6 +198,8 @@ export class AuthState {
 
         if (!a) {
             let result = await this.authService.emailLogin(action.email, action.password);
+
+
             if (result && result.code) {
                 if (action.errorCallback)
                     action.errorCallback(result);

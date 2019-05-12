@@ -1,12 +1,13 @@
-import { State, Action, StateContext, Selector, Store } from '@ngxs/store';
+import { State, Action, StateContext, Selector, Select, Store } from '@ngxs/store';
 
 import { Navigate } from '@ngxs/router-plugin';
-import { Observable, Subscription } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { Observable, Subscription, of } from 'rxjs';
+import { tap, switchMap, map } from 'rxjs/operators';
 
-import { AddContact, UpdateContacts, UpdateContact, DeleteProcessedContact } from './contacts.actions';
+import { AddContact, UpdateContacts, UpdateContact, DeleteProcessedContact, InitializeContacts } from './contacts.actions';
 import { DbService } from '../firestore/db.service';
 import { produce } from 'immer';
+import { AuthState } from './auth.state';
 
 
 export class Contact {
@@ -31,6 +32,7 @@ export class ContactsStateModel {
 })
 export class ContactsState {
     sub: Subscription = new Subscription();
+    myRole$: Observable<string>;
 
     @Selector()
     public static AllContacts(state: ContactsStateModel): Contact[] {
@@ -65,15 +67,45 @@ export class ContactsState {
 
 
     constructor(private db: DbService, private store: Store) {
-        this.sub.add(this.db.collection$('contacts').pipe(
-            tap((x: any) => {
-                this.store.dispatch(new UpdateContacts(x));
-            })
-        ).subscribe());
+
+
     }
 
     ngOnDestory() {
         this.sub.unsubscribe();
+    }
+
+    @Action(InitializeContacts)
+    initializeContacts({ setState }: StateContext<ContactsStateModel>) {
+        //Watch my role so I can turn off all the observables that won't
+        //work due to backend database security unless you are an
+        //admin
+
+        this.myRole$ = this.store.select(state => state.auth).pipe(
+            map((x) => {
+                if (!x)
+                    return 'none';
+                else
+                    return x.role;
+            }
+            ));
+
+
+        this.sub.add(this.myRole$.pipe(
+            switchMap((role) => {
+                if (role === 'admin')
+                    return this.db.collection$('contacts').pipe(
+                        tap((x: any) => {
+                            this.store.dispatch(new UpdateContacts(x));
+                        }));
+                else {
+
+                    setState({ contacts: [] });
+                    return of();
+                }
+            }
+            )).subscribe());
+
     }
 
     @Action(AddContact)

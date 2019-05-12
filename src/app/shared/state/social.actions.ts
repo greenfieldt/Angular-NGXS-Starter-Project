@@ -1,5 +1,10 @@
 import { FBAccount, FBUserDetails } from './social.state';
 
+export class InitializeSocialAccounts {
+    static readonly type = '[Social] Initializie Social Accouts';
+    constructor() { }
+}
+
 
 export class AuthenticateFaceBook {
     static readonly type = '[Social] Authenticate to Facebook';
