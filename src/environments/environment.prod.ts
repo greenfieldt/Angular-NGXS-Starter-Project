@@ -1,6 +1,4 @@
 import { VERSION } from './version';
-declare const require: any;
-const packageJson = require('../../package.json');
 
 export const environment = {
     production: true,
@@ -22,19 +20,16 @@ export const environment = {
     },
 
     versions: {
-        app: packageJson.version,
-        angular: packageJson.dependencies['@angular/core'],
-	ngxs: packageJson.dependencies['@ngxs/store'],
-        material: packageJson.dependencies['@angular/material'],
-        bootstrap: packageJson.dependencies.bootstrap,
-        rxjs: packageJson.dependencies.rxjs,
-        ngxtranslate: packageJson.dependencies['@ngx-translate/core'],
-        fontAwesome:
-            packageJson.dependencies['@fortawesome/fontawesome-free-webfonts'],
-        angularCli: packageJson.devDependencies['@angular/cli'],
-        typescript: packageJson.devDependencies['typescript'],
-        cypress: packageJson.devDependencies['cypress']
-
+        app: '1.0.0',
+        angular: '7.2.0',
+        ngxs: '3.4.3',
+        material: '7.3.6',
+        bootstrap: '4.3.1',
+        rxjs: '6.3.3',
+        ngxtranslate: '11.0.1',
+        fontAwesome: '5.0.0',
+        angularCli: '7.2.2',
+        typescript: '3.2.2',
     }
 
 };

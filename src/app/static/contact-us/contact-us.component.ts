@@ -10,7 +10,7 @@ import { MatDialog } from '@angular/material';
 import { NotificationService } from '../../shared/notifications/notification.service';
 import { SpinnerOverlayRef, SpinnerDefaultConfig } from '../../shared/spinner/spinner.overlay';
 import { SpinnerService } from '../../shared/spinner/spinner.service';
-import { AddContact } from 'src/app/shared/state/contacts.actions';
+import { AddContact } from '../../shared/state/contacts.actions';
 
 
 export interface LoginForm {
@@ -35,8 +35,8 @@ export class ContactUsComponent implements OnInit {
 
     spinnerRef: SpinnerOverlayRef;
 
-    signinFailed = false;
-    signinErrorMessage = "";
+    contactUsFailed = false;
+    contactUsErrorMessage = "";
 
     constructor(private fb: FormBuilder,
         private matDialog: MatDialog,
@@ -54,14 +54,31 @@ export class ContactUsComponent implements OnInit {
     }
 
     save() {
-        const contact = {
-            email: this.form.get('email').value,
-            name: this.form.get('name').value,
-        }
 
-        this.store.dispatch(new AddContact(contact));
-        this.form.reset();
-        this.notification.success("You've been added!");
+        if (this.form.get('email').hasError || this.form.get('name').hasError) {
+            this.contactUsErrorMessage = "You must provide a name and email";
+            this.changeDetRef.detectChanges();
+
+            timer(5000).pipe(
+                tap(_ => {
+                    this.contactUsErrorMessage = '';
+                    this.contactUsFailed = false;
+                    this.changeDetRef.detectChanges();
+                }),
+                take(1)
+            ).subscribe();
+
+        }
+        else {
+            const contact = {
+                email: this.form.get('email').value,
+                name: this.form.get('name').value,
+            };
+
+            this.store.dispatch(new AddContact(contact));
+            this.form.reset();
+            this.notification.success("You've been added!");
+        }
     }
 
 }

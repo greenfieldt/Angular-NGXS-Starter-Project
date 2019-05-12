@@ -8,7 +8,7 @@
     $accent: map-get($theme, accent);
     $warn: map-get($theme, warn);
 
-    app-signin {
+    app-contact-us {
 	.background {
 	    color: mat-color($foreground, text);
 	    background-color: mat-color($background, background);
