@@ -1,7 +1,38 @@
-service firebase.storage {
-  match /b/{bucket}/o {
-    match /{allPaths=**} {
-      allow read, write: if request.auth!=null;
+
+
+service cloud.firestore {
+
+match /databases/{database}/documents {
+    
+    //secure the database
+    match /{document=**} {
+      allow read, write: if false;
+    }
+    
+  	//allow a users to read and write
+  	//their data and everyone to create a new user table
+  	//as long as they aren't trying to make themselves an admin
+    match /users/{uid} {
+      allow read: if request.auth != null && uid == request.auth.uid;
+  		//allow everyone who isn't an admin to update their user table
+  		//except for the role -- but if you are an admin then go ahead
+  		//and update anything
+      allow write, create: if request.auth.uid != null &&
+      uid == request.auth.uid &&
+      (resource.data.role == 'admin' || request.resource.data.role != 'admin')
+      
+  	}
+
+  	//allow anyone to make a new contact
+  	match /contacts/{contact} {
+      allow create, write: if true;
+  	}
+    
+    //allow admins to do anything
+    match /{document=**} {
+      allow read, write, create, delete: 
+      if request.auth != null && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
     }
   }
 }
+

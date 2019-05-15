@@ -71,6 +71,7 @@
           </button>
 
           <button *ngIf="(isAuthenticated$ | async)"
+		  class="logged-in"
                   mat-icon-button
                   [matMenuTriggerFor]="toolbarUserMenu"
 		  aria-label="Show Logout">
@@ -80,6 +81,7 @@
 
 	  
           <mat-menu #toolbarUserMenu="matMenu">
+	    <span class="user-name" >{{displayName$ | async}}</span>
             <button mat-menu-item (click)="onLogoutClick()"
 		    [attr.aria-label]="'increate.menu.logout' | translate">
               <mat-icon><fa-icon icon="power-off"></fa-icon></mat-icon>

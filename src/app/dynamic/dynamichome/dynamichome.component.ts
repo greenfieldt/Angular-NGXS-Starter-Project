@@ -17,7 +17,8 @@ export class DynamicHomeComponent implements OnInit {
     @Select(state => state.auth.isAuthenticated) isAuthenticated$: Observable<boolean>;
 
     examples = [
-        { link: 'blog/SBTutorial/master/tutorial.org', label: 'StoryBook 101' },
+        { link: 'blog/SBTutorial/master/tutorial.md', label: 'StoryBook 101' },
+        { link: 'blog/SpinnerTutorial/master/tutorial.md', label: 'Spinners 101' },
         { link: 'pwt/customelements', label: 'Custom Elements: News Reader' }
     ];
     constructor() { }

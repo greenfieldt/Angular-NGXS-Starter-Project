@@ -19,17 +19,23 @@
         <mat-card-actions>
           <a *ngIf="feature.github"
 	     aria-label ="GitHub"
-	     mat-icon-button [href]="feature.github" target="_blank">
+	     mat-icon-button [href]="feature.github"
+	     rel="noopener"
+	     target="_blank">
             <fa-icon [icon]="['fab','github']"></fa-icon>
           </a>
           <a mat-button [href]="feature.documentation"
-	     [attr.aria-label]="'increate.features.documentation' | translate"
+	     [attr.aria-label]="'increate.features.documentation' |
+				translate"
+	     rel="noopener"
 	     target="_blank">
             <fa-icon icon="book"></fa-icon>{{ 'increate.features.documentation' | translate }}
           </a>
           <a *ngIf="feature.medium" mat-button
 	     [attr.aria-label]="'increate.features.guide' | translate"
-	     [href]="feature.medium" target="_blank">
+	     [href]="feature.medium"
+	     rel="noopener"
+	     target="_blank">
             <fa-icon [icon]="['fab','medium-m']"></fa-icon>{{ 'increate.features.guide' | translate }}
           </a>
         </mat-card-actions>

@@ -1,4 +1,11 @@
-import { Component, ChangeDetectionStrategy, Inject, PLATFORM_ID } from '@angular/core';
+import {
+    Component,
+    ChangeDetectionStrategy,
+    Inject,
+    AfterViewInit,
+    PLATFORM_ID,
+    ChangeDetectorRef
+} from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { tap, take, filter } from 'rxjs/operators';
 import { Store, Select } from '@ngxs/store';
@@ -37,7 +44,7 @@ import { SpinnerDefaultConfig } from './shared/spinner/spinner.overlay';
     animations: [routeAnimations],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
     logo = '../assets/increate-logo.svg';
     //creating a member var for settings.state.languages const 
     languages = languages;
@@ -50,7 +57,7 @@ export class AppComponent {
     sub: Subscription = new Subscription();
 
     navigation = [
-        { link: 'home', label: 'increate.menu.home' },
+        { link: 'myhome', label: 'increate.menu.home' },
         { link: 'about', label: 'increate.menu.about' },
         { link: 'dynamic', label: 'increate.menu.dynamic' },
 
@@ -67,24 +74,14 @@ export class AppComponent {
         private notification: NotificationService,
         private store: Store,
         private dialog: MatDialog,
+        private changDetRef: ChangeDetectorRef,
         @Inject(PLATFORM_ID) private platformId) {
-        /*
-	  I have GA turned off in Index.html -- If you want to use it
-	  you have to get an appid and uncomment the code there 
-	  before you uncomment this code
-                this.sub.add( = this.router.events.pipe(
-                    filter(event => event instanceof NavigationEnd),
-                    tap((event: NavigationEnd) => {
-                        (<any>window).ga('set', 'page', event.urlAfterRedirects);
-                        (<any>window).ga('send', 'pageview');
-                    })
-                ).subscribe());
-        */
+
         this.sub.add(this.router.events.pipe(
             filter(event => event instanceof NavigationEnd),
             tap((event: NavigationEnd) => {
-                let description = "Angular SSR Description " + Date.now();
-                this.seo.generateTags({ description: description })
+                let description = "Increate Software LLC";
+                this.seo.generateTags({ description: description });
 
                 this.title.setTitle(
                     this.router.routerState.snapshot.root
@@ -95,6 +92,7 @@ export class AppComponent {
 
     }
     @Select(state => state.auth.isAuthenticated) isAuthenticated$: Observable<boolean>;
+    @Select(state => state.auth.displayName) displayName$: Observable<string>;
     @Select(state => state.settings.stickyHeader) stickyHeader$: Observable<boolean>;
     @Select(state => state.settings.language) language$: Observable<string>;
     @Select(state => state.settings.theme) theme$: Observable<string>;
@@ -106,26 +104,42 @@ export class AppComponent {
     }
 
     ngOnInit() {
-
         //this will initialize the theme and language from the last saved
         //state
         this.store.dispatch(new InitializeSettings());
-
         this.store.dispatch(new ChangeTheme('default-theme'));
+
+        //disable the page animation on some browsers
+        this.store.dispatch(
+            new ChangePageAnimationsDisabled(true));
+        this.store.dispatch(new ChangeElementAnimations(false));
+        this.store.dispatch(new ChangePageAnimations(false));
+
+    }
+
+    ngAfterViewInit() {
+
         if (isPlatformBrowser(this.platformId)) {
             //disable the page animation on some browsers
             this.store.dispatch(
                 new ChangePageAnimationsDisabled(AppComponent.isIEorEdgeOrSafari()));
             this.store.dispatch(new ChangeElementAnimations(true));
             this.store.dispatch(new ChangePageAnimations(true));
+
+
+            this.sub.add(this.router.events.pipe(
+                filter(event => event instanceof NavigationEnd),
+                tap((event: NavigationEnd) => {
+                    (<any>window).ga('set', 'page', event.urlAfterRedirects);
+                    (<any>window).ga('send', 'pageview');
+                })
+            ).subscribe());
+
+ 
         }
-        else {
-            //disable the page animation on some browsers
-            this.store.dispatch(
-                new ChangePageAnimationsDisabled(true));
-            this.store.dispatch(new ChangeElementAnimations(false));
-            this.store.dispatch(new ChangePageAnimations(false));
-        }
+
+
+
 
     }
 
@@ -140,7 +154,7 @@ export class AppComponent {
 
     onLanguageSelect($event: MatSelectChange) {
         this.store.dispatch(new ChangeLanguage($event.value));
-
+        this.changDetRef.detectChanges();
     }
 
     onLoginClick($event) {
@@ -151,13 +165,13 @@ export class AppComponent {
         this.store.dispatch(new Logout());
 
     }
+
     onSettings() {
     }
+
     onThemeSelect(theme) {
         console.log(theme);
         this.store.dispatch(new ChangeTheme(theme));
-
-
         this.notification.info("Theme Changed");
     }
 

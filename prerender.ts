@@ -69,6 +69,8 @@ let httpServer = app.listen(PORT, () => {
             ]
         })).then(html => {
             console.log("Writing pre-render to", fullPath);
+            //make sure this file and what you have in your app.yaml
+            //are in sync
             writeFileSync(join(fullPath, 'index.html'), html);
             console.log("Wrote");
         });

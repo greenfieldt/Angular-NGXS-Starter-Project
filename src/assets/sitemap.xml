@@ -1,7 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"> 
   <url>
-    <loc>http://www.increatesoftware.com/home.html</loc>
+    <loc>https://www.increatesoftware.com/home.html</loc>
     <lastmod>2018-06-04</lastmod>
   </url>
+
+  <url>
+    <loc>https://www.increatesoftware.com/about.html</loc>
+    <lastmod>2018-06-04</lastmod>
+  </url>
+
+  <url>
+    <loc>https://www.increatesoftware.com/dynamic.html</loc>
+    <lastmod>2018-06-04</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.increatesoftware.com/dynamic/blog/SBTutorial/master/tutorial.md</loc>
+    <lastmod>2018-06-04</lastmod>
+  </url>
+
+  <url>
+    <loc>https://www.increatesoftware.com/dynamic/blog/SpinnerTutorial/master/tutorial.md</loc>
+    <lastmod>2018-06-04</lastmod>
+  </url>
+  
 </urlset>

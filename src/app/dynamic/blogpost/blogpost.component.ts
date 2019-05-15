@@ -1,9 +1,9 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { tap, first } from 'rxjs/operators';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '../../shared/animations/route.animations'
-
+import { environment } from '../../../environments/environment';
 
 @Component({
     selector: 'app-blogpost',
@@ -17,7 +17,7 @@ export class BlogpostComponent implements OnInit {
     post: string;
     notFound: boolean = false;
 
-    constructor(private activatedRoute: ActivatedRoute) { }
+    constructor(private activatedRoute: ActivatedRoute, private changeDetRef: ChangeDetectorRef) { }
 
     ngOnInit() {
 
@@ -26,11 +26,24 @@ export class BlogpostComponent implements OnInit {
                 this.post = './assets/blogs/' + params['file'];
             }
             else {
-                this.post = 'https://raw.githubusercontent.com/greenfieldt/'
-                    + params['repo'] + '/'
-                    + params['branch'] + '/'
-                    + params['file'];
+                if (environment.production) {
+                    this.post = 'https://raw.githubusercontent.com/greenfieldt/'
+                        + params['repo'] + '/'
+                        + params['branch'] + '/'
+                        + params['file'];
+
+                }
+                else {
+                    const nowString = Date.now().toString();
+                    this.post = 'https://raw.githubusercontent.com/greenfieldt/'
+                        + params['repo'] + '/'
+                        + params['branch'] + '/'
+                        + params['file'] +
+                        '?' + nowString; //cache bust git-hub-raw
+                }
             }
+            this.changeDetRef.detectChanges();
+
         }));
 
     }

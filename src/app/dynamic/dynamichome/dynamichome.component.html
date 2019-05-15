@@ -2,6 +2,7 @@
   <a mat-tab-link
      *ngFor="let e of examples"
      [routerLink]="e.link"
+     [attr.aria-label] = "'e.label' | translate"
      routerLinkActive #rla="routerLinkActive"
      [active]="rla.isActive"
      [disabled]="e.auth && !(isAuthenticated$ | async)">
@@ -12,10 +13,11 @@
 <nav class="nav-responsive d-sm-none d-flex justify-content-center">
     <mat-select [placeholder]="'increate.menu.blogs' | translate" [value]="'blogs'">
       <mat-option *ngFor="let e of examples"x
-        [value]="e"
-        [routerLink]="e.link"
-        [disabled]="e.auth && !(isAuthenticated$ | async)">
-          {{e.label | translate}}
+		  [value]="e"
+		  [routerLink]="e.link"
+		  [attr.aria-label] = "'e.label' | translate"
+		  [disabled]="e.auth && !(isAuthenticated$ | async)">
+        {{e.label | translate}}
       </mat-option>
     </mat-select>
 </nav>
@@ -36,9 +38,7 @@
       The site was pre-generated at transpile time and has been
       optimized using lighthouse.  It uses an appshell to keep initial
       load times fast and lazy loads content after first paint. Custom
-      "themeing" and languages are supported out of the box.  To
-      access the Playing With Technology page you must pretend to
-      login first.
+      "themeing" and languages are supported out of the box.
     </p>
 
     <p>
@@ -48,7 +48,33 @@
       technologies. And we think it's fun, which is a bonus!
     </p>
 
-	
+	<p> 
+	  
+	  Special thanks to Tomas Trajan (@tomastrajan)
+          <a href="https://medium.com/@tomastrajan"
+	     aria-label="Tomas Trajan Medium"
+	     rel="noopener"
+	     target="_blank"> https://medium.com/@tomastrajan
+	    </a>
+	  for the angular-ngrx-material-starter project from which I
+	  based this site
+
+	  and
+
+	  Jeff Delaney (@angularfirebase)
+          <a href="https://fireship.io/"
+	     aria-label="Fireship.io"
+	     rel="noopener"
+	     target="_blank"> https://fireship.io/
+	    </a>
+
+	    
+	  for all the great content
+
+	</p>
+
+
+    
       </div>
     </div>
   </div>

@@ -9,13 +9,30 @@ skip_files:
 - ^(?!dist)  # Skip any files not in the dist folder
 
 handlers:
-- url: /(.*\.(gif|png|jpeg|jpg|css|js|ico|json|txt|webmanifest|svg))$
+
+- url: /sitemap.xml
+  static_files: dist/Increate/assets/sitemap.xml
+  upload: dist/Increate/assets/sitemap.xml
+
+- url: /BingSiteAuth.xml
+  static_files: dist/Increate/assets/BingSiteAuth.xml
+  upload: dist/Increate/assets/BingSiteAuth.xml
+
+
+- url: /robots.txt
+  static_files: dist/Increate/assets/robots.txt
+  upload: dist/Increate/assets/robots.txt
+
+
+- url: /(.*\.(gif|png|jpeg|jpg|css|js|ico|json|webmanifest|svg))$
   static_files: dist/Increate/\1
   upload: dist/Increate/(.*)
   secure: always
 
+
 - url: /(.*)
   static_files: dist/Increate/index.html
   upload: dist/Increate/index.html
-  expiration: "1m"
+  expiration: 0m
   secure: always
+

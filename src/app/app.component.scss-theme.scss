@@ -17,6 +17,12 @@
       .link {
         color: mat-color($primary, default-contrast);
       }
+      
+      .logged-in {
+          //color: mat-color($accent, default-contrast);
+          //background-color: mat-color($accent);
+	  color: mat-color($accent);
+      }
     }
 
     mat-sidenav {
