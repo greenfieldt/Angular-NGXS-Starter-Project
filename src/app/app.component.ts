@@ -134,13 +134,7 @@ export class AppComponent implements AfterViewInit {
                     (<any>window).ga('send', 'pageview');
                 })
             ).subscribe());
-
- 
         }
-
-
-
-
     }
 
     private static isIEorEdgeOrSafari() {

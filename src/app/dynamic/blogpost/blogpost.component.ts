@@ -55,7 +55,7 @@ export class BlogpostComponent implements OnInit {
     }
 
     onError($event) {
-
+        this.notFound = true;
     }
 
 }
