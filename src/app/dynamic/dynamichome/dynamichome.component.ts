@@ -19,7 +19,8 @@ export class DynamicHomeComponent implements OnInit {
     examples = [
         { link: 'blog/SBTutorial/master/tutorial.md', label: 'StoryBook 101' },
         { link: 'blog/SpinnerTutorial/master/tutorial.md', label: 'Spinners 101' },
-        { link: 'pwt/customelements', label: 'Custom Elements: News Reader' }
+        { link: 'blog/SBTutorial/CustomElements/CustomElements.md', label: 'Custom Elements: News Reader' },
+        //        { link: 'pwt/customelements', label: 'Custom Elements: News Reader' }
     ];
     constructor() { }
 

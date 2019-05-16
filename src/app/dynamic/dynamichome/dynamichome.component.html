@@ -12,7 +12,7 @@
 
 <nav class="nav-responsive d-sm-none d-flex justify-content-center">
     <mat-select [placeholder]="'increate.menu.blogs' | translate" [value]="'blogs'">
-      <mat-option *ngFor="let e of examples"x
+      <mat-option *ngFor="let e of examples"
 		  [value]="e"
 		  [routerLink]="e.link"
 		  [attr.aria-label] = "'e.label' | translate"
@@ -37,8 +37,7 @@
     <p>
       The site was pre-generated at transpile time and has been
       optimized using lighthouse.  It uses an appshell to keep initial
-      load times fast and lazy loads content after first paint. Custom
-      "themeing" and languages are supported out of the box.
+      load times fast and lazy loads content after first paint. 
     </p>
 
     <p>

@@ -20,6 +20,7 @@
 @import 'app/static/home/home.component.scss-theme';
 @import 'app/static/about/about.component.scss-theme';
 @import 'app/dynamic/dynamichome/dynamichome.component.scss-theme';
+@import 'app/dynamic/table-of-contents/table-of-contents.component.scss-theme';
 @import 'app/static/login/login.component.scss-theme';
 @import 'app/static/forgot-password/forgot-password.component.scss-theme';
 @import 'app/static/set-password/set-password.component.scss-theme';
@@ -39,6 +40,8 @@
   @include increate-set-password-component-theme($theme);
   @include increate-signin-component-theme($theme);
   @include increate-contactus-component-theme($theme);
+  @include increate-toc-component-theme($theme);
+  
 }
 
 

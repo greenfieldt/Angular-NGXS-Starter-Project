@@ -1,26 +1,40 @@
+@import '../../../styles-variables';
+
 ::ng-deep .post-container  {
     
   p {
     text-align: justify;
   }
-  
+
   .post .header-columns {
-      -webkit-column-count: 2;
-      -moz-column-count: 2;
-      column-count: 2;
-      -webkit-column-rule: 0px dotted #e0e0e0;
-      -moz-column-rule: 0px dotted #e0e0e0;
-      column-rule: 0px dotted #e0e0e0;
-      columns:auto;
+      display: flex;
+      flex-flow: column wrap;
+      /* this indicates, when a new "column" will be started */
+      height: 150px;
+      align-content: flex-start;
   }
   .post div .header-name-date
   {
-      display: inline-block
+
+      @media (max-width: map-get($grid-breakpoints, md)) {
+	  font-size:small;
+	  p {
+	      font-size:small;
+	  }
+      }
+      
+      flex: 0 0 auto;
+      width: 65%;
+      margin: 4px;
   }
 
   .post div .header-author-image
   {
-      margin-left: 100px;
+      flex: 0 0 auto;
+      width: 25%;
+      margin: 4px;
+      margin-right:20px;
+
       img {
 	  max-width: 80px;
 	  margin: 8px;

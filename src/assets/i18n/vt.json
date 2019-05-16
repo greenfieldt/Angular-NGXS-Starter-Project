@@ -1,0 +1,94 @@
+{
+    "increate.title.short": "Increate",
+    "increate.title.long": "Increate Software",
+    "increate.menu.login": "Login",
+    "increate.header.github": "Github",
+    "increate.menu.home": "Home",
+    "increate.menu.about": "About",
+    "increate.menu.logout": "Logout",
+    "increate.menu.dynamic": "Playing With Technology",
+    "increate.menu.blogs": "Blogs",
+    "increate.menu.blog" : "Blog Post",
+    "increate.menu.pwt": "Playing With Technology",
+    "increate.footer.changelog": "ChangeLog",
+    "increate.menu.theme": "Change Theme",
+
+    "increate.login.form.title": "Log In",
+    "increate.login.form.subtitle": "",
+    "increate.login.form.email": "Email",
+    "increate.login.form.invalid.email": "Invalid Email",
+    
+    "increate.login.form.password": "Password",
+    "increate.login.form.invalid.password": "Invalid Password",
+    
+    "increate.login.form.submit": "Submit",
+    "increate.login.form.cancel": "Cancel",
+    "increate.login.form.forgot": "Forgot Password",
+    "increate.login.form.signup": "Create Account",
+
+    "increate.login.form.signup": "Sign Up",
+    
+
+    "increate.forgotpassword.form.title": "Forgot Password",
+    "increate.forgotpassword.form.subtitle": "",
+    "increate.forgotpassword.form.email": "Email",
+    "increate.forgotpassword.form.invalid.email": "Invalid Email",
+    
+    "increate.forgotpassword.form.submit": "Send Reset Email",
+    "increate.form.returnToLogIn": "Return To Log In",
+
+    "increate.setpassword.form.title": "Set Password",
+    "increate.setpassword.form.subtitle": "",
+    "increate.setpassword.form.name": "Name",
+    "increate.setpassword.form.invalid.name": "Please Enter Your Name",
+    "increate.setpassword.form.email": "Email",
+    "increate.setpassword.form.invalid.email": "Invalid Email",
+    "increate.setpassword.form.password": "Password",
+    "increate.setpassword.form.invalid.password": "Invalid Password",
+    "increate.setpassword.form.invalid.password.match": "Password Don't Match",
+    
+    "increate.setpassword.form.submit": "Set Password",
+
+
+    "increate.signin.form.title": "Create Account",
+    "increate.signin.form.subtitle": "",
+    "increate.signin.form.name": "Name",
+    "increate.signin.form.invalid.name": "Please Enter Your Name",
+    "increate.signin.form.email": "Email",
+    "increate.signin.form.invalid.email": "Invalid Email",
+    
+    "increate.signin.form.submit": "Create Account",
+    "increate.signin.form.cancel": "Cancel",
+
+
+    "increate.contactus.form.title": "Stay Informed",
+    "increate.contactus.form.subtitle": "Receive our News Letter",
+    "increate.contactus.form.name": "Name",
+    "increate.contactus.form.invalid.name": "Please Enter Your Name",
+    "increate.contactus.form.email": "Email",
+    "increate.contactus.form.invalid.email": "Invalid Email",
+    
+    "increate.contactus.form.submit": "Send",
+
+
+    
+
+    "increate.features.title": "This Site Created With",
+    "increate.features.angular": "Modern powerful framework",
+    "increate.features.angular-cli": "A command line interface for Angular",
+    "increate.features.angular-material": "Material design component library",
+    "increate.features.bootstrap": "Responsive layout from battle tested, world most famous UI library",
+    "increate.features.cypress": "Cypress is a next generation front end testing tool built for the modern web.",
+    "increate.features.documentation": "Docs",
+    "increate.features.fontawesome": "Easy to use vector icons and social logos",
+    "increate.features.guide": "Guide",
+    "increate.features.lazyloading.description": "Faster startup time with lazy loaded feature modules",
+    "increate.features.lazyloading.title": "Lazy loading",
+    "increate.features.ngxs": "State management the Angular way",
+    "increate.features.ngxtranslate": "An internationalization library for Angular",
+    "increate.features.rxjs": "Reactive programming with async collections using Observables",
+    "increate.features.themes.description": "Flexible theming support for provided and custom components",
+    "increate.features.themes.title": "Themes",
+    "increate.features.typescript": "Superior developer experience, code completion, refactoring and less bugs"
+
+}

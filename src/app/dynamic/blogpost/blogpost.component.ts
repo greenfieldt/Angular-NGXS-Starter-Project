@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { tap, first } from 'rxjs/operators';
@@ -16,6 +16,7 @@ export class BlogpostComponent implements OnInit {
     private sub: Subscription = new Subscription();
     post: string;
     notFound: boolean = false;
+    @ViewChild('toc') toc;
 
     constructor(private activatedRoute: ActivatedRoute, private changeDetRef: ChangeDetectorRef) { }
 
@@ -56,6 +57,10 @@ export class BlogpostComponent implements OnInit {
 
     onError($event) {
         this.notFound = true;
+    }
+    onLoad($event) {
+        this.toc.onLoad();
+        this.changeDetRef.detectChanges();
     }
 
 }

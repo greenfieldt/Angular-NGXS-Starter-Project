@@ -1,0 +1,63 @@
+@import '../../../styles-variables';
+
+
+
+:host {
+  font-size: 13px;
+  // Width is container width minus content width
+  width: 19%;
+  @media (max-width: 800px) {
+      visibility:hidden;
+  }
+
+  @media (max-width: 1100px) {
+      width:19%;
+      font-size:10px;
+      overflow:hidden;
+      white-space: nowrap;
+  }
+ // position: sticky;
+ // position: -webkit-sticky;
+  //right now I don't see how to make this sticky
+  //as I can't get to the right parent container
+
+  position: fixed;
+  margin-top: 135px;
+  margin-right: 30px;
+  
+  top: 0;
+  left:10px;
+  padding-left: 25px;
+  box-sizing: border-box;
+  display: inline-flex;
+}
+
+.docs-toc-container {
+  width: 100%;
+  padding: 5px 0 10px 10px;
+}
+
+.docs-toc-heading {
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+a {
+  line-height: 16px;
+  margin: 8px 0 0;
+  position: relative;
+  text-decoration: none;
+  display: block;
+  text-overflow: ellipsis;
+  width: 100%;
+  overflow: hidden;
+}
+
+.docs-level-h3 {
+    margin-left: 12px;
+    overflow:hidden;
+    white-space: nowrap;
+
+}
