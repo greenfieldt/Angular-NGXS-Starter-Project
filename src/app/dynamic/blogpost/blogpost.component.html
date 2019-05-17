@@ -4,11 +4,11 @@
 
   <article>
     <div class="container">
-      <div class="row">
-	<table-of-contents
+      <div class="">
+	<table-of-contents class="col-sm-4 mx-auto"
 	  container=".mat-sidenav-content" #toc>
 	</table-of-contents>
-        <div class="post-container col-lg-8 col-md-10 mx-auto">
+        <div class="post-container col-sm-8 mx-auto">
           <div markdown [src]="post" class="post"
                (load)="onLoad($event)"
 	       (error)="onError($event)"></div>

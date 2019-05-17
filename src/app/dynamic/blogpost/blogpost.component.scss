@@ -85,25 +85,20 @@
     font-size: 18px;
     font-style: italic;
     margin-top: 0;
-    color: gray;
   }
 
   .post p:first-of-type > a {
     text-decoration: none;
-    color: #212529;
   }
 
   .post p:first-of-type > a:focus, .post p:first-of-type > a:hover {
     text-decoration: underline;
-    color: blue;
   }
 
   li.share {
     a.btn {
       border-radius: 8px;
       font-size: 1rem;
-      color: white;
-      border-color: blue;
     }
   }
 
