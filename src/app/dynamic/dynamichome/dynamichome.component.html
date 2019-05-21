@@ -1,81 +1,83 @@
-<nav mat-tab-nav-bar class="d-none d-sm-flex">
-  <a mat-tab-link
-     *ngFor="let e of examples"
-     [routerLink]="e.link"
-     [attr.aria-label] = "'e.label' | translate"
-     routerLinkActive #rla="routerLinkActive"
-     [active]="rla.isActive"
-     [disabled]="e.auth && !(isAuthenticated$ | async)">
-    {{e.label | translate}}
-  </a>
-</nav>
-
-<nav class="nav-responsive d-sm-none d-flex justify-content-center">
-    <mat-select [placeholder]="'increate.menu.blogs' | translate" [value]="'blogs'">
-      <mat-option *ngFor="let e of examples"
-		  [value]="e"
-		  [routerLink]="e.link"
-		  [attr.aria-label] = "'e.label' | translate"
-		  [disabled]="e.auth && !(isAuthenticated$ | async)">
-        {{e.label | translate}}
-      </mat-option>
-    </mat-select>
-</nav>
-
-<div [@routeAnimations]="o.isActivated && o.activatedRoute.routeConfig.path">
-  <router-outlet #o="outlet"></router-outlet>
-</div>
-
-<div *ngIf="!o.isActivated">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">	
-	<h2>
-	  Blog Posts, Technology Spikes,
-	  <br>and Thoughts on Development
-	</h2>
-    <p>
-      The site was pre-generated at transpile time and has been
-      optimized using lighthouse.  It uses an appshell to keep initial
-      load times fast and lazy loads content after first paint. 
-    </p>
-
-    <p>
-      At Increate Software we think it is critical to be able to
-      communicate effectively with Software Development Professionals
-      and undertake a constant stream of spikes to explore new
-      technologies. And we think it's fun, which is a bonus!
-    </p>
-
-	<p> 
-	  
-	  Special thanks to Tomas Trajan (@tomastrajan)
-          <a href="https://medium.com/@tomastrajan"
-	     aria-label="Tomas Trajan Medium"
-	     rel="noopener"
-	     target="_blank"> https://medium.com/@tomastrajan
-	    </a>
-	  for the angular-ngrx-material-starter project from which I
-	  based this site
-
-	  and
-
-	  Jeff Delaney (@angularfirebase)
-          <a href="https://fireship.io/"
-	     aria-label="Fireship.io"
-	     rel="noopener"
-	     target="_blank"> https://fireship.io/
-	    </a>
-
-	    
-	  for all the great content
-
-	</p>
-
-
+<div class="blog-section">
+  <div class = "blog-tabs">
+    <nav mat-tab-nav-bar class="d-none d-sm-flex">
+      <a mat-tab-link
+	 *ngFor="let e of examples"
+	 [routerLink]="e.link"
+	 [attr.aria-label] = "'e.label' | translate"
+	 routerLinkActive #rla="routerLinkActive"
+	 [active]="rla.isActive"
+	 [disabled]="e.auth && !(isAuthenticated$ | async)">
+	{{e.label | translate}}
+      </a>
+    </nav>
     
+    <nav class="nav-responsive d-sm-none d-flex justify-content-center">
+      <mat-select [placeholder]="'increate.menu.blogs' | translate" [value]="'blogs'">
+	<mat-option *ngFor="let e of examples"
+		    [value]="e"
+		    [routerLink]="e.link"
+		    [attr.aria-label] = "'e.label' | translate"
+		    [disabled]="e.auth && !(isAuthenticated$ | async)">
+          {{e.label | translate}}
+	</mat-option>
+      </mat-select>
+    </nav>
+  </div>
+  <div [@routeAnimations]="o.isActivated && o.activatedRoute.routeConfig.path">
+    <router-outlet #o="outlet"></router-outlet>
+  </div>
+  
+  <div *ngIf="!o.isActivated">
+    <div class="container">
+      <div class="row">
+	<div class="col-lg-8 col-md-10 mx-auto">	
+	  <h2>
+	    Blog Posts, Technology Spikes,
+	    <br>and Thoughts on Development
+	  </h2>
+	  <p>
+	    The site was pre-generated at transpile time and has been
+	    optimized using lighthouse.  It uses an appshell to keep initial
+	    load times fast and lazy loads content after first paint. 
+	  </p>
+	  
+	  <p>
+	    At Increate Software we think it is critical to be able to
+	    communicate effectively with Software Development Professionals
+	    and undertake a constant stream of spikes to explore new
+	    technologies. And we think it's fun, which is a bonus!
+	  </p>
+	  
+	  <p> 
+	    
+	    Special thanks to Tomas Trajan (@tomastrajan)
+            <a href="https://medium.com/@tomastrajan"
+	       aria-label="Tomas Trajan Medium"
+	       rel="noopener"
+	       target="_blank"> https://medium.com/@tomastrajan
+	    </a>
+	    for the angular-ngrx-material-starter project from which I
+	    based this site
+	    
+	    and
+	    
+	    Jeff Delaney (@angularfirebase)
+            <a href="https://fireship.io/"
+	       aria-label="Fireship.io"
+	       rel="noopener"
+	       target="_blank"> https://fireship.io/
+	    </a>
+	    
+	    
+	    for all the great content
+	    
+	  </p>
+	  
+	  
+	  
+	</div>
       </div>
     </div>
   </div>
 </div>
-

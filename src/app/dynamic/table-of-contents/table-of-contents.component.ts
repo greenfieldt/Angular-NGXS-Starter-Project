@@ -4,8 +4,8 @@ https://github.com/angular/material.angular.io/tree/master/src/app/shared/table-
 
 */
 
-import { Component, ElementRef, Inject, Input, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { Component, ElementRef, Inject, Input, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, PLATFORM_ID } from '@angular/core';
+import { DOCUMENT, isPlatformBrowser, } from '@angular/common';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Subject, fromEvent } from 'rxjs';
 import { debounceTime, takeUntil, tap } from 'rxjs/operators';
@@ -49,6 +49,7 @@ export class TableOfContentsComponent implements OnInit {
         private _route: ActivatedRoute,
         private _element: ElementRef,
         private changeDet: ChangeDetectorRef,
+        @Inject(PLATFORM_ID) private platformId,
         @Inject(DOCUMENT) private _document: Document) {
 
         this._router.events.pipe(takeUntil(this._destroyed)).subscribe((event) => {
@@ -63,10 +64,11 @@ export class TableOfContentsComponent implements OnInit {
 
         this._route.fragment.pipe(takeUntil(this._destroyed)).subscribe(fragment => {
             this._urlFragment = fragment;
-
-            const target = document.getElementById(this._urlFragment);
-            if (target) {
-                target.scrollIntoView();
+            if (isPlatformBrowser(this.platformId)) {
+                const target = document.getElementById(this._urlFragment);
+                if (target) {
+                    target.scrollIntoView();
+                }
             }
         });
     }
@@ -75,23 +77,29 @@ export class TableOfContentsComponent implements OnInit {
         // On init, the sidenav content element doesn't yet exist, so it's not possible
         // to subscribe to its scroll event until next tick (when it does exist).
         Promise.resolve().then(() => {
-            this._scrollContainer = this.container ?
-                this._document.querySelectorAll(this.container)[0] : window;
+            if (isPlatformBrowser(this.platformId)) {
 
-            if (this._scrollContainer) {
-                fromEvent(this._scrollContainer, 'scroll').pipe(
-                    takeUntil(this._destroyed),
-                    debounceTime(10),
-                    tap(_ => {
-                        this.onScroll();
-                    })
-                ).subscribe();
+                this._scrollContainer = this.container ?
+                    this._document.querySelectorAll(this.container)[0] : window;
+
+                if (this._scrollContainer) {
+                    fromEvent(this._scrollContainer, 'scroll').pipe(
+                        takeUntil(this._destroyed),
+                        debounceTime(10),
+                        tap(_ => {
+                            this.onScroll();
+                        })
+                    ).subscribe();
+                }
             }
         });
     }
 
     ngAfterViewInit() {
-        this.updateScrollPosition();
+        if (isPlatformBrowser(this.platformId)) {
+
+            this.updateScrollPosition();
+        }
     }
 
     ngOnDestroy(): void {
@@ -99,25 +107,31 @@ export class TableOfContentsComponent implements OnInit {
     }
 
     updateScrollPosition(): void {
-        this.links = this.createLinks();
+        if (isPlatformBrowser(this.platformId)) {
 
-        const target = document.getElementById(this._urlFragment);
-        if (target) {
-            //            target.scrollIntoView(false);
-            target.scrollTop = target.offsetTop - 64;
+            this.links = this.createLinks();
+
+            const target = document.getElementById(this._urlFragment);
+            if (target) {
+                //            target.scrollIntoView(false);
+                target.scrollTop = target.offsetTop - 64;
+            }
         }
     }
 
     /** Gets the scroll offset of the scroll container */
     private getScrollOffset(): number {
-        const { top } = this._element.nativeElement.getBoundingClientRect();
-        if (typeof this._scrollContainer.scrollTop !== 'undefined') {
-            return this._scrollContainer.scrollTop + top;
-        } else if (typeof this._scrollContainer.pageYOffset !== 'undefined') {
-            return this._scrollContainer.pageYOffset + top;
+        if (isPlatformBrowser(this.platformId)) {
+            {
+                const { top } = this._element.nativeElement.getBoundingClientRect();
+                if (typeof this._scrollContainer.scrollTop !== 'undefined') {
+                    return this._scrollContainer.scrollTop + top;
+                } else if (typeof this._scrollContainer.pageYOffset !== 'undefined') {
+                    return this._scrollContainer.pageYOffset + top;
+                }
+            }
         }
     }
-
     //called if page is not ready to be parsed right away
     onLoad($event) {
         this.links = this.createLinks();
@@ -126,26 +140,29 @@ export class TableOfContentsComponent implements OnInit {
     }
 
     private createLinks(): Link[] {
-        const links = [];
-        const headers =
-            Array.from(this._document.querySelectorAll(this.headerSelectors)) as HTMLElement[];
+        if (isPlatformBrowser(this.platformId)) {
 
-        if (headers.length) {
-            for (const header of headers) {
-                // remove the 'link' icon name from the inner text
-                const name = header.innerText.trim().replace(/^link/, '');
-                const { top } = header.getBoundingClientRect();
-                links.push({
-                    name,
-                    type: header.tagName.toLowerCase(),
-                    top: top,
-                    id: header.id,
-                    active: false
-                });
+            const links = [];
+            const headers =
+                Array.from(this._document.querySelectorAll(this.headerSelectors)) as HTMLElement[];
+
+            if (headers.length) {
+                for (const header of headers) {
+                    // remove the 'link' icon name from the inner text
+                    const name = header.innerText.trim().replace(/^link/, '');
+                    const { top } = header.getBoundingClientRect();
+                    links.push({
+                        name,
+                        type: header.tagName.toLowerCase(),
+                        top: top,
+                        id: header.id,
+                        active: false
+                    });
+                }
             }
-        }
 
-        return links;
+            return links;
+        }
     }
 
     private onScroll(): void {

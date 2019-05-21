@@ -132,7 +132,8 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
-              "sourceMap": false,
+
+		"sourceMap": false,
               "optimization": {
                 "scripts": false,
                 "styles": true

@@ -1,8 +1,21 @@
 @import '../../../styles-variables';
 
-nav {
-  margin-bottom: 20px;
+.blog-section {
+    position:relative;
+    .blog-tabs
+    {
+	position:sticky;
+	top:0px;
+	//z-index:500;
+	width:1000vh;
+    }
+    
+}
 
+nav {
+    margin-bottom: 20px;
+    //position:fixed;
+    
   .mat-tab-link {
     min-width: 120px;
     padding: 0 15px;

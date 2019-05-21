@@ -14,8 +14,9 @@ import { TableOfContentsComponent } from './table-of-contents/table-of-contents.
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     imports: [
         SharedModule,
-        DynamicRoutingModule,
         CommonModule,
+
+        DynamicRoutingModule,
         MarkdownModule.forRoot()
     ]
 })

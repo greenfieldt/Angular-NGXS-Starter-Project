@@ -27,9 +27,9 @@ import { MatSelectChange, MatDialog } from '@angular/material';
 import { Router, NavigationEnd } from '@angular/router';
 import { routeAnimations } from './shared/animations/route.animations';
 import { environment as env } from '../environments/environment';
-import { SEOService } from './shared/seo/seo.service';
+import { SEOService, DefaultMetaTags } from './shared/seo/seo.service';
 import { TitleService } from './shared/title/title.service';
-import { isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser, DatePipe } from '@angular/common';
 import { themes } from './shared/state/settings.state';
 import { NotificationService } from './shared/notifications/notification.service';
 import { SpinnerService } from './shared/spinner/spinner.service';
@@ -77,11 +77,17 @@ export class AppComponent implements AfterViewInit {
         private changDetRef: ChangeDetectorRef,
         @Inject(PLATFORM_ID) private platformId) {
 
+
         this.sub.add(this.router.events.pipe(
             filter(event => event instanceof NavigationEnd),
             tap((event: NavigationEnd) => {
-                let description = "Increate Software LLC";
-                this.seo.generateTags({ description: description });
+                let tags = DefaultMetaTags;
+                //TODO: I'm relyng on the fact that I reset tags
+                //well after the route ends (so that my custom changes
+                //on the pages that have them call generateTags after
+                //this guy.  
+                //tags.description = tags.description + tags.timestamp();
+                this.seo.generateTags(tags);
 
                 this.title.setTitle(
                     this.router.routerState.snapshot.root

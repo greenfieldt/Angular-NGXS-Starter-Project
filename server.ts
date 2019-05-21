@@ -15,8 +15,11 @@ enableProdMode();
 // Express server
 const app = express();
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 8080;
 const DIST_FOLDER = join(process.cwd(), 'dist');
+
+//Here are a prerendered pages
+import { ROUTES } from './static.paths';
 
 // * NOTE :: leave this as require() since this file is built Dynamically from webpack
 const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require('./Increate-server/main');
@@ -36,25 +39,36 @@ app.set('views', join(DIST_FOLDER, 'Increate'));
 // app.get('/api/**', (req, res) => { });
 
 // Server static files from /browser
+
 app.get('*.*', express.static(join(DIST_FOLDER, 'Increate'), {
-    maxAge: '1y'
+    maxAge: '10m'
 }));
 
-app.get('*.*', express.static(join(DIST_FOLDER, 'Increate/assets'), {
-    maxAge: '1y'
-}));
+
 
 // All regular routes use the Universal engine
 app.get('*', (req, res) => {
-    res.render('index', {
-        req, res,
-        providers: [{
-            //providing an http interceptor to allow server side use
-            //of httpclient
-            provide: 'serverUrl',
-            useValue: `${req.protocol}://${req.get('host')}`
-        }]
-    });
+    //console.log(req);
+    //console.log("path is: ", req.path);
+
+    res.set('Cache-Control', 'public, max-age=600');
+
+    if (ROUTES.includes(req.path)) {
+        //console.log("sending the pregenerated site");
+        res.sendFile(join(DIST_FOLDER + '/Increate/rendered-index.html'));
+    }
+    else {
+        console.log("Server Side rendering");
+        res.render('index', {
+            req, res,
+            providers: [{
+                //providing an http interceptor to allow server side use
+                //of httpclient
+                provide: 'serverUrl',
+                useValue: `${req.protocol}://${req.get('host')}`
+            }]
+        });
+    }
 });
 
 // Start up the Node server

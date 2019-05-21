@@ -6,8 +6,6 @@ let evergreenBrowser = checkBrowser({
     safari: 10
 });
 
-declare var System: any;
-
 /** Import basic polyfills required by Angular itself */
 import './polyfills.basic';
 

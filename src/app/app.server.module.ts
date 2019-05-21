@@ -9,12 +9,14 @@ import { STORAGE_ENGINE } from '@ngxs/storage-plugin';
 //import { LOCAL_STORAGE } from '@shared/local-storage.token';
 
 import { LocalStoragePolyfill } from './shared/polyfills/local-storage-polyfill';
+import { ModuleMapLoaderModule } from '@nguniversal/module-map-ngfactory-loader';
 
 
 @NgModule({
     imports: [
         AppModule,
         ServerModule,
+        ModuleMapLoaderModule
     ],
     providers: [
         // replaces NGXS storage engine on server

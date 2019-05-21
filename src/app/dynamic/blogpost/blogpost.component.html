@@ -1,27 +1,38 @@
 <script src="node_modules/prismjs/prism.js"></script>
 
+
 <section class="features">
 
-  <article>
-    <div class="container">
-      <div class="">
-	<table-of-contents class="col-sm-4 mx-auto"
-	  container=".mat-sidenav-content" #toc>
-	</table-of-contents>
-        <div class="post-container col-sm-8 mx-auto">
-          <div markdown [src]="post" class="post"
-               (load)="onLoad($event)"
-	       (error)="onError($event)"></div>
-
-          <div class="post-not-found" *ngIf="notFound">
-            <div class="d-flex justify-content-center">
-              <fa-icon icon="book"></fa-icon>
-            </div>
-            <div class="d-flex justify-content-center">
-              <p>Oops, the requested blog post was not found</p>
-            </div>
+  <article class="flex m-0">
+    <div class="container-fluid m-0">
+      <div class="row">
+      <table-of-contents class="col-2 mx-auto"
+			 container=".mat-sidenav-content" #toc>
+      </table-of-contents>
+      
+      <div class="post-container col-8 m-auto">
+        <div markdown [src]="post" class="post"
+             (load)="onLoad($event)"
+	     (error)="onError($event)"></div>
+	
+        <div class="post-not-found" *ngIf="notFound">
+          <div class="d-flex justify-content-center">
+            <fa-icon icon="book"></fa-icon>
+          </div>
+          <div class="d-flex justify-content-center">
+            <p>Oops, the requested blog post was not found</p>
           </div>
         </div>
+      </div>
+
+      
+      <div class="comments col-2 mx-auto">
+	<iframe src="http://twubs.com/embed/lovetwitter/?messagesPerPage=5&headerBgColor=%231c6485&headerTextColor=%23ffffff"
+	width="100%" height="100%"
+		frameborder="0"><a href="http://twubs.com/lovetwitter">#lovetwitter</a></iframe>
+	
+
+      </div>
       </div>
     </div>
   </article>

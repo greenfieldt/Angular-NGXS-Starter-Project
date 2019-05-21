@@ -68,10 +68,22 @@ let httpServer = app.listen(PORT, () => {
                 provideModuleMap(LAZY_MODULE_MAP)
             ]
         })).then(html => {
-            console.log("Writing pre-render to", fullPath);
             //make sure this file and what you have in your app.yaml
             //are in sync
-            writeFileSync(join(fullPath, 'index.html'), html);
+            if (route === '/') {
+                const outputPath = join(fullPath, 'rendered-index.html');
+                console.log("Writing pre-render to", outputPath);
+                writeFileSync(outputPath, html);
+            }
+            else {
+
+                const outputPath = join(fullPath,
+                    'rendered-' + route.replace('/', '')
+					+ '.html');
+                console.log("Writing pre-render to", outputPath);
+                writeFileSync(outputPath, html);
+
+            }
             console.log("Wrote");
         });
 

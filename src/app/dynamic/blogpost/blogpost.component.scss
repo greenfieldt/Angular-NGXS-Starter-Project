@@ -1,11 +1,13 @@
 @import '../../../styles-variables';
 
 ::ng-deep .post-container  {
+    height:60vh;
+    overflow:scroll;
     
   p {
     text-align: justify;
   }
-
+  
   .post .header-columns {
       display: flex;
       flex-flow: column wrap;

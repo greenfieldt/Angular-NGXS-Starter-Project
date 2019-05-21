@@ -6,23 +6,22 @@
   font-size: 13px;
   // Width is container width minus content width
   width: 21%;
-  @media (max-width: 800px) {
+  @media (max-width: 683px) {
       visibility:hidden;
   }
 
   @media (max-width: 1100px) {
       width:21%;
       font-size:10px;
-      overflow:hidden;
+      overflow:scroll;
+      -webkit-overflow-scrolling:touch;
       white-space: nowrap;
+      height:45vh;
   }
- // position: sticky;
- // position: -webkit-sticky;
-  //right now I don't see how to make this sticky
-  //as I can't get to the right parent container
 
-  position: fixed;
-  margin-top: 135px;
+  //position: fixed;
+  
+  //margin-top: 135px;
   margin-right: 30px;
   top: 0;
   left:10px;
@@ -35,7 +34,7 @@
   width: 100%;
   padding: 5px 0 10px 10px;
   overflow-y:auto;
-  height:300px;
+  height:275px;
 
 }
 

@@ -19,13 +19,7 @@
     }
 
 	
-    p:first-of-type > a {
-	//If / when we start linking to a profile
-	//we will set the link color here
-	color: #212529;
-    }
-	
-    .header-name-date p:first-of-type {
+    .post h6:first-of-type {
 	color: mat-color($primary);
     }
 
