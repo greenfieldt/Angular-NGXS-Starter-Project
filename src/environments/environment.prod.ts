@@ -20,7 +20,7 @@ export const environment = {
     },
 
     versions: {
-        app: '1.0.4',
+        app: '1.0.5',
         angular: '7.2.0',
         ngxs: '3.4.3',
         material: '7.3.6',

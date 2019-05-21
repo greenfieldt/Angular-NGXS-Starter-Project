@@ -6,14 +6,15 @@
   <article class="flex m-0">
     <div class="container-fluid m-0">
       <div class="row">
-      <table-of-contents class="col-2 mx-auto"
-			 container=".mat-sidenav-content" #toc>
+      <table-of-contents class="col-sm-2 mx-auto"
+			 container=".post-container" #toc>
       </table-of-contents>
       
-      <div class="post-container col-8 m-auto">
+      <div class="post-container col-sm-7 m-0">
         <div markdown [src]="post" class="post"
              (load)="onLoad($event)"
-	     (error)="onError($event)"></div>
+	     (error)="onError($event)">
+	</div>
 	
         <div class="post-not-found" *ngIf="notFound">
           <div class="d-flex justify-content-center">
@@ -26,11 +27,20 @@
       </div>
 
       
-      <div class="comments col-2 mx-auto">
-	<iframe src="http://twubs.com/embed/lovetwitter/?messagesPerPage=5&headerBgColor=%231c6485&headerTextColor=%23ffffff"
-	width="100%" height="100%"
-		frameborder="0"><a href="http://twubs.com/lovetwitter">#lovetwitter</a></iframe>
+      <div class="post-comments col-sm-3 mx-auto">
+	<a class="twitter-timeline"
+	   data-width='100%'
+	   data-height='90%'
+	href="https://twitter.com/IncreateL?ref_src=twsrc%5Etfw">Tweets
+	by IncreateL</a> <script async
+	src="https://platform.twitter.com/widgets.js"
+				 charset="utf-8"></script>
+
 	
+	<a href="https://twitter.com/intent/tweet?button_hashtag=AskIncreate&ref_src=twsrc%5Etfw"
+	   data-height='90%'
+	   class="twitter-hashtag-button" data-show-count="false">
+	  Tweet #AskIncreate</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
       </div>
       </div>

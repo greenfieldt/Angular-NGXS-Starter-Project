@@ -1,13 +1,28 @@
 @import '../../../styles-variables';
 
+::ng-deep .post-comments {
+    iframe {
+	@media (max-width: 683px) {
+	    visibility:hidden !important;
+	}
+	
+    }
+}
+
 ::ng-deep .post-container  {
+    @media (max-width: 683px) {
+	//portrait on a phone
+	//make the post a little bigger
+      height:80vh;
+    }
+    
     height:60vh;
     overflow:scroll;
     
-  p {
-    text-align: justify;
-  }
-  
+    p {
+	text-align: justify;
+    }
+
   .post .header-columns {
       display: flex;
       flex-flow: column wrap;
