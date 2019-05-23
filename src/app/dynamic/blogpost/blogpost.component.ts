@@ -7,6 +7,7 @@ import { environment } from '../../../environments/environment';
 import { SEOService, MetaTags } from '../../shared/seo/seo.service';
 import * as marked from 'marked';
 import { HttpClient } from '@angular/common/http';
+import { TwitterService } from 'src/app/shared/social/twitter.service';
 
 @Component({
     selector: 'app-blogpost',
@@ -26,8 +27,13 @@ export class BlogpostComponent implements OnInit {
         private changeDetRef: ChangeDetectorRef,
         private seo: SEOService,
         private router: Router,
+        private twitter: TwitterService,
         private http: HttpClient) { }
 
+    ngAfterViewInit(): void {
+        // @ts-ignore
+        twttr.widgets.load();
+    }
     ngOnInit() {
 
         this.sub.add(this.activatedRoute.params.subscribe(params => {
@@ -51,6 +57,8 @@ export class BlogpostComponent implements OnInit {
                         '?' + nowString; //cache bust git-hub-raw
                 }
             }
+            this.twitter.getFeed("#askIncreate");
+
             this.generateMetaTags();
             this.changeDetRef.detectChanges();
 
