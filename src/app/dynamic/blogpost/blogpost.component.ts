@@ -1,7 +1,7 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, ViewChild, Renderer2, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { tap, first } from 'rxjs/operators';
+import { Subscription, timer } from 'rxjs';
+import { tap, first, take } from 'rxjs/operators';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '../../shared/animations/route.animations'
 import { environment } from '../../../environments/environment';
 import { SEOService, MetaTags } from '../../shared/seo/seo.service';
@@ -22,19 +22,22 @@ export class BlogpostComponent implements OnInit {
     notFound: boolean = false;
     blogURL;
     @ViewChild('toc') toc;
-
+    @ViewChild('comments') comments: ElementRef;
     constructor(private activatedRoute: ActivatedRoute,
         private changeDetRef: ChangeDetectorRef,
         private seo: SEOService,
         private router: Router,
+        private renderer: Renderer2,
         private twitter: TwitterService,
         private http: HttpClient) { }
 
     ngAfterViewInit(): void {
-        // @ts-ignore
-        twttr.widgets.load();
+
     }
+
+
     ngOnInit() {
+        let node;
 
         this.sub.add(this.activatedRoute.params.subscribe(params => {
             if (Object.keys(params).length === 1) {
@@ -57,7 +60,41 @@ export class BlogpostComponent implements OnInit {
                         '?' + nowString; //cache bust git-hub-raw
                 }
             }
-            this.twitter.getFeed("#askIncreate");
+            //            this.twitter.getFeed("askincreate");
+            if (node) {
+                node.remove();
+                console.log(this.comments.nativeElement);
+                console.log(this.comments.nativeElement.children);
+                const postData: HTMLCollection = this.comments.nativeElement.children;
+                postData.item(0).remove();
+            }
+            const section = document.createElement('section');
+            section.setAttribute('id', 'isso-thread');
+            section.setAttribute('class', 'col-m-12');
+            const pnode = this.comments.nativeElement.appendChild(section);
+            node = document.createElement('script');
+            node.src = 'http://comments.increate.co:30000/js/embed.min.js';
+            node.type = 'text/javascript';
+            node.setAttribute('data-isso', 'http://comments.increate.co:30000/');
+            node.setAttribute('data-isso-css', 'false');
+            node.async = false;
+            node.charset = 'utf-8';
+            document.getElementsByTagName('head')[0].appendChild(node);
+            /*
+                        timer(2000).pipe(
+                            take(1),
+                            tap(_ => {
+                                const pnode = this.comments.nativeElement;
+                                const _input: HTMLCollection = pnode.getElementsByTagName("input");
+                                console.log("inputs:", _input);
+            
+                                for (let i = 0; i < _input.length; i++) {
+                                    this.renderer.addClass(_input.item(i), 'mat-input-element');
+                                    this.renderer.addClass(_input.item(i), 'col');
+            
+                                }
+                            })).subscribe();
+            */
 
             this.generateMetaTags();
             this.changeDetRef.detectChanges();

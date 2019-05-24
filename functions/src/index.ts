@@ -564,22 +564,16 @@ export const twitterFeed = functions.https.onCall((data, context) => {
         });
 
         console.log('Client:', client);
+        return client.get('search/tweets/30day/prod', {
+            q: searchTerm,
+            count: 100,
+            result_type: 'mixed',
+        }).then((value: any): string => {
+            console.log("value:", value);
+            const status = value.statuses;
+            console.log("Twitter Success:", status);
+            return JSON.stringify(status);
 
-        return client.get('account/verify_credentials').then((response: any) => {
-            console.log("Response: ", response);
-
-
-            return client.get('search/tweets', {
-                q: searchTerm,
-                count: 100,
-                result_type: 'mixed',
-            }).then((value: any): string => {
-                console.log("value:", value);
-                const status = value.statuses;
-                console.log("Twitter Success:", status);
-                return JSON.stringify(status);
-
-            })
         })
             .catch((err: any) => {
                 console.log("Twitter Error:", err);

@@ -24,5 +24,146 @@
     }
 
 
+    
+    
+#isso-thread * {
 }
+#isso-thread a {
+}
+
+#isso-thread {
+}
+#isso-thread > h4 {
+    color: mat-color($accent);
+}
+#isso-thread .textarea {
+}
+#isso-thread .textarea.placeholder {
+    color: mat-color($primary);
+
+}
+
+.isso-comment {
+}
+.isso-comment:not(:first-of-type),
+.isso-follow-up .isso-comment {
+}
+.isso-comment > div.avatar,
+.isso-postbox > .avatar {
+}
+.isso-postbox > .avatar {
+}
+.isso-comment > div.avatar > svg,
+.isso-postbox > .avatar > svg {
+}
+.isso-comment > div.text-wrapper {
+}
+.isso-comment .isso-follow-up {
+}
+.isso-comment > div.text-wrapper > .isso-comment-header, .isso-comment > div.text-wrapper > .isso-comment-footer {
+}
+.isso-comment > div.text-wrapper > .isso-comment-header {
+}
+.isso-comment > div.text-wrapper > .isso-comment-header .spacer {
+}
+.isso-comment > div.text-wrapper > .isso-comment-header .spacer,
+.isso-comment > div.text-wrapper > .isso-comment-header a.permalink,
+.isso-comment > div.text-wrapper > .isso-comment-header .note,
+.isso-comment > div.text-wrapper > .isso-comment-header a.parent {
+    color: mat-color($foreground) !important;
+
+}
+.isso-comment > div.text-wrapper > .isso-comment-header .spacer:hover,
+.isso-comment > div.text-wrapper > .isso-comment-header a.permalink:hover,
+.isso-comment > div.text-wrapper > .isso-comment-header .note:hover,
+.isso-comment > div.text-wrapper > .isso-comment-header a.parent:hover {
+    color: mat-color($accent) !important;
+}
+.isso-comment > div.text-wrapper > .isso-comment-header .note {
+}
+.isso-comment > div.text-wrapper > .isso-comment-header .author {
+    color: mat-color($primary);
+}
+.isso-comment > div.text-wrapper > .textarea-wrapper .textarea {
+}
+.isso-comment > div.text-wrapper > div.text p {
+}
+.isso-comment > div.text-wrapper > div.text p:last-child {
+}
+.isso-comment > div.text-wrapper > div.text h1,
+.isso-comment > div.text-wrapper > div.text h2,
+.isso-comment > div.text-wrapper > div.text h3,
+.isso-comment > div.text-wrapper > div.text h4,
+.isso-comment > div.text-wrapper > div.text h5,
+.isso-comment > div.text-wrapper > div.text h6 {
+}
+.isso-comment > div.text-wrapper > div.textarea-wrapper .textarea {
+}
+.isso-comment > div.text-wrapper > .isso-comment-footer {
+    color: mat-color($primary) !important;
+}
+.isso-comment > div.text-wrapper > .isso-comment-footer a {
+}
+.isso-comment > div.text-wrapper > .isso-comment-footer a:hover {
+    color: mat-color($accent) !important;
+}
+.isso-comment > div.text-wrapper > .isso-comment-footer > a {
+}
+.isso-comment > div.text-wrapper > .isso-comment-footer > a + a {
+}
+.isso-comment > div.text-wrapper > .isso-comment-footer .votes {
+    color: mat-color($primary);
+}
+.isso-comment > div.text-wrapper > .isso-comment-footer .upvote svg,
+.isso-comment > div.text-wrapper > .isso-comment-footer .downvote svg {
+}
+.isso-comment .isso-postbox {
+}
+
+.isso-postbox {
+}
+.isso-postbox > .form-wrapper {
+}
+.isso-postbox > .form-wrapper > .auth-section,
+.isso-postbox > .form-wrapper > .auth-section .post-action {
+}
+.isso-postbox > .form-wrapper .textarea {
+}
+#isso-thread .isso-root {
+}
+#isso-thread .textarea:focus,
+#isso-thread input:focus {
+    border-color: mat-color($primary);
+}
+.isso-postbox > .form-wrapper > .auth-section .input-wrapper {
+}
+.isso-postbox > .form-wrapper > .auth-section .input-wrapper input {
+    background-color: mat-color($background);
+    caret-color:mat-color($primary);
+    
+}
+.isso-postbox > .form-wrapper > .auth-section .post-action {
+}
+.isso-postbox > .form-wrapper > .auth-section .post-action > input {
+    background-color: mat-color($background);
+    caret-color:mat-color($primary);
+
+}
+.isso-postbox > .form-wrapper > .auth-section .post-action > input:hover {
+    background-color: mat-color($background);
+}
+.isso-postbox > .form-wrapper > .auth-section .post-action > input:active {
+    background-color: mat-color($background);
+}
+@media screen and (max-width:600px) {
+    .isso-postbox > .form-wrapper > .auth-section .input-wrapper {
+    }
+    .isso-postbox > .form-wrapper > .auth-section .input-wrapper input {
+    }
+    .isso-postbox > .form-wrapper > .auth-section .post-action {
+    }
+}
+}
+
+
 
