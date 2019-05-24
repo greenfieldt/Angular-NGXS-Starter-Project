@@ -96,6 +96,7 @@
 .isso-comment > div.text-wrapper > div.text h4,
 .isso-comment > div.text-wrapper > div.text h5,
 .isso-comment > div.text-wrapper > div.text h6 {
+    
 }
 .isso-comment > div.text-wrapper > div.textarea-wrapper .textarea {
 }
@@ -136,21 +137,26 @@
     border-color: mat-color($primary);
 }
 .isso-postbox > .form-wrapper > .auth-section .input-wrapper {
+
 }
 .isso-postbox > .form-wrapper > .auth-section .input-wrapper input {
-    background-color: mat-color($background);
+    background-color: unset;//mat-color($background);
     caret-color:mat-color($primary);
+    color: mat-color($primary) !important;
     
 }
 .isso-postbox > .form-wrapper > .auth-section .post-action {
 }
 .isso-postbox > .form-wrapper > .auth-section .post-action > input {
-    background-color: mat-color($background);
+    background-color: unset;
     caret-color:mat-color($primary);
+    color: mat-color($primary);
+    border: 1px solid mat-color($accent);
+
 
 }
 .isso-postbox > .form-wrapper > .auth-section .post-action > input:hover {
-    background-color: mat-color($background);
+    background-color: mat-color($accent);
 }
 .isso-postbox > .form-wrapper > .auth-section .post-action > input:active {
     background-color: mat-color($background);
@@ -159,8 +165,14 @@
     .isso-postbox > .form-wrapper > .auth-section .input-wrapper {
     }
     .isso-postbox > .form-wrapper > .auth-section .input-wrapper input {
+
+    }
+    .isso-postbox > .form-wrapper > .auth-section .post-action > input {
+	background-color: unset;
     }
     .isso-postbox > .form-wrapper > .auth-section .post-action {
+	background-color: unset;
+
     }
 }
 }

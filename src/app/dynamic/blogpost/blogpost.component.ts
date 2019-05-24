@@ -27,8 +27,6 @@ export class BlogpostComponent implements OnInit {
         private changeDetRef: ChangeDetectorRef,
         private seo: SEOService,
         private router: Router,
-        private renderer: Renderer2,
-        private twitter: TwitterService,
         private http: HttpClient) { }
 
     ngAfterViewInit(): void {
@@ -60,7 +58,6 @@ export class BlogpostComponent implements OnInit {
                         '?' + nowString; //cache bust git-hub-raw
                 }
             }
-            //            this.twitter.getFeed("askincreate");
             if (node) {
                 node.remove();
                 console.log(this.comments.nativeElement);
@@ -80,21 +77,6 @@ export class BlogpostComponent implements OnInit {
             node.async = false;
             node.charset = 'utf-8';
             document.getElementsByTagName('head')[0].appendChild(node);
-            /*
-                        timer(2000).pipe(
-                            take(1),
-                            tap(_ => {
-                                const pnode = this.comments.nativeElement;
-                                const _input: HTMLCollection = pnode.getElementsByTagName("input");
-                                console.log("inputs:", _input);
-            
-                                for (let i = 0; i < _input.length; i++) {
-                                    this.renderer.addClass(_input.item(i), 'mat-input-element');
-                                    this.renderer.addClass(_input.item(i), 'col');
-            
-                                }
-                            })).subscribe();
-            */
 
             this.generateMetaTags();
             this.changeDetRef.detectChanges();
