@@ -8,11 +8,13 @@ const routes: Routes = [
     {
         path: '',
         component: DynamicHomeComponent,
+        data: { title: 'increate.menu.blogs' },
         children: [
             {
                 path: '',
                 redirectTo: 'blog',
-                pathMatch: 'full'
+                pathMatch: 'full',
+
             },
             {   //sometimes I put the blog post in assests/blogs and just
                 //pass the file name

@@ -1,13 +1,23 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, ViewChild, Renderer2, ElementRef } from '@angular/core';
+import {
+    Component,
+    OnInit,
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    ViewChild,
+    ElementRef,
+    Inject,
+    PLATFORM_ID
+} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription, timer } from 'rxjs';
 import { tap, first, take } from 'rxjs/operators';
-import { ROUTE_ANIMATIONS_ELEMENTS } from '../../shared/animations/route.animations'
+import { ROUTE_ANIMATIONS_ELEMENTS } from '../../shared/animations/route.animations';
 import { environment } from '../../../environments/environment';
 import { SEOService, MetaTags } from '../../shared/seo/seo.service';
 import * as marked from 'marked';
 import { HttpClient } from '@angular/common/http';
-import { TwitterService } from 'src/app/shared/social/twitter.service';
+import { isPlatformBrowser } from '@angular/common';
+import { Title } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-blogpost',
@@ -26,7 +36,9 @@ export class BlogpostComponent implements OnInit {
     constructor(private activatedRoute: ActivatedRoute,
         private changeDetRef: ChangeDetectorRef,
         private seo: SEOService,
+		private title: Title,
         private router: Router,
+        @Inject(PLATFORM_ID) private platformId,
         private http: HttpClient) { }
 
     ngAfterViewInit(): void {
@@ -58,26 +70,28 @@ export class BlogpostComponent implements OnInit {
                         '?' + nowString; //cache bust git-hub-raw
                 }
             }
-            if (node) {
-                node.remove();
-                console.log(this.comments.nativeElement);
-                console.log(this.comments.nativeElement.children);
-                const postData: HTMLCollection = this.comments.nativeElement.children;
-                postData.item(0).remove();
-            }
-            const section = document.createElement('section');
-            section.setAttribute('id', 'isso-thread');
-            section.setAttribute('class', 'col-m-12');
-            const pnode = this.comments.nativeElement.appendChild(section);
-            node = document.createElement('script');
-            node.src = 'http://comments.increate.co:30000/js/embed.min.js';
-            node.type = 'text/javascript';
-            node.setAttribute('data-isso', 'http://comments.increate.co:30000/');
-            node.setAttribute('data-isso-css', 'false');
-            node.async = false;
-            node.charset = 'utf-8';
-            document.getElementsByTagName('head')[0].appendChild(node);
+            if (isPlatformBrowser(this.platformId)) {
 
+                if (node) {
+                    node.remove();
+                    console.log(this.comments.nativeElement);
+                    console.log(this.comments.nativeElement.children);
+                    const postData: HTMLCollection = this.comments.nativeElement.children;
+                    postData.item(0).remove();
+                }
+                const section = document.createElement('section');
+                section.setAttribute('id', 'isso-thread');
+                section.setAttribute('class', 'col-m-12');
+                const pnode = this.comments.nativeElement.appendChild(section);
+                node = document.createElement('script');
+                node.src = 'https://comment2.increate.co/js/embed.min.js';
+                node.type = 'text/javascript';
+                node.setAttribute('data-isso', 'https://comment2.increate.co/');
+                node.setAttribute('data-isso-css', 'false');
+                node.async = false;
+                node.charset = 'utf-8';
+                document.getElementsByTagName('head')[0].appendChild(node);
+            }
             this.generateMetaTags();
             this.changeDetRef.detectChanges();
 
@@ -148,7 +162,9 @@ export class BlogpostComponent implements OnInit {
                 tags.site_name = 'https://www.increatesoftware.com';
                 //console.log(tokens);
                 this.seo.generateTags(tags);
-
+                //TODO this might might fight with the setTitle call in
+                //appcomponent 
+                this.title.setTitle(tags.title);
             }),
             first()
         ).subscribe();

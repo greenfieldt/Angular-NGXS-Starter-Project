@@ -79,7 +79,9 @@ export class ModalContainerComponent implements OnInit {
         this.dialog_sub = this.dialogRef.afterClosed().pipe(
             take(1),
         ).subscribe(() => {
-            this.router.navigateByUrl('/');
+            const regex = new RegExp('[(]modal:modal\/[a-zA-Z]*[)]');
+            console.log(this.router.url.replace(regex, ''));
+            this.router.navigateByUrl(this.router.url.replace(regex, ''));
         });
 
 

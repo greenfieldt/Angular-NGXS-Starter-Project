@@ -12,6 +12,10 @@ import { SetPasswordComponent } from './set-password/set-password.component';
 import { SigninComponent } from './signin/signin.component';
 import { FeaturesComponent } from './features/features.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import { ContactComponent } from './contact/contact.component';
+import { OurworkComponent } from './ourwork/ourwork.component';
+import { TechnologyComponent } from './technology/technology.component';
+import { ServicesComponent } from './services/services.component';
 
 @NgModule({
     declarations: [HomeComponent,
@@ -22,7 +26,11 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
         SetPasswordComponent,
         SigninComponent,
         FeaturesComponent,
-        ContactUsComponent],
+        ContactUsComponent,
+        ContactComponent,
+        OurworkComponent,
+        TechnologyComponent,
+        ServicesComponent],
     entryComponents: [LoginComponent,
         ForgotPasswordComponent,
         SetPasswordComponent,

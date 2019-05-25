@@ -53,7 +53,7 @@
 
           <span class="d-none d-md-inline">
             <button mat-button class="nav-button"
-		    *ngFor="let item of navigation"
+		    *ngFor="let item of navigation | headerFooter:'header'"
 		    [routerLink]="[item.link]"
 		    routerLinkActive="active"
 		    [attr.aria-label]="item.label | translate">
@@ -154,7 +154,7 @@
    
       <div appShellNoRender class="footer">
         <div class="row">
-          <div class="col-sm-12 links">
+          <div class="col-sm-12 links small-links">
             <a href="https://www.github.com/greenfieldt" aria-label="GitHub" target="_blank" rel="noopener">
               <fa-icon [icon]="['fab','github']"></fa-icon>
               <span>Github</span>
@@ -163,16 +163,32 @@
               <fa-icon [icon]="['fab','medium-m']"></fa-icon>
               <span>Medium</span>
             </a>
-            <a href="https://www.twitter.com/" aria-label="Twitter" target="_blank" rel="noopener">
+            <a href="https://www.twitter.com/askincreate" aria-label="Twitter" target="_blank" rel="noopener">
               <fa-icon [icon]="['fab','twitter']"></fa-icon>
               <span>Twitter</span>
             </a>
           </div>
         </div>
+	<div class="row">
+	  <div class="col-sm-12 links">
+		      
+            <a class="small-links"
+	       *ngFor="let item of navigation | headerFooter:'footer'"
+	       [routerLink]="[item.link]"
+	       routerLinkActive="active"
+	       [attr.aria-label]="item.label | translate">
+              {{item.label | translate}}
+            </a>
+	  </div>
+	</div>
         <div class="row">
           <div class="col-12 signature">
+
+
+
+	    
             &#169; <span class="year"
-            data-testid="footer-year">{{year}}</span> - Increate LLC
+            data-testid="footer-year">2017 - {{year}}</span> - Increate Software LLC
             <br class="d-block d-sm-none">
             <a [matTooltip]="'increate.footer.changelog' | translate"
                matTooltipPosition="before"

@@ -5,9 +5,19 @@
     "increate.header.github": "Github",
     "increate.menu.home": "Home",
     "increate.menu.about": "About",
+
+    "increate.menu.services": "Services",
+    "increate.menu.process": "Process",
+    "increate.menu.ourwork": "Work",
+    "increate.menu.technology": "Tech",
+    "increate.menu.contact": "Contact",
+
+
+
+
     "increate.menu.logout": "Logout",
-    "increate.menu.dynamic": "Playing With Technology",
-    "increate.menu.blogs": "Blogs",
+    "increate.menu.dynamic": "Blog",
+    "increate.menu.blogs": "Blog",
     "increate.menu.blog" : "Blog Post",
     "increate.menu.pwt": "Playing With Technology",
     "increate.footer.changelog": "ChangeLog",

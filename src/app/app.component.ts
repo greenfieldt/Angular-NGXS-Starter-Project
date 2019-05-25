@@ -27,7 +27,7 @@ import { MatSelectChange, MatDialog } from '@angular/material';
 import { Router, NavigationEnd } from '@angular/router';
 import { routeAnimations } from './shared/animations/route.animations';
 import { environment as env } from '../environments/environment';
-import { SEOService, DefaultMetaTags } from './shared/seo/seo.service';
+import { SEOService, DefaultMetaTags, MetaTags } from './shared/seo/seo.service';
 import { TitleService } from './shared/title/title.service';
 import { isPlatformBrowser, DatePipe } from '@angular/common';
 import { themes } from './shared/state/settings.state';
@@ -55,11 +55,76 @@ export class AppComponent implements AfterViewInit {
     themes = themes;
 
     sub: Subscription = new Subscription();
+    aboutMeta: MetaTags = {
+        title: "About Us",
+        description: "About Increate Software, Located in Denver, CO, specializing in Software Engineering Management, Consulting, Offshore Software Development, and Full Service Software Development",
+        slug: "Increate Software, Located in Denver, CO, specializing in Software Engineering Management, Consulting, Offshore Software Development, and Full Service Software Development",
+    }
+    blogMeta: MetaTags = {
+        title: "Increate Software Blog",
+        description: "Articles and tips on Software Development, Software Engineering Management, Offshore Software Development, Web Development, and more.",
+        slug: "Articles and tips on Software Development, Software Engineering Management, Offshore Software Development, Web Development, and more.",
+    }
+
+    contactUsMeta: MetaTags = {
+        title: "Contact Increate Software",
+        description: "Contact Us for a Free Consultation on Software Development, Software Engineering Management, Offshore Software Development, Web Development, and more.",
+        slug: "Contact Us For a Free Consultation on Software Development, Software Engineering Management, Offshore Software Development, Web Development, and more.",
+    }
+
+    servicesMeta: MetaTags = {
+        title: "Our Services at Increate Software",
+        description: "Our Services Include: Engineering Management, Offshore Development Consulting, Full Service Software Development.",
+        slug: "Our Services Include: Engineering Management, Offshore Development Consulting, Full Service Software Development.",
+    }
+
+    ourWorkMeta: MetaTags = {
+        title: "Some Examples of Our Work",
+        description: "Some Examples of our Previous Work in the fields of Engineering Management, Offshore Development, and Full Service Software Development.",
+        slug: "Some Examples of our Previous Work in the fields of Engineering Management, Offshore Development, and Full Service Software Development.",
+    }
+
 
     navigation = [
-        { link: 'myhome', label: 'increate.menu.home' },
-        { link: 'about', label: 'increate.menu.about' },
-        { link: 'dynamic', label: 'increate.menu.dynamic' },
+        {
+            link: 'myhome', label: 'increate.menu.home',
+            tags: null, showInHeader: true, showInFooter: true
+        },
+
+        {
+            link: 'about', label: 'increate.menu.about',
+            tags: this.aboutMeta, showInHeader: false, showInFooter: true
+        },
+
+        {
+            link: 'services', label: 'increate.menu.services',
+            tags: this.servicesMeta, showInHeader: true, showInFooter: true
+        },
+
+        {
+            link: 'dynamic/blog/SpinnerTutorial/master/tutorial.md', label: 'increate.menu.process',
+            tags: null, showInHeader: false, showInFooter: true
+        },
+
+        {
+            link: 'ourwork', label: 'increate.menu.ourwork',
+            tags: this.ourWorkMeta, showInHeader: true, showInFooter: true
+        },
+
+        {
+            link: 'technology', label: 'increate.menu.technology',
+            tags: this.blogMeta, showInHeader: true, showInFooter: true
+        },
+
+        {
+            link: 'contact', label: 'increate.menu.contact',
+            tags: this.contactUsMeta, showInHeader: true, showInFooter: true
+        },
+
+        {
+            link: 'dynamic', label: 'increate.menu.dynamic',
+            tags: this.blogMeta, showInHeader: true, showInFooter: true
+        },
 
     ];
 
@@ -81,7 +146,11 @@ export class AppComponent implements AfterViewInit {
         this.sub.add(this.router.events.pipe(
             filter(event => event instanceof NavigationEnd),
             tap((event: NavigationEnd) => {
-                let tags = DefaultMetaTags;
+                let link = this.navigation
+                    .filter((link) => link.link ===
+                        event.url.replace('/', ''))[0];
+                let tags = link ? link.tags : DefaultMetaTags;
+
                 //TODO: I'm relyng on the fact that I reset tags
                 //well after the route ends (so that my custom changes
                 //on the pages that have them call generateTags after

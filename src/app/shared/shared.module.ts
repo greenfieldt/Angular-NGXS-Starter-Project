@@ -93,10 +93,9 @@ library.add(
     faBook
 );
 
-import { SpinnerComponent } from './/spinner/spinner.component';
+import { SpinnerComponent } from './spinner/spinner.component';
+import { HeaderFooterPipe } from './pipes/header-footer.pipe';
 
-//import { BigInputComponent } from './big-input/big-input.component';
-//import { BigInputActionComponent } from './big-input/big-input-action.component';
 //import { RtlSupportDirective } from './rtl-support/rtl-support.directive';
 
 @NgModule({
@@ -128,10 +127,10 @@ import { SpinnerComponent } from './/spinner/spinner.component';
 
     ],
     declarations: [
-        //        BigInputComponent,
-        //        BigInputActionComponent,
         //        RtlSupportDirective
-        SpinnerComponent
+        SpinnerComponent,
+        HeaderFooterPipe
+
     ],
     entryComponents: [SpinnerComponent],
     exports: [
@@ -163,10 +162,9 @@ import { SpinnerComponent } from './/spinner/spinner.component';
         MatNativeDateModule,
         MatGridListModule,
         FontAwesomeModule,
-        //        BigInputComponent,
-        //        BigInputActionComponent,
         //        RtlSupportDirective
-        SpinnerComponent
+        SpinnerComponent,
+        HeaderFooterPipe
     ]
 })
 export class SharedModule { }

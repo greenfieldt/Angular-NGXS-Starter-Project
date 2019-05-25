@@ -39,11 +39,27 @@ app.set('views', join(DIST_FOLDER, 'Increate'));
 // app.get('/api/**', (req, res) => { });
 
 // Server static files from /browser
+/*
+app.get('robots.txt', express.static(join(DIST_FOLDER, '/Increate/assets/'), {
+    maxAge: '10m'
+}));
 
+app.get('sitemap.xml', express.static(join(DIST_FOLDER, 'Increate/assets/sitemap.xml'), {
+    maxAge: '10m'
+}));
+*/
 app.get('*.*', express.static(join(DIST_FOLDER, 'Increate'), {
     maxAge: '10m'
 }));
 
+app.get("/sitemap.xml", function (req, res, next) {
+    res.sendFile(__dirname + '/Increate/assets/sitemap.xml');
+});
+
+
+app.get("/robots.txt", function (req, res, next) {
+    res.sendFile(__dirname + '/Increate/assets/robots.txt');
+});
 
 
 // All regular routes use the Universal engine
