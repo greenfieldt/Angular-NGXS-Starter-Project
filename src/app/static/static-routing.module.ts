@@ -45,6 +45,11 @@ const routes: Routes = [
         data: { title: 'increate.menu.technology' },
     },
     {
+        path: 'process',
+        redirectTo: 'dynamic/blog/process/master/overview.md',
+        data: { title: 'increate.menu.blog' },
+    },
+    {
         path: 'modal/:component',
         component: ModalContainerComponent,
         outlet: 'modal'

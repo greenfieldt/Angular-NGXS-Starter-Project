@@ -76,12 +76,12 @@ app.get('*', (req, res) => {
         const path = join(DIST_FOLDER
             + '/Increate'
             + req.path
-            + '/rendered'
-            + req.path
-            + '-index.html');
+            + '/rendered-'
+            + req.path.replace('/', '') + '.html'
+        );
 
         console.log("Sending ", path);
-        res.sendFile();
+        res.sendFile(path);
 
 
     }
