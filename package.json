@@ -9,7 +9,7 @@
     "start:ssr": "npm run clean && npm run compile:server && npm run build:prod && npm run build:ssr:prod && npm run serve:ssr",
     "build": "ng build",
     "build:prod": "node version.js && ng build --prod=true --aot=true --vendorChunk=true --buildOptimizer=true",
-    "build:ssr:prod": "ng run Increate:server:production",
+    "build:ssr:prod": "ng run Increate:server:production", 
     "build:ssr": "ng run Increate:server",
     "generate:prerender": "cd dist && node prerender",
     "test": "ng test",

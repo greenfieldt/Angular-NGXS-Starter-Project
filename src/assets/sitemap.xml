@@ -2,33 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"> 
   <url>
     <loc>https://www.increatesoftware.com/home.html</loc>
-    <lastmod>2018-06-04</lastmod>
+    <lastmod>2019-05-24</lastmod>
   </url>
 
   <url>
     <loc>https://www.increatesoftware.com/about.html</loc>
-    <lastmod>2018-06-04</lastmod>
+    <lastmod>2019-05-24</lastmod>
+  </url>
+
+  <url>
+    <loc>https://www.increatesoftware.com/services.html</loc>
+    <lastmod>2019-05-24</lastmod>
+  </url>
+
+  <url>
+    <loc>https://www.increatesoftware.com/ourwork.html</loc>
+    <lastmod>2019-05-24</lastmod>
+  </url>
+
+  <url>
+    <loc>https://www.increatesoftware.com/technology.html</loc>
+    <lastmod>2019-05-24</lastmod>
   </url>
 
   <url>
     <loc>https://www.increatesoftware.com/contact.html</loc>
-    <lastmod>2018-06-04</lastmod>
+    <lastmod>2019-05-24</lastmod>
   </url>
 
   
   <url>
     <loc>https://www.increatesoftware.com/dynamic.html</loc>
-    <lastmod>2018-06-04</lastmod>
+    <lastmod>2019-05-24</lastmod>
   </url>
   
   <url>
     <loc>https://www.increatesoftware.com/dynamic/blog/SBTutorial/master/tutorial.md</loc>
-    <lastmod>2018-06-04</lastmod>
+    <lastmod>2019-05-24</lastmod>
   </url>
 
   <url>
     <loc>https://www.increatesoftware.com/dynamic/blog/SpinnerTutorial/master/tutorial.md</loc>
-    <lastmod>2018-06-04</lastmod>
+    <lastmod>2019-05-24</lastmod>
+  </url>
+
+  <url>
+    <loc>https://www.increatesoftware.com/dynamic/blog/SBTutorial/CustomElements/CustomElements.md</loc>
+    <lastmod>2019-05-24</lastmod>
+  </url>
+
+  <url>
+    <loc>https://www.increatesoftware.com/dynamic/blog/process/master/overview.md</loc>
+    <lastmod>2019-05-24</lastmod>
   </url>
   
 </urlset>

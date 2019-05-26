@@ -20,6 +20,8 @@ export class DynamicHomeComponent implements OnInit {
         { link: 'blog/SBTutorial/master/tutorial.md', label: 'StoryBook 101' },
         { link: 'blog/SpinnerTutorial/master/tutorial.md', label: 'Spinners 101' },
         { link: 'blog/SBTutorial/CustomElements/CustomElements.md', label: 'Custom Elements: News Reader' },
+        { link: 'blog/process/master/overview.md', label: 'The Process' },
+
         //        { link: 'pwt/customelements', label: 'Custom Elements: News Reader' }
     ];
     constructor() { }

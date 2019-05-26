@@ -12,6 +12,9 @@ const routes: Routes = [
         loadChildren: './dynamic/dynamic.module#DynamicModule'
     },
     {
+        path: 'process',
+        redirectTo: 'dynamic/blog/process/master/overview.md'
+    {
         path: '**',
         redirectTo: 'home'
     },

@@ -1,5 +1,11 @@
 export const ROUTES = [
     '/',
     '/home',
-    '/about'
+    '/about',
+    '/services',
+    '/ourwork',
+    '/technology',
+    '/contact',
+    '/dynamic',
+    'process'
 ];

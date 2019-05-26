@@ -53,11 +53,13 @@ app.get('*.*', express.static(join(DIST_FOLDER, 'Increate'), {
 }));
 
 app.get("/sitemap.xml", function (req, res, next) {
+    res.set('Cache-Control', 'public, max-age=600');
     res.sendFile(__dirname + '/Increate/assets/sitemap.xml');
 });
 
 
 app.get("/robots.txt", function (req, res, next) {
+    res.set('Cache-Control', 'public, max-age=600');
     res.sendFile(__dirname + '/Increate/assets/robots.txt');
 });
 
@@ -70,8 +72,18 @@ app.get('*', (req, res) => {
     res.set('Cache-Control', 'public, max-age=600');
 
     if (ROUTES.includes(req.path)) {
-        //console.log("sending the pregenerated site");
-        res.sendFile(join(DIST_FOLDER + '/Increate/rendered-index.html'));
+        console.log('sending the pregenerated site: ', req.path);
+        const path = join(DIST_FOLDER
+            + '/Increate'
+            + req.path
+            + '/rendered'
+            + req.path
+            + '-index.html');
+
+        console.log("Sending ", path);
+        res.sendFile();
+
+
     }
     else {
         console.log("Server Side rendering");

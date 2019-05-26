@@ -16,6 +16,7 @@ import { ContactComponent } from './contact/contact.component';
 import { OurworkComponent } from './ourwork/ourwork.component';
 import { TechnologyComponent } from './technology/technology.component';
 import { ServicesComponent } from './services/services.component';
+import { BlogBannerComponent } from './blog-banner/blog-banner.component';
 
 @NgModule({
     declarations: [HomeComponent,
@@ -30,7 +31,8 @@ import { ServicesComponent } from './services/services.component';
         ContactComponent,
         OurworkComponent,
         TechnologyComponent,
-        ServicesComponent],
+        ServicesComponent,
+        BlogBannerComponent],
     entryComponents: [LoginComponent,
         ForgotPasswordComponent,
         SetPasswordComponent,

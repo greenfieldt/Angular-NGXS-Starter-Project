@@ -102,7 +102,7 @@ export class AppComponent implements AfterViewInit {
         },
 
         {
-            link: 'dynamic/blog/SpinnerTutorial/master/tutorial.md', label: 'increate.menu.process',
+            link: 'dynamic/blog/process/master/overview.md', label: 'increate.menu.process',
             tags: null, showInHeader: false, showInFooter: true
         },
 
