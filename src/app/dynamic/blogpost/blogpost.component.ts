@@ -36,7 +36,7 @@ export class BlogpostComponent implements OnInit {
     constructor(private activatedRoute: ActivatedRoute,
         private changeDetRef: ChangeDetectorRef,
         private seo: SEOService,
-		private title: Title,
+        private title: Title,
         private router: Router,
         @Inject(PLATFORM_ID) private platformId,
         private http: HttpClient) { }
@@ -79,6 +79,26 @@ export class BlogpostComponent implements OnInit {
                     const postData: HTMLCollection = this.comments.nativeElement.children;
                     postData.item(0).remove();
                 }
+
+
+                //This will find the script node once everytime
+                //you load the dynamichome page
+                //I don't want the script tags to pile up so
+                //I remove the old one (if it is there)
+                let headChildren: HTMLCollection = document.head.children;
+
+                for (let i = 0; i < headChildren.length; i++) {
+                    const _element: Element = headChildren.item(i);
+                    if (_element.tagName === 'SCRIPT') {
+                        if (_element.attributes.getNamedItem('src').value
+                            === 'https://comment2.increate.co/js/embed.min.js') {
+                            _element.remove();
+                        }
+
+                    }
+                }
+
+
                 const section = document.createElement('section');
                 section.setAttribute('id', 'isso-thread');
                 section.setAttribute('class', 'col-m-12');
@@ -90,8 +110,13 @@ export class BlogpostComponent implements OnInit {
                 node.setAttribute('data-isso-css', 'false');
                 node.async = false;
                 node.charset = 'utf-8';
+
+
                 document.getElementsByTagName('head')[0].appendChild(node);
             }
+
+
+
             this.generateMetaTags();
             this.changeDetRef.detectChanges();
 
@@ -158,13 +183,19 @@ export class BlogpostComponent implements OnInit {
                 if (img && img != '')
                     tags.image = img;
                 tags.slug = desc;
-                tags.site = "https:.//www.increatesoftware.com" + this.router.url;
+                tags.site = "https://www.increatesoftware.com" + this.router.url.split('?')[0];
                 tags.site_name = 'https://www.increatesoftware.com';
                 //console.log(tokens);
                 this.seo.generateTags(tags);
                 //TODO this might might fight with the setTitle call in
                 //appcomponent 
                 this.title.setTitle(tags.title);
+                //Do to an unfortunate situation we have to redirect
+                //increatesoftware for a bit
+                //Set the canonicalURL
+                const canonicalURL = "https://increate.co" + this.router.url.split('?')[0];
+                this.seo.createLinkForCanonicalURL(canonicalURL);
+
             }),
             first()
         ).subscribe();

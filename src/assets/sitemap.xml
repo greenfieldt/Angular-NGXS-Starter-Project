@@ -1,59 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"> 
   <url>
-    <loc>https://www.increatesoftware.com/home.html</loc>
-    <lastmod>2019-05-24</lastmod>
+    <loc>https://increate.co/home.html</loc>
+    <lastmod>2019-05-27</lastmod>
   </url>
 
   <url>
-    <loc>https://www.increatesoftware.com/about.html</loc>
-    <lastmod>2019-05-24</lastmod>
+    <loc>https://increate.co/about.html</loc>
+    <lastmod>2019-05-27</lastmod>
   </url>
 
   <url>
-    <loc>https://www.increatesoftware.com/services.html</loc>
-    <lastmod>2019-05-24</lastmod>
+    <loc>https://increate.co/services.html</loc>
+    <lastmod>2019-05-27</lastmod>
   </url>
 
   <url>
-    <loc>https://www.increatesoftware.com/ourwork.html</loc>
-    <lastmod>2019-05-24</lastmod>
+    <loc>https://increate.co/ourwork.html</loc>
+    <lastmod>2019-05-27</lastmod>
   </url>
 
   <url>
-    <loc>https://www.increatesoftware.com/technology.html</loc>
-    <lastmod>2019-05-24</lastmod>
+    <loc>https://increate.co/technology.html</loc>
+    <lastmod>2019-05-27</lastmod>
   </url>
 
   <url>
-    <loc>https://www.increatesoftware.com/contact.html</loc>
-    <lastmod>2019-05-24</lastmod>
+    <loc>https://increate.co/contact.html</loc>
+    <lastmod>2019-05-27</lastmod>
   </url>
 
   
   <url>
-    <loc>https://www.increatesoftware.com/dynamic.html</loc>
-    <lastmod>2019-05-24</lastmod>
+    <loc>https://increate.co/blog.html</loc>
+    <lastmod>2019-05-27</lastmod>
   </url>
   
   <url>
-    <loc>https://www.increatesoftware.com/dynamic/blog/SBTutorial/master/tutorial.md</loc>
-    <lastmod>2019-05-24</lastmod>
+    <loc>https://increate.co/blog/post/SBTutorial/master/tutorial.md</loc>
+    <lastmod>2019-05-27</lastmod>
   </url>
 
   <url>
-    <loc>https://www.increatesoftware.com/dynamic/blog/SpinnerTutorial/master/tutorial.md</loc>
-    <lastmod>2019-05-24</lastmod>
+    <loc>https://increate.co/blog/post/SpinnerTutorial/master/tutorial.md</loc>
+    <lastmod>2019-05-27</lastmod>
   </url>
 
   <url>
-    <loc>https://www.increatesoftware.com/dynamic/blog/SBTutorial/CustomElements/CustomElements.md</loc>
-    <lastmod>2019-05-24</lastmod>
+    <loc>https://increate.co/blog/post/SBTutorial/CustomElements/CustomElements.md</loc>
+    <lastmod>2019-05-27</lastmod>
   </url>
 
   <url>
-    <loc>https://www.increatesoftware.com/dynamic/blog/process/master/overview.md</loc>
-    <lastmod>2019-05-24</lastmod>
+    <loc>https://increate.co/blog/post/process/master/overview.md</loc>
+    <lastmod>2019-05-27</lastmod>
   </url>
   
 </urlset>

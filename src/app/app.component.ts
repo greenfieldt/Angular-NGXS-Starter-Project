@@ -24,7 +24,7 @@ import {
 import { Login, Logout, EmailLogin } from './shared/state/auth.actions';
 
 import { MatSelectChange, MatDialog } from '@angular/material';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { routeAnimations } from './shared/animations/route.animations';
 import { environment as env } from '../environments/environment';
 import { SEOService, DefaultMetaTags, MetaTags } from './shared/seo/seo.service';
@@ -87,8 +87,9 @@ export class AppComponent implements AfterViewInit {
 
     navigation = [
         {
-            link: 'myhome', label: 'increate.menu.home',
-            tags: null, showInHeader: true, showInFooter: true
+            link: 'home', label: 'increate.menu.home',
+            tags: null, showInHeader: true, showInFooter: true,
+            canonicalURL: ''
         },
 
         {
@@ -122,7 +123,7 @@ export class AppComponent implements AfterViewInit {
         },
 
         {
-            link: 'dynamic', label: 'increate.menu.dynamic',
+            link: 'blog', label: 'increate.menu.blogs',
             tags: this.blogMeta, showInHeader: true, showInFooter: true
         },
 
@@ -146,17 +147,30 @@ export class AppComponent implements AfterViewInit {
         this.sub.add(this.router.events.pipe(
             filter(event => event instanceof NavigationEnd),
             tap((event: NavigationEnd) => {
+                let cleanURL = event.urlAfterRedirects.split('?')[0];
                 let link = this.navigation
                     .filter((link) => link.link ===
-                        event.url.replace('/', ''))[0];
+                        cleanURL.replace('/', ''))[0];
                 let tags = link ? link.tags : DefaultMetaTags;
 
+
+                //In most cases the canicoalURL will be the link.link
+                //but occasionally we may need to override that
+                let canonicalURL = "https://increate.co/";
+                if (link) {
+                    const ending = ('canonicalURL' in link) ? link.canonicalURL : link.link;
+                    canonicalURL = canonicalURL + ending;
+                }
+                else {
+                    canonicalURL = null;
+                }
                 //TODO: I'm relyng on the fact that I reset tags
                 //well after the route ends (so that my custom changes
                 //on the pages that have them call generateTags after
                 //this guy.  
                 //tags.description = tags.description + tags.timestamp();
                 this.seo.generateTags(tags);
+                this.seo.createLinkForCanonicalURL(canonicalURL);
 
                 this.title.setTitle(
                     this.router.routerState.snapshot.root

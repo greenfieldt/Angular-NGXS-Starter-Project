@@ -8,7 +8,7 @@ const routes: Routes = [
         pathMatch: 'full'
     },
     {
-        path: 'dynamic',
+        path: 'blog',
         loadChildren: './dynamic/dynamic.module#DynamicModule'
     },
     {

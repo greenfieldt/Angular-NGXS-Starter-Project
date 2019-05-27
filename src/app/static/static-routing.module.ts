@@ -46,7 +46,7 @@ const routes: Routes = [
     },
     {
         path: 'process',
-        redirectTo: 'dynamic/blog/process/master/overview.md',
+        redirectTo: 'blog/post/process/master/overview.md',
         data: { title: 'increate.menu.blog' },
     },
     {

@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
-import { DatePipe } from '@angular/common';
+import { DOCUMENT, DatePipe } from '@angular/common';
+
 
 export interface MetaTags {
     title?: string;
@@ -35,13 +36,59 @@ export const DefaultMetaTags: MetaTags = {
 })
 export class SEOService {
 
-    constructor(private meta: Meta, private titleService: Title) { }
+    constructor(private meta: Meta,
+        private titleService: Title,
+        @Inject(DOCUMENT) private doc) { }
+
+
+    createLinkForCanonicalURL(canonicalURL: string) {
+        let link: HTMLLinkElement;
+        let headChildren: HTMLCollection = this.doc.head.children;
+
+        for (let i = 0; i < headChildren.length; i++) {
+            const _element: Element = headChildren.item(i);
+            if (_element.tagName === 'LINK') {
+                if (_element.attributes.getNamedItem('rel').value === 'canonical') {
+                    link = _element as HTMLLinkElement;
+
+                    if (canonicalURL === null) {
+                        //null means we don't know what the
+                        //canonical url should be.
+                        //probably best to remove the link
+                        //so we don't confuse google
+                        link.remove();
+                    }
+
+                }
+            }
+        }
+
+        //If we don't understand what the canonicalURL is
+        //it is probably better just to do nothing
+        if (canonicalURL === null) {
+            //our job is done now that the previous
+            //canonical has been removed
+            return;
+        }
+        //on the first page load we will need to create this element
+        if (!link) {
+            link = this.doc.createElement('link');
+            link.setAttribute('rel', 'canonical');
+            this.doc.head.appendChild(link);
+        }
+
+
+        link.setAttribute('href', canonicalURL);
+    }
+
+
     generateTags(tags: MetaTags) {
         // default values
         tags = {
             ...DefaultMetaTags,
             ...tags
         };
+
 
 
         // Set meta tags

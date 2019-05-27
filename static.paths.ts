@@ -6,6 +6,6 @@ export const ROUTES = [
     '/ourwork',
     '/technology',
     '/contact',
-    '/dynamic',
-    'process'
+    '/blog',
+    '/process'
 ];
