@@ -1,11 +1,6 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <h1 rtl class="main-heading">{{ 'increate.features.title' | translate }}</h1>
-    </div>
-  </div>
   <div class="row align-items-end">
-    <div *ngFor="let feature of features" class="col-md-6 col-lg-4" [ngClass]="routeAnimationsElements">
+    <div *ngFor="let feature of features" class="col-md-6" [ngClass]="routeAnimationsElements">
       <mat-card>
         <mat-card-title>
           <code *ngIf="feature.version">{{feature.version}}</code>{{feature.name | translate}}
@@ -14,7 +9,13 @@
           {{ feature.description | translate }}
         </mat-card-subtitle>
 	<mat-card-content>
-	  <img alt ="Green Checkmark" src="/assets/green-checkmark.svg" />
+	  <span *ngIf="feature.image">
+	    <img [alt] ="feature.name | translate" [src]="feature.image" />
+	  </span>
+	  <span *ngIf="!feature.image">
+	    <img alt ="Green Checkmark"
+		 src="/assets/green-checkmark.svg" />
+	  </span>
 	</mat-card-content>
         <mat-card-actions>
           <a *ngIf="feature.github"

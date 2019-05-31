@@ -19,6 +19,12 @@
 @import 'app/app.component.scss-theme';
 @import 'app/static/home/home.component.scss-theme';
 @import 'app/static/about/about.component.scss-theme';
+@import 'app/static/services/services.component.scss-theme';
+@import 'app/static/ourwork/ourwork.component.scss-theme';
+@import 'app/static/contact/contact.component.scss-theme';
+@import 'app/static/technology/technology.component.scss-theme';
+
+
 @import 'app/static/login/login.component.scss-theme';
 @import 'app/static/forgot-password/forgot-password.component.scss-theme';
 @import 'app/static/set-password/set-password.component.scss-theme';
@@ -36,6 +42,11 @@
   @include increate-app-component-theme($theme);
   @include increate-home-component-theme($theme);
   @include increate-about-component-theme($theme);
+  @include increate-services-component-theme($theme);
+  @include increate-ourwork-component-theme($theme);
+  @include increate-contact-component-theme($theme);
+  @include increate-technology-component-theme($theme);
+
   @include increate-dynamichome-component-theme($theme);
   @include increate-login-component-theme($theme);
   @include increate-forgot-password-component-theme($theme);

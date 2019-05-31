@@ -3,21 +3,30 @@
     "increate.title.long": "Increate Software",
     "increate.menu.login": "Login",
     "increate.header.github": "Github",
-    "increate.menu.home": "Home",
-    "increate.menu.about": "About",
 
-    "increate.menu.services": "Services",
-    "increate.menu.process": "Process",
-    "increate.menu.ourwork": "Work",
-    "increate.menu.technology": "Tech",
-    "increate.menu.contact": "Contact",
+    "increate.menu.home": "Full Service Software Consulting",
+    "increate.menu.about": "About Us",
+    "increate.menu.services": "Our Software Consulting Services",
+    "increate.menu.process": "Our Software Development Process",
+    "increate.menu.ourwork": "Examples of Our Prior Work",
+    "increate.menu.technology": "Current and Past Technology Stacks",
+    "increate.menu.contact": "How to Contact Us",
+    "increate.menu.blogs": "Our Blog on Technology",
+
+    "increate.menu.short.home": "Home",
+    "increate.menu.short.about": "About",
+    "increate.menu.short.services": "Services",
+    "increate.menu.short.process": "Process",
+    "increate.menu.short.ourwork": "Work",
+    "increate.menu.short.technology": "Tech",
+    "increate.menu.short.contact": "Contact",
+    "increate.menu.short.blogs": "Blog",
 
 
 
 
     "increate.menu.logout": "Logout",
     "increate.menu.dynamic": "Blog",
-    "increate.menu.blogs": "Blog",
     "increate.menu.blog" : "Blog Post",
     "increate.menu.pwt": "Playing With Technology",
     "increate.footer.changelog": "ChangeLog",

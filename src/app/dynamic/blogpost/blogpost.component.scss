@@ -1,26 +1,22 @@
 @import '../../../styles-variables';
 
 ::ng-deep .post-comments {
-    iframe {
-	@media (max-width: 683px) {
-	    visibility:hidden !important;
-	}
-	
-    }
     .comments-scroll {
 	overflow:scroll;
 	max-height:60vh;
     }
+
+    //turn off comments on a phone in portrait mode
+    @media (max-width: 683px) {
+	//height:0vh;
+	display:none;
+    }
+
 }
 
 ::ng-deep .post-container  {
-    @media (max-width: 683px) {
-	//portrait on a phone
-	//make the post a little bigger
-      height:50vh;
-    }
     
-    height:60vh;
+    height:80vh;
     overflow-y:scroll;
     overflow-x:hidden;
     

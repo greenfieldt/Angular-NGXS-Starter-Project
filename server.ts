@@ -67,20 +67,29 @@ app.get("/robots.txt", function (req, res, next) {
 // All regular routes use the Universal engine
 app.get('*', (req, res) => {
     //console.log(req);
-    //console.log("path is: ", req.path);
+    let cleanPath = req.path.replace('.html', '');
+    console.log("path is: ", req.path);
+    console.log("clean path is: ", cleanPath);
 
     res.set('Cache-Control', 'public, max-age=600');
-
-    if (ROUTES.includes(req.path)) {
-        console.log('sending the pregenerated site: ', req.path);
+    if (cleanPath === '/') {
+        //take care of the base path first
         const path = join(DIST_FOLDER
-            + '/Increate'
-            + req.path
-            + '/rendered-'
-            + req.path.replace('/', '') + '.html'
+            + '/Increate/home/rendered-home.html'
         );
 
-        console.log("Sending ", path);
+        console.log('redirecting to home: ', path);
+        res.sendFile(path);
+
+    }
+    else if (ROUTES.includes(cleanPath)) {
+        const path = join(DIST_FOLDER
+            + '/Increate'
+            + cleanPath
+            + '/rendered-'
+            + cleanPath.replace('/', '') + '.html'
+        );
+        console.log('sending the pregenerated site: ', path);
         res.sendFile(path);
 
 

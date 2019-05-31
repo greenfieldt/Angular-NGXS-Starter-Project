@@ -1,24 +1,24 @@
 
 <div class="blog-section">
   <div class = "blog-tabs">
-    <nav mat-tab-nav-bar class="d-none d-sm-flex">
+    <nav mat-tab-nav-bar
+	 class="d-none d-sm-flex">
       <a mat-tab-link
 	 *ngFor="let e of examples"
 	 [routerLink]="e.link"
-	 [attr.aria-label] = "'e.label' | translate"
+	 [attr.aria-label] = "e.label | translate"
 	 routerLinkActive #rla="routerLinkActive"
 	 [active]="rla.isActive"
 	 [disabled]="e.auth && !(isAuthenticated$ | async)">
 	{{e.label | translate}}
       </a>
     </nav>
-    
     <nav class="nav-responsive d-sm-none d-flex justify-content-center">
       <mat-select [placeholder]="'increate.menu.blogs' | translate" [value]="'blogs'">
 	<mat-option *ngFor="let e of examples"
 		    [value]="e"
 		    [routerLink]="e.link"
-		    [attr.aria-label] = "'e.label' | translate"
+		    [attr.aria-label] = "e.label | translate"
 		    [disabled]="e.auth && !(isAuthenticated$ | async)">
           {{e.label | translate}}
 	</mat-option>
@@ -33,23 +33,30 @@
     <div class="container">
       <div class="row">
 	<div class="col-lg-8 col-md-10 mx-auto">	
-	  <h2>
+	  <h1>
 	    Blog Posts, Technology Spikes,
 	    <br>and Thoughts on Development
-	  </h2>
-	  <p>
-	    The site was pre-generated at transpile time and has been
-	    optimized using lighthouse.  It uses an appshell to keep initial
-	    load times fast and lazy loads content after first paint. 
-	  </p>
-	  
+	  </h1>
+
 	  <p>
 	    At Increate Software we think it is critical to be able to
 	    communicate effectively with Software Development Professionals
 	    and undertake a constant stream of spikes to explore new
 	    technologies. And we think it's fun, which is a bonus!
 	  </p>
+	  <h2>
+	    This Site
+	  </h2>
 	  
+	  <p>
+	    The site was pre-generated at transpile time and has been
+	    optimized using lighthouse.  It uses an appshell to keep initial
+	    load times fast and lazy loads content after first paint. 
+	  </p>
+	  
+	  <h2>
+	    Special Thanks
+	  </h2>
 	  <p> 
 	    
 	    Special thanks to Tomas Trajan (@tomastrajan)

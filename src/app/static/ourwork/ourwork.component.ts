@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-ourwork',
+  selector: 'increate-ourwork',
   templateUrl: './ourwork.component.html',
   styleUrls: ['./ourwork.component.scss']
 })

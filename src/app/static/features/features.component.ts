@@ -1,5 +1,5 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { Feature, features } from './feature.data';
+import { Input, Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Feature, features, olderFeatures } from './feature.data';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '../../shared/animations/route.animations';
 
 
@@ -11,11 +11,17 @@ import { ROUTE_ANIMATIONS_ELEMENTS } from '../../shared/animations/route.animati
 })
 export class FeaturesComponent implements OnInit {
     routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
-    features: Feature[] = features;
+    features: Feature[];
+    @Input() featureType: string = "webtech";
 
     constructor() { }
 
     ngOnInit() {
+        if (this.featureType === "webtech")
+            this.features = features;
+        else if (this.featureType === "olderTech") {
+            this.features = olderFeatures;
+        }
     }
 
     openLink(link: string) {

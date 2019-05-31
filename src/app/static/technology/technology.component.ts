@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-technology',
+  selector: 'increate-technology',
   templateUrl: './technology.component.html',
   styleUrls: ['./technology.component.scss']
 })

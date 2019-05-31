@@ -4,16 +4,16 @@
   $foreground: map-get($theme, foreground);
   $background: map-get($theme, background);
   $accent: map-get($theme, accent);
+  $primary: map-get($theme, primary);
 
+  
   increate-about {
     .background {
       color: mat-color($foreground, text);
       background-color: mat-color($background, background);
     }
     h1 {
-	color:green;
-	background-color: black;
-
+	color:mat-color($primary);
     }
 
   }

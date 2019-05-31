@@ -17,8 +17,12 @@ mat-card {
       justify-content: center;
   }
   img {
-      width:300px;
+
+      max-width:80%;
       height:100px;
+      text-align:center;
+      display:block;
+      margin:auto;
   }
   
   mat-card-title {

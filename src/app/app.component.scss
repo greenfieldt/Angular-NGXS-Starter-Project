@@ -109,7 +109,7 @@ mat-sidenav-container {
       text-align: center;
 
       .row {
-        padding: 10px 0;
+        padding: 5px 0;
 
 	.signature {
 	    fa-icon {
@@ -135,7 +135,7 @@ mat-sidenav-container {
           a {
             transition: padding 0.5s;
             display: inline-block;
-            padding: 20px 5px;
+            padding: 5px 5px;
 
             &:hover {
               text-decoration: none;
@@ -170,19 +170,23 @@ mat-sidenav-container {
           }
 
           @media (max-width: map-get($grid-breakpoints, md)) {
-            a {
-              padding: 20px;
-
-              span {
-                width: 0;
-                padding: 0;
+              a {
+		  //padding: 20px;
+		  
+		  span {
+                      width: 0;
+                      padding: 0;
+		  }
               }
-            }
+	      .small-links
+	      {
+		  font-size:.7rem;
+	      }
           }
 
           @media (max-width: map-get($grid-breakpoints, sm)) {
             a {
-              padding: 20px 5px;
+              //padding: 20px 5px;
             }
           }
         }

@@ -87,43 +87,43 @@ export class AppComponent implements AfterViewInit {
 
     navigation = [
         {
-            link: 'home', label: 'increate.menu.home',
+            link: 'home', label: 'increate.menu.short.home',
             tags: null, showInHeader: true, showInFooter: true,
             canonicalURL: ''
         },
 
         {
-            link: 'about', label: 'increate.menu.about',
+            link: 'about', label: 'increate.menu.short.about',
             tags: this.aboutMeta, showInHeader: false, showInFooter: true
         },
 
         {
-            link: 'services', label: 'increate.menu.services',
+            link: 'services', label: 'increate.menu.short.services',
             tags: this.servicesMeta, showInHeader: true, showInFooter: true
         },
 
         {
-            link: 'process', label: 'increate.menu.process',
+            link: 'process', label: 'increate.menu.short.process',
             tags: null, showInHeader: false, showInFooter: true
         },
 
         {
-            link: 'ourwork', label: 'increate.menu.ourwork',
+            link: 'ourwork', label: 'increate.menu.short.ourwork',
             tags: this.ourWorkMeta, showInHeader: true, showInFooter: true
         },
 
         {
-            link: 'technology', label: 'increate.menu.technology',
+            link: 'technology', label: 'increate.menu.short.technology',
             tags: this.blogMeta, showInHeader: true, showInFooter: true
         },
 
         {
-            link: 'contact', label: 'increate.menu.contact',
+            link: 'contact', label: 'increate.menu.short.contact',
             tags: this.contactUsMeta, showInHeader: true, showInFooter: true
         },
 
         {
-            link: 'blog', label: 'increate.menu.blogs',
+            link: 'blog', label: 'increate.menu.short.blogs',
             tags: this.blogMeta, showInHeader: true, showInFooter: true
         },
 

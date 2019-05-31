@@ -2,32 +2,4 @@
 
 h1 {
   text-align: center;
-  font-size: 3em;
-  text-transform: uppercase;
-}
-.news-app {
-    margin: auto;
-    max-width: 640px;
-}
-
-.background {
-  padding: 80px 0 0 0;
-  position: relative;
-}
-
-@media (max-width: map-get($grid-breakpoints, md)) {
-  .background {
-   
-  }
-}
-
-@media (max-width: map-get($grid-breakpoints, sm)) {
-  .background {
-    padding: 40px 0 0 0;
-
-    h1 {
-      line-height: 1em;
-    }
-
-  }
 }

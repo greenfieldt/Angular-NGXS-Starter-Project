@@ -2,10 +2,11 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Store, Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { ROUTE_ANIMATIONS_ELEMENTS, routeAnimations } from '../../shared/animations/route.animations';
+import { ViewEncapsulation } from '@angular/compiler/src/core';
 
 
 @Component({
-    selector: 'app-dynamichome',
+    selector: 'increate-dynamichome',
     templateUrl: './dynamichome.component.html',
     styleUrls: ['./dynamichome.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -18,7 +19,7 @@ export class DynamicHomeComponent implements OnInit {
 
     examples = [
         { link: 'post/SBTutorial/master/tutorial.md', label: 'StoryBook 101' },
-        { link: 'post/SpinnerTutorial/master/tutorial.md', label: 'Spinners 101' },
+        { link: 'post/SpinnerTutorial/master/tutorial.md', label: 'CDK Overlay 101' },
         { link: 'post/SBTutorial/CustomElements/CustomElements.md', label: 'Custom Elements: News Reader' },
         { link: 'post/process/master/overview.md', label: 'The Process' },
 
@@ -27,6 +28,7 @@ export class DynamicHomeComponent implements OnInit {
     constructor() { }
 
     ngOnInit() {
+
     }
 
     ngAfterViewInit() {
