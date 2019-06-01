@@ -1,0 +1,23 @@
+@import '~@angular/material/theming';
+
+@mixin increate-not-found-component-theme($theme) {
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+  $accent: map-get($theme, accent);
+  $primary: map-get($theme, primary);
+
+  
+  increate-notfound {
+    .background {
+      color: mat-color($foreground, text);
+      background-color: mat-color($background, background);
+    }
+    h1 {
+	color:mat-color($primary);
+    }
+    h2 {
+	color:mat-color($accent);
+    }
+
+  }
+}

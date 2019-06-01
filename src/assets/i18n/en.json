@@ -1,6 +1,10 @@
 {
     "increate.title.short": "Increate",
     "increate.title.long": "Increate Software",
+    "increate.title.notfound": "404 Not Found",
+    "increate.footer.updateready": "New Update Available",
+    "increate.footer.uptodate": "You are Up-To-Date",
+    
     "increate.menu.login": "Login",
     "increate.header.github": "Github",
 

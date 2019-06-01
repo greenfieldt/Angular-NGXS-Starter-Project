@@ -23,6 +23,7 @@
 @import 'app/static/ourwork/ourwork.component.scss-theme';
 @import 'app/static/contact/contact.component.scss-theme';
 @import 'app/static/technology/technology.component.scss-theme';
+@import 'app/static/not-found/not-found.component.scss-theme';
 
 
 @import 'app/static/login/login.component.scss-theme';
@@ -46,6 +47,7 @@
   @include increate-ourwork-component-theme($theme);
   @include increate-contact-component-theme($theme);
   @include increate-technology-component-theme($theme);
+  @include increate-not-found-component-theme($theme);
 
   @include increate-dynamichome-component-theme($theme);
   @include increate-login-component-theme($theme);

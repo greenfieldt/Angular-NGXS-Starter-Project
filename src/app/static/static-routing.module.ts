@@ -19,10 +19,18 @@ const routes: Routes = [
         data: { title: 'increate.menu.home' }
     },
     {
+        path: 'home.html',
+        redirectTo: 'home',
+    },
+    {
         path: 'about',
         component: AboutComponent,
         data: { title: 'increate.menu.about' },
         //canActivate: [AuthGuardService]
+    },
+    {
+        path: 'about.html',
+        redirectTo: 'about',
     },
     {
         path: 'contact',
@@ -30,9 +38,17 @@ const routes: Routes = [
         data: { title: 'increate.menu.contact' },
     },
     {
+        path: 'contact.html',
+        redirectTo: 'contact',
+    },
+    {
         path: 'services',
         component: ServicesComponent,
         data: { title: 'increate.menu.services' },
+    },
+    {
+        path: 'services.html',
+        redirectTo: 'services',
     },
     {
         path: 'ourwork',
@@ -40,15 +56,29 @@ const routes: Routes = [
         data: { title: 'increate.menu.ourwork' },
     },
     {
+        path: 'ourwork.html',
+        redirectTo: 'ourwork',
+    },
+    {
         path: 'technology',
         component: TechnologyComponent,
         data: { title: 'increate.menu.technology' },
     },
     {
+        path: 'technology.html',
+        redirectTo: 'technology',
+    },
+
+    {
         path: 'process',
         redirectTo: 'blog/post/process/master/overview.md',
         data: { title: 'increate.menu.blog' },
     },
+    {
+        path: 'process.html',
+        redirectTo: 'process',
+    },
+
     {
         path: 'modal/:component',
         component: ModalContainerComponent,

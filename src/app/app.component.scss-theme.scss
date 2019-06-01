@@ -38,17 +38,21 @@
       }
     }
 
+    .updateReady {
+	color: mat-color($warn) !important;
+    }
+    
     .footer {
       color: mat-color($primary, lighter);
       background-color: mat-color($primary, darker);
 
       .links,
       .signature {
-        a {
-          color: mat-color($primary, lighter);
-          &:hover {
-            color: mat-color($accent);
-          }
+          a {
+            color: mat-color($primary, lighter);
+            &:hover :not(.version) {
+		color: mat-color($accent);
+            }
         }
       }
     }

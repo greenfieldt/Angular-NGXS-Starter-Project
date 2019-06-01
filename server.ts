@@ -63,6 +63,11 @@ app.get("/robots.txt", function (req, res, next) {
     res.sendFile(__dirname + '/Increate/assets/robots.txt');
 });
 
+app.get("/ngsw-worker.js", function (req, res, next) {
+    res.set('Cache-Control', 'public, max-age=0');
+    res.sendFile(__dirname + 'ngsw-worker.js');
+});
+
 
 // All regular routes use the Universal engine
 app.get('*', (req, res) => {

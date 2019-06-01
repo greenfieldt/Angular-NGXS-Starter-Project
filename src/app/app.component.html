@@ -190,13 +190,26 @@
             &#169; <span class="year"
             data-testid="footer-year">2017 - {{year}}</span> - Increate Software LLC
             <br class="d-block d-sm-none">
-            <a [matTooltip]="'increate.footer.changelog' | translate"
+	    
+            <a *ngIf="updateReady$ | async as nextVersion"
+               [matTooltip]="'increate.footer.updateready' | translate"
+	       class="updateReady"
                matTooltipPosition="before"
-               href="https://github.com/your project
-               here/blob/master/CHANGELOG.md" aria-label="Change Log" target="_blank" rel="noopener">
+	       (click)="onForceUpdate()"
+	      >
               <fa-icon icon="rocket"></fa-icon>
-              {{version}} <span *ngIf="!isProd">[{{envName}}]</span>
+              {{version}} &#x2192; Next Version 
             </a>
+	    
+            <a *ngIf="!(updateReady$ | async)" [matTooltip]="'increate.footer.uptodate' | translate"
+               matTooltipPosition="before"
+	       class="version"
+	      >
+              <fa-icon class="version" icon="rocket"></fa-icon>
+              {{version}} <span class="version" *ngIf="!isProd">[{{envName}}]</span>
+            </a>
+
+	    
           </div>
         </div>
       </div>

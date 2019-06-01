@@ -6,7 +6,7 @@ export const environment = {
     test: false,
     envName: 'PROD',
     appName: "Increate Software LLC",
-    continueURL: 'https://www.increatesoftwaref.com/home(modal:modal/setpassword)',
+    continueURL: 'https://www.increatesoftware.com/home(modal:modal/setpassword)',
     dynamicLinkDomain: 'IncreateSoftware.page.link',
     firebaseFunctionURL: 'https://us-central1-increatesoftware.cloudfunctions.net/',
     firebase: {
@@ -20,7 +20,7 @@ export const environment = {
     },
 
     versions: {
-        app: '1.0.11',
+        app: '1.0.15',
         angular: '7.2.0',
         ngxs: '3.4.3',
         material: '7.3.6',

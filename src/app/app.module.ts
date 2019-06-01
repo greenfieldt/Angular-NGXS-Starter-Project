@@ -11,7 +11,6 @@ import { AppComponent } from './app.component';
 import { StaticModule } from './static';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
 import { DynamicModule } from './dynamic/dynamic.module';
 
@@ -32,8 +31,6 @@ import { DynamicModule } from './dynamic/dynamic.module';
         AppRoutingModule,
 
         ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-
-        GraphQLModule,
 
         HttpClientModule,
 

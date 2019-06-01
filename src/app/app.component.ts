@@ -34,6 +34,7 @@ import { themes } from './shared/state/settings.state';
 import { NotificationService } from './shared/notifications/notification.service';
 import { SpinnerService } from './shared/spinner/spinner.service';
 import { SpinnerDefaultConfig } from './shared/spinner/spinner.overlay';
+import { SWUpdateService } from './shared/service-worker/swupdate.service';
 
 
 
@@ -53,6 +54,7 @@ export class AppComponent implements AfterViewInit {
     isProd = env.production;
     envName = env.envName;
     themes = themes;
+    updateReady$: Observable<any>;
 
     sub: Subscription = new Subscription();
     aboutMeta: MetaTags = {
@@ -136,6 +138,7 @@ export class AppComponent implements AfterViewInit {
 
     constructor(private router: Router,
         private seo: SEOService,
+        private swUpdate: SWUpdateService,
         private title: TitleService,
         private notification: NotificationService,
         private store: Store,
@@ -143,6 +146,7 @@ export class AppComponent implements AfterViewInit {
         private changDetRef: ChangeDetectorRef,
         @Inject(PLATFORM_ID) private platformId) {
 
+        this.updateReady$ = this.swUpdate.checkUpdate();
 
         this.sub.add(this.router.events.pipe(
             filter(event => event instanceof NavigationEnd),
@@ -234,6 +238,9 @@ export class AppComponent implements AfterViewInit {
         });
     }
 
+    onForceUpdate() {
+        this.swUpdate.forceUpdate();
+    }
 
     onLanguageSelect($event: MatSelectChange) {
         this.store.dispatch(new ChangeLanguage($event.value));

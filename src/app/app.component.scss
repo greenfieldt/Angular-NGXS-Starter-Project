@@ -108,6 +108,10 @@ mat-sidenav-container {
       padding: 0 15px;
       text-align: center;
 
+      .updateReady {
+	  cursor: pointer !important;
+      }
+
       .row {
         padding: 5px 0;
 
