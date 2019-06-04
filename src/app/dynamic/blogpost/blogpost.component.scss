@@ -7,7 +7,7 @@
     }
 
     //turn off comments on a phone in portrait mode
-    @media (max-width: 683px) {
+    @media (max-width: 576px) {
 	//height:0vh;
 	display:none;
     }
@@ -23,6 +23,7 @@
     p {
 	text-align: justify;
     }
+
 
   .post .header-columns {
       display: flex;

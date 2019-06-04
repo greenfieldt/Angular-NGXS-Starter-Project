@@ -6,11 +6,11 @@
   <article class="flex m-0">
     <div class="container-fluid m-0">
       <div class="row">
-      <table-of-contents class="col-sm-2 mx-auto"
+      <table-of-contents class="col-md-2 mx-auto"
 			 container=".post-container" #toc>
       </table-of-contents>
       
-      <div class="post-container col-sm-7 m-0">
+      <div class="post-container col-md-7 m-0">
         <div markdown [src]="post" class="post"
              (load)="onLoad($event)"
 	     (error)="onError($event)">
@@ -27,7 +27,7 @@
       </div>
 
       
-      <div class="post-comments col-sm-3 mx-auto">
+      <div class="post-comments col-md-3 mx-auto">
 	<script  data-isso="https://comment2.increate.co/"
         data-isso-css="true"
         src="https://comment2.increate.co/js/embed.min.js"></script>

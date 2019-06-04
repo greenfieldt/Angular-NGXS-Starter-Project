@@ -1,13 +1,35 @@
 {
     "increate.title.short": "Increate",
     "increate.title.long": "Increate Software",
+
+    "increate.title.notfound": "404 Página no Encontrada ",
+    "increate.footer.updateready": "Actualización Disponible",
+    "increate.footer.uptodate": "Está Actualizado",
+    
     "increate.menu.login": "Iniciar Sesión",
     "increate.header.github": "Github",
+
+
+    "increate.menu.short.home": "Inicio",
+    "increate.menu.short.about": "Sobre",
+    "increate.menu.short.services": "Servicios",
+    "increate.menu.short.process": "Proceso",
+    "increate.menu.short.ourwork": "Trabajo",
+    "increate.menu.short.technology": "Tech",
+    "increate.menu.short.contact": "Contáctenos",
+    "increate.menu.short.blogs": "Blog",
+
     "increate.menu.home": "Página de Inicio",
     "increate.menu.about": "Sobre",
+    "increate.menu.services": "Software Consultinger",
+    "increate.menu.process": "Proceso de Desarrollo de Software",
+    "increate.menu.ourwork": "Ejemplos del Trabajo que Hacemos",
+    "increate.menu.technology": "Pila Tecnológica",
+    "increate.menu.contact": "Como Contáctenos",
+    "increate.menu.blogs": "Blog",
+
     "increate.menu.logout": "Desloguearse",
-    "increate.menu.dynamic": "Jugando Con la Tecnología",
-    "increate.menu.blogs": "Blogs",
+    "increate.menu.dynamic": "Blog",
     "increate.menu.blog" : "Blog Post",
     "increate.menu.pwt": "Jugando Con la Tecnología",
     "increate.footer.changelog": "Cambios",

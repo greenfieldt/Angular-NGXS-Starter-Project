@@ -6,7 +6,7 @@
   font-size: 13px;
   // Width is container width minus content width
   width: 21%;
-  @media (max-width: 683px) {
+  @media (max-width: 768px) {
      visibility:hidden;
      height:0px !important;
   }
