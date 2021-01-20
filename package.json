@@ -71,7 +71,7 @@
     "graphql": "^0.13.2",
     "graphql-tag": "^2.10.0",
     "hammerjs": "^2.0.8",
-    "immer": "^2.1.4",
+    "immer": "^8.0.1",
     "intl": "^1.2.5",
     "ngxs": "github:ngxs/store",
     "rxjs": "~6.3.3",
